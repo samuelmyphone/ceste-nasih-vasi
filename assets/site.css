@@ -541,3 +541,6 @@ html.kov-on,html.kov-on body{overflow:hidden}
 .kov-n{flex:none;color:#cfc3a8;font-size:.85rem;min-width:4.6rem;white-space:nowrap;text-align:center;font-variant-numeric:tabular-nums}
 .kov-a[hidden]{display:none}
 @media (max-width:560px){.kov-t{font-size:.85rem}.kov-b{width:2rem;height:2rem}.kov-act [data-z]{display:none}}
+
+.betalink{color:var(--accent-d)!important;font-weight:700;text-decoration:none;margin-right:8px;white-space:nowrap}.betalink b{background:var(--accent);color:#fff;border-radius:10px;padding:0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:720px){.betalink{font-size:12px}}
