@@ -12,8 +12,8 @@ let cur=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
 if(cur!=='sl'&&cur!=='it'){try{cur=localStorage.getItem(KEY)||'';}catch(_){cur='';}}
 if(cur!=='sl'&&cur!=='it')cur='sl';
 D.setAttribute('data-ui',cur);D.lang=cur;
-let skin='kras';try{skin=localStorage.getItem('ks-skin')||'kras';}catch(_){}
-D.setAttribute('data-skin',skin);
+const DARK=['noc','krasnoc'];let skin='morje';try{skin=localStorage.getItem('ks-skin')||'morje';}catch(_){}
+D.setAttribute('data-skin',skin);if(DARK.includes(skin))D.setAttribute('data-dark','');
 const SKIP='script,style,textarea,input,select,.leaflet-container,.nol,svg,code';
 const SEP_END=/(\s*(?:\/|·)\s*)$/;
 const markEl=(el,l)=>{el.setAttribute('data-l',l);el.setAttribute('lang',l);};
@@ -94,7 +94,7 @@ function set(l){cur=l;D.setAttribute('data-ui',l);D.lang=l;try{localStorage.setI
 window.KSLANG={apply,set,get:()=>cur,t:(sl,it)=>`<span data-l="sl" lang="sl">${sl}</span><span data-l="it" lang="it">${it}</span>`};
 function init(){
   apply(document.body);set(cur);
-  document.addEventListener('click',e=>{const b=e.target.closest('[data-setlang]');if(b)set(b.dataset.setlang);const k=e.target.closest('[data-setskin]');if(k){D.setAttribute('data-skin',k.dataset.setskin);try{localStorage.setItem('ks-skin',k.dataset.setskin);}catch(_){}document.querySelectorAll('[data-setskin]').forEach(x=>x.setAttribute('aria-pressed',x===k));}});
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-setlang]');if(b)set(b.dataset.setlang);const k=e.target.closest('[data-setskin]');if(k){D.setAttribute('data-skin',k.dataset.setskin);D.toggleAttribute('data-dark',DARK.includes(k.dataset.setskin));try{localStorage.setItem('ks-skin',k.dataset.setskin);}catch(_){}document.querySelectorAll('[data-setskin]').forEach(x=>x.setAttribute('aria-pressed',x===k));}});
   document.querySelectorAll('[data-setskin]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.setskin===D.getAttribute('data-skin')));
   let q=null;new MutationObserver(ms=>{if(busy)return;ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1&&!n.closest('.leaflet-container'))(q=q||new Set()).add(n);}));
     if(q){const s=q;q=null;queueMicrotask(()=>s.forEach(n=>{if(n.isConnected){apply(n.parentElement||n);}}));}}).observe(document.body,{childList:true,subtree:true});

@@ -360,3 +360,39 @@ html[data-ui=it] .dossier [data-l=it] em{font-style:normal}
   .lbx svg{width:96vw!important}
 }
 @media (max-width:720px){.tabbar .plus svg{fill:#fff}.map-panel .panel-head{flex-wrap:wrap}}
+
+/* ---------- dark skins ---------- */
+html[data-skin=noc]{--bg:#0f151b;--paper:#17202a;--ink:#e4ebf1;--muted:#9eafbd;--line:#2a3846;--soft:#1d2934;--soft2:#131b23;
+ --accent:#4f9fdc;--accent-d:#8cc4ef;--accent-l:#1b3247;--g3:#ff6f61;--g2:#f39a5e;--g1:#9aa4ab;--ok:#7cc27a;--info:#7fb6d9;
+ --v1:#141d26;--v2:#18232e;--v3:#1d2a36;--vw:#1f3c54;--vl:#26384a;color-scheme:dark}
+html[data-skin=krasnoc]{--bg:#161311;--paper:#201c19;--ink:#efe8e1;--muted:#b4a89c;--line:#3a322b;--soft:#29231f;--soft2:#1b1714;
+ --accent:#ec7c4c;--accent-d:#f6a982;--accent-l:#3a2418;--g3:#ff6f61;--g2:#f39a5e;--g1:#a59b92;--ok:#86c47f;--info:#86b8d6;
+ --v1:#1c1815;--v2:#221d19;--v3:#29231e;--vw:#24343b;--vl:#352d26;color-scheme:dark}
+.skinsw [data-setskin=noc]{background:linear-gradient(135deg,#0f151b 50%,#4f9fdc 50%)}
+.skinsw [data-setskin=krasnoc]{background:linear-gradient(135deg,#161311 50%,#ec7c4c 50%)}
+html[data-dark] .brand img{background:#fff;border-radius:50%;padding:2px}
+html[data-dark] .btn:not(.ghost),html[data-dark] .langsw button[aria-pressed=true],html[data-dark] .subnav a.cta,html[data-dark] .phases li::before{color:#0b0f13}
+html[data-dark] .subnav a.active{background:var(--ink);color:var(--bg)}
+html[data-dark] .subnav a.active small{color:var(--line)}
+html[data-dark] .steps span.done,html[data-dark] .result.ok,html[data-dark] .s-objavljeno,html[data-dark] .chip.p-reseno{background:#1d3a24}
+html[data-dark] .steps span.no,html[data-dark] .result.err,html[data-dark] .s-zavrnjeno{background:#3d1f1d}
+html[data-dark] .s-novo{background:#3a3115;color:#f0cf6b}
+html[data-dark] .chip.p-posredovano,html[data-dark] .chip.p-v_obravnavi{background:#1b3241}
+html[data-dark] .empty{border-color:var(--line)}
+html[data-dark] .field input,html[data-dark] .field select,html[data-dark] .field textarea,html[data-dark] .choice label,html[data-dark] .filters input,html[data-dark] .filters select,html[data-dark] table.cost input{background:var(--soft2);color:var(--ink);border-color:var(--line)}
+html[data-dark] .leaflet-tile-pane{filter:brightness(.72) contrast(1.08) saturate(.85)}
+html[data-dark] .leaflet-popup-content-wrapper,html[data-dark] .leaflet-popup-tip{background:var(--paper);color:var(--ink)}
+html[data-dark] .dossier .fig svg,html[data-dark] .dossier .fig img,html[data-dark] .dossier .ph img{filter:brightness(.88)}
+html[data-dark] .dossier .pbtn{color:#fff}
+html[data-dark] .notice{background:var(--accent-l);color:var(--accent-d)}
+html[data-dark] .tabbar{box-shadow:0 -4px 16px #00000066}
+html[data-dark] .tabbar .plus svg{fill:#0b0f13}
+/* landscape anchored to the page area below the header (never over menus) */
+.page{position:relative}
+.vista{top:0!important;height:300px}
+.utility,.site-head{position:relative;z-index:40}
+.site-head{position:sticky;top:0}
+@media (max-width:760px){.vista{height:230px}.site-head{position:relative}}
+@media (max-width:720px){.site-head .container{flex-wrap:wrap}.nav.open{width:100%;order:3}}
+html[data-dark] .dossier .card,html[data-dark] .dossier .pit{background:var(--paper)}
+.dossier .enlarge-hint{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important}

@@ -19,7 +19,7 @@
 .dossier .dstats .r b{color:var(--accent-d)}
 .dossier .section-kicker{font-size:12px;letter-spacing:.15em;font-weight:700;color:var(--muted);margin:0 0 7px}
 .dossier .explore{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:20px;margin-bottom:35px}
-.dossier .map-panel{overflow:hidden;background:white;border:1px solid var(--line);border-radius:10px;min-width:0}
+.dossier .map-panel{overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:10px;min-width:0}
 .dossier .panel-head{padding:20px 22px 16px;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .dossier .panel-head h2,.dossier .sidebar h2{font-size:18px;line-height:1.3;letter-spacing:0;margin:0}
 .dossier .panel-head h2 small,.dossier .sidebar h2 small{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:4px;letter-spacing:0}
@@ -36,7 +36,7 @@
 .dossier .village-buttons button small{display:block;font-size:12px;color:var(--muted)}
 .dossier .village-buttons button b{font-size:13px;font-weight:500;background:var(--soft);min-width:23px;border-radius:5px;text-align:center;padding:2px}
 .dossier .village-buttons button:hover{background:var(--soft)}
-.dossier .village-buttons button.selected{background:white;border-color:var(--line);color:var(--accent-d);box-shadow:0 1px 2px #26392706}
+.dossier .village-buttons button.selected{background:var(--paper);border-color:var(--line);color:var(--accent-d);box-shadow:0 1px 2px #26392706}
 .dossier .village-buttons button.selected b{background:var(--soft);color:var(--accent-d)}
 .dossier .sidebar-note{border-top:1px solid var(--line);font-size:12px;color:var(--muted);padding-top:13px;margin:16px 0 0;line-height:1.6}
 .dossier .toolbar{scroll-margin-top:20px;display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:28px 0 18px}
@@ -44,12 +44,12 @@
 .dossier .toolbar h2 small{display:block;font-size:13px;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:5px}
 .dossier .search-wrap{position:relative}
 .dossier .search-wrap span{position:absolute;left:12px;top:10px;color:var(--muted);font-size:16px}
-.dossier .toolbar input,.dossier .toolbar select{background:white;border:1px solid var(--line);border-radius:7px;min-height:42px;font-size:13px;color:var(--ink);padding:10px 12px}
+.dossier .toolbar input,.dossier .toolbar select{background:var(--paper);border:1px solid var(--line);border-radius:7px;min-height:42px;font-size:13px;color:var(--ink);padding:10px 12px}
 .dossier .toolbar input{padding-left:35px;width:235px}
 .dossier .toolbar select{max-width:210px}
 .dossier .results-note{font-size:13px;color:var(--ink);margin:0 0 19px;display:flex;align-items:center;gap:10px}
 .dossier .results-note button{border:0;background:none;font-size:13px;color:var(--accent-d);text-decoration:underline;min-height:30px}
-.dossier .tbl{background:white;border:1px solid var(--line);border-radius:10px;margin-bottom:35px}
+.dossier .tbl{background:var(--paper);border:1px solid var(--line);border-radius:10px;margin-bottom:35px}
 .dossier table{font-size:14px}
 .dossier th{font-size:12px;background:var(--soft2);padding:13px 17px}
 .dossier td{padding:13px 17px}
@@ -86,14 +86,14 @@
 .dossier .ph figcaption{font-size:13px}
 .dossier .thumb img{border-radius:6px}
 .dossier .lmk span{font:600 11px/25px var(--font);min-width:33px;height:29px;padding:0 6px;box-shadow:0 1px 5px #26382740}
-.dossier .cluster-marker{background:white;border:2px solid var(--accent-d);border-radius:50%;width:43px!important;height:43px!important;display:grid;place-items:center;box-shadow:0 2px 8px #35482933;font:650 14px var(--font);color:var(--accent-d)}
+.dossier .cluster-marker{background:var(--paper);border:2px solid var(--accent-d);border-radius:50%;width:43px!important;height:43px!important;display:grid;place-items:center;box-shadow:0 2px 8px #35482933;font:650 14px var(--font);color:var(--accent-d)}
 .dossier .leaflet-popup-content{font:13px/1.5 var(--font)}
 .dossier .leaflet-popup-content b{font-size:15px}
 .dossier .leaflet-popup-content img{max-height:140px;object-fit:cover}
 .dossier .pbtn{font-family:var(--font);padding:9px 12px;min-height:40px}
 .dossier .leaflet-control-zoom a{font-family:var(--font)}
 .dossier .foot{border-top:1px solid var(--line);font-size:13px;line-height:1.7;margin-top:45px;padding-top:21px;color:var(--muted)}
-.dossier .empty{padding:35px;background:white;border:1px dashed var(--line);border-radius:8px;text-align:center;color:var(--ink)}
+.dossier .empty{padding:35px;background:var(--paper);border:1px dashed var(--line);border-radius:8px;text-align:center;color:var(--ink)}
 .dossier .lb{z-index:100}
 .dossier .lb img{object-fit:contain;max-height:78vh}
 .dossier .lb button{font-family:var(--font);min-height:44px}
@@ -161,7 +161,7 @@
 .dossier .tbl{background:none;border:0;border-radius:0;margin-bottom:22px}
 .dossier .tbl table,.dossier .tbl tbody{display:block}
 .dossier .tbl thead{display:none}
-.dossier .tbl tr{display:grid;grid-template-columns:40px 1fr;gap:3px 9px;border:1px solid var(--soft);background:white;border-radius:7px;padding:14px;margin-bottom:9px}
+.dossier .tbl tr{display:grid;grid-template-columns:40px 1fr;gap:3px 9px;border:1px solid var(--soft);background:var(--paper);border-radius:7px;padding:14px;margin-bottom:9px}
 .dossier .tbl td{padding:0;border:0!important;width:auto!important}
 .dossier .tbl td:first-child{grid-row:1/4}
 .dossier .tbl td:nth-child(2){font-size:12px;color:var(--muted)}
@@ -203,6 +203,6 @@
 .dossier .proposal-stats b{font-size:27px}
 .dossier .proposal-stats span{font-size:11px}
 .dossier .lb{padding:15px}
-.dossier .lb svg{max-width:100%;max-height:70vh;background:white}}
+.dossier .lb svg{max-width:100%;max-height:70vh;background:var(--paper)}}
 .dossier .enlarge-hint{pointer-events:none}
 .dossier em,.dossier .itl{font-style:italic}
