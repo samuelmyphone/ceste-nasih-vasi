@@ -252,3 +252,49 @@ table.cost input{width:100%}
 .subnav{margin-top:18px}
 .hero-side .mini{line-height:1.35;display:block}
 table.cost input{border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:42px;background:var(--paper)}
+
+/* ---------- skins ---------- */
+:root,html[data-skin=kras]{--v1:#ede5db;--v2:#e3d8cb;--v3:#d8cabb;--vw:#d2dde1;--vl:#cbbcab}
+html[data-skin=morje]{--bg:#f2f5f7;--paper:#fff;--ink:#1f2a33;--muted:#5a6873;--line:#d9e2e8;--soft:#e8eef2;--soft2:#f6f9fb;
+ --accent:#1f5f8b;--accent-d:#174a6d;--accent-l:#e2edf5;--v1:#e4ecf1;--v2:#d6e1e8;--v3:#c8d6df;--vw:#b9d0df;--vl:#b6c7d2}
+html[data-skin=teran]{--bg:#f7f2ef;--paper:#fff;--ink:#2b2023;--muted:#6c5d60;--line:#e6dbd5;--soft:#f1e7e2;--soft2:#faf6f3;
+ --accent:#8c1d3f;--accent-d:#6d1531;--accent-l:#f5e3e9;--v1:#efe4dd;--v2:#e5d6cd;--v3:#d9c6ba;--vw:#d6dde1;--vl:#cfbbaf}
+.notice{border-color:var(--line)}
+
+/* ---------- Val Rosandra landscape behind the page top ---------- */
+.vista{position:absolute;left:0;right:0;top:112px;height:330px;pointer-events:none;z-index:0;overflow:hidden}
+.vista-svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.vista::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(to bottom,transparent,var(--bg))}
+main.container{position:relative;z-index:1}
+.hero{position:relative}
+@media (max-width:760px){.vista{top:150px;height:220px;opacity:.8}}
+
+/* ---------- language switch ---------- */
+html[data-ui=sl] [data-l=it],html[data-ui=it] [data-l=sl],html[data-ui] .lsep{display:none!important}
+html[data-ui=it] [data-l=it]{font-style:normal}
+html[data-ui=it] em[data-l=it],html[data-ui=it] small[data-l=it]{color:inherit;font-size:inherit;font-weight:inherit}
+html[data-ui=it] .nav small[data-l=it]{font-weight:700;font-size:16px;color:inherit}
+html[data-ui=it] .nav a.active small[data-l=it]{color:var(--accent-d)}
+html[data-ui=it] .hero .sub[data-l=it]{font-size:clamp(32px,4.2vw,52px);line-height:1.08;font-weight:700;color:var(--ink);font-style:normal;margin:0 0 14px}
+html[data-ui=it] .hsub[data-l=it]{font-size:28px;line-height:1.15;font-weight:700;color:var(--ink);font-style:normal;margin:34px 0 14px}
+html[data-ui=it] .bi .it,html[data-ui=it] .reg .body .it,html[data-ui=it] .itl{color:inherit!important;font-style:normal}
+html[data-ui] .reg .body{grid-template-columns:1fr}
+html[data-ui] .brand span,html[data-ui] .brand b{white-space:nowrap}
+.langsw,.skinsw{display:inline-flex;gap:4px;align-items:center}
+.langsw button{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;font-size:13px;padding:2px 9px;border-radius:5px;letter-spacing:.05em}
+.langsw button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.skinsw button{width:18px;height:18px;border-radius:50%;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line);padding:0}
+.skinsw button[aria-pressed=true]{box-shadow:0 0 0 2px var(--ink)}
+.skinsw [data-setskin=kras]{background:#D34817}.skinsw [data-setskin=morje]{background:#1f5f8b}.skinsw [data-setskin=teran]{background:#8c1d3f}
+.utility .tools{display:flex;gap:14px;align-items:center}
+.brand b span{display:inline;color:inherit;font-style:normal;font-weight:inherit;font-size:inherit;text-transform:inherit;letter-spacing:inherit}
+.brand > div > span span{display:inline;color:inherit;font-size:inherit;font-style:inherit}
+html[data-ui=it] .svet p[data-l=it]{font-size:21px;line-height:1.2;font-weight:700;color:var(--ink);margin:0 0 6px}
+html[data-ui=it] .hero .sub[data-l=it] *{font-style:normal}
+html[data-ui=it] .dossier em[data-l=it],html[data-ui=it] .dossier .itl,html[data-ui=it] .dossier .ttl p[data-l=it]{font-style:normal!important}
+html[data-ui=it] .dossier .ttl p[data-l=it]{font-size:19px;font-weight:700;color:var(--ink)}
+html[data-ui=it] .dossier .village h2 em[data-l=it]{font-size:inherit;color:inherit;font-style:normal}
+.dossier .st span[data-l],.dossier .st span.lsep{all:unset}
+.vista{opacity:.85}
+span[data-l]{all:unset}
+html[data-ui=it] .dossier [data-l=it] em{font-style:normal}

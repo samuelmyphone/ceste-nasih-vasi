@@ -9,11 +9,11 @@ const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'s
 const h1=$('h1',D), sub=h1&&h1.nextElementSibling, intro=$('.intro',D);
 if(h1){
   const hero=make('section','hero'), main=make('div','');
-  main.append(make('p','eyebrow','Svet krajevne skupnosti Boršt–Pesek · Consiglio delle frazioni'));
+  main.append(make('p','eyebrow',window.KSLANG?KSLANG.t('Krajevna skupnost Boršt–Pesek','Frazione di Sant’Antonio in Bosco–Pesek'):'Krajevna skupnost Boršt–Pesek'));
   h1.before(hero); hero.append(main); main.append(h1);
   if(sub&&sub.tagName==='P'){sub.className='sub';main.append(sub);}
   main.append(make('p','lead',roads?'Zbrane težave in predlogi krajanov za varnejše ceste v naših vaseh.<br><em>Le segnalazioni dei residenti, raccolte per strade più sicure nelle nostre frazioni.</em>':'Predlogi, vprašanja in ideje krajanov za boljše življenje v naših vaseh.<br><em>Proposte, domande e idee dei residenti per migliorare la vita nelle frazioni.</em>'));
-  hero.append(make('aside','hero-side',roads?'<span class="mini">Sestanek z županom / Incontro con il Sindaco</span><strong>21. oktober 2026</strong><p>Občina Dolina<br><em>Comune di San Dorligo della Valle</em></p><a href="#browse">Pregled točk / Elenco dei punti →</a>':'<span class="mini">Skupaj za naše vasi / Insieme per le frazioni</span><strong>Od predlogov do rešitev</strong><p><em>Dalle proposte alle soluzioni.</em><br>Prispevki krajanov 2025–2026</p><a href="../../prijava.html?svet=c&amp;vrsta=predlog">Dodaj predlog / Aggiungi →</a>'));
+  hero.append(make('aside','hero-side',roads?'<span class="mini">Sestanek z županom / Incontro con il Sindaco</span><strong><span data-l="sl">21. oktober 2026</span><span data-l="it">21 ottobre 2026</span></strong><p>Občina Dolina<br><em>Comune di San Dorligo della Valle</em></p><a href="#browse">Pregled točk / Elenco dei punti →</a>':'<span class="mini">Skupaj za naše vasi / Insieme per le frazioni</span><strong><span data-l="sl">Od predlogov do rešitev</span><span data-l="it">Dalle proposte alle soluzioni</span></strong><p><span data-l="sl">Prispevki krajanov 2025–2026</span><span data-l="it">Contributi dei residenti 2025–2026</span></p><a href="../../prijava.html?svet=c&amp;vrsta=predlog"><span data-l="sl">Dodaj predlog</span><span data-l="it">Aggiungi una proposta</span> →</a>'));
   if(intro){const note=make('details','source-note','<summary>O zbirki in virih / <em>Informazioni sulla raccolta e sulle fonti</em></summary>');note.append(intro);hero.after(note);}
 }
 const empty=make('p','empty','Ni zadetkov. Poskusite z drugim iskanjem.<br><em>Nessun risultato. Prova un’altra ricerca.</em>');empty.hidden=true;
@@ -33,7 +33,7 @@ function filter(){
   sections.forEach(s=>{s.node.hidden=!$$('article',s.node).some(a=>!a.hidden);});
   if(roads)$$('.tbl tbody tr',D).forEach(row=>{const code=$('a',row)?.textContent;row.hidden=!!document.getElementById('c-'+code)?.hidden;});
   $$('.village-buttons button',D).forEach(b=>{const on=b.dataset.group===activeGroup;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',on);});
-  if(controls){$('span',controls.result).textContent=`${count} ${roads?'točk / punti':'prispevkov / contributi'}${activeGroup?' · '+activeGroup:''}`;$('button',controls.result).hidden=!(activeGroup||activeSeverity||query);}
+  if(controls){$('span',controls.result).innerHTML=`${count} <span data-l="sl">${roads?'točk':'prispevkov'}</span><span data-l="it">${roads?'punti':'contributi'}</span>${activeGroup?' · '+activeGroup:''}`;$('button',controls.result).hidden=!(activeGroup||activeSeverity||query);}
   empty.hidden=count>0;
   dispatchEvent(new Event('draft-filter'));
 }
@@ -88,7 +88,7 @@ if(roads){
     note.after(make('div','dstats proposal-stats',`<div><b>${entries.length}</b><span>prispevkov krajanov<br><em>contributi dei residenti</em></span></div><div><b>${groups.length}</b><span>tematskih sklopov<br><em>ambiti tematici</em></span></div><div><b>2025–26</b><span>obdobje zbiranja<br><em>periodo della raccolta</em></span></div>`));
     const box=$('.village-buttons',side);groupButton(box,'Vse teme','Tutti gli argomenti',entries.length);
     sections.forEach(s=>groupButton(box,s.group,($('h2 em',s.node)?.textContent||'').replace(/^\/\s*/,''),$$('article',s.node).length,s.group));
-    if(entries.length===titles.length)entries.forEach((e,i)=>{const [sl,it]=titles[i];const t=$('.tags',e.node);if(t)t.after(make('h3','',`${sl}<small lang="it">${it}</small>`));e.text=e.node.textContent.toLocaleLowerCase();e.node.id=e.node.id||'p-'+(i+1);});
+    if(entries.length===titles.length)entries.forEach((e,i)=>{const [sl,it]=titles[i];const t=$('.tags',e.node);if(t)t.after(make('h3','',`<span data-l="sl" lang="sl">${sl}</span><small data-l="it" lang="it">${it}</small>`));e.text=e.node.textContent.toLocaleLowerCase();e.node.id=e.node.id||'p-'+(i+1);});
     controls=toolbar('Prispevki krajanov','Proposte, domande e idee');lay.before(controls.bar,controls.result,empty);
     $$('.fig',D).forEach(f=>{f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label','Povečaj shemo / Ingrandisci schema');f.append(make('span','enlarge-hint','↗ Povečaj / Ingrandisci'));f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f.click();}});});
   }

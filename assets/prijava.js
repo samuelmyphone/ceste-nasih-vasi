@@ -15,7 +15,7 @@ if(window.L){
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
   map.on('click',e=>{if(mk)mk.setLatLng(e.latlng);else mk=L.marker(e.latlng,{draggable:true}).addTo(map).on('dragend',show);show();});
 }
-function show(){const p=mk.getLatLng();ll.textContent=`${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} – izbrano / selezionato`;}
+function show(){const p=mk.getLatLng();ll.innerHTML=`${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} – <span data-l="sl">izbrano</span><span data-l="it">selezionato</span>`;}
 vas.addEventListener('change',()=>{const v=(V[svet.value]||[]).find(v=>vas.value.indexOf(v[0])===0);if(v&&map)map.setView([v[2],v[3]],16);});
 svet.addEventListener('change',fillVas);
 // type-dependent fields
