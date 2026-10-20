@@ -12,7 +12,7 @@ let cur=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
 if(cur!=='sl'&&cur!=='it'){try{cur=localStorage.getItem(KEY)||'';}catch(_){cur='';}}
 if(cur!=='sl'&&cur!=='it')cur='sl';
 D.setAttribute('data-ui',cur);D.lang=cur;
-const DARK=['noc','krasnoc'];let skin='morje';try{skin=localStorage.getItem('ks-skin')||'morje';}catch(_){}
+D.classList.add('js');const DARK=['noc','krasnoc'],SKINS=['kras','morje','teran','noc','krasnoc'];let skin='kras';try{skin=localStorage.getItem('ks-skin')||'kras';}catch(_){}if(!SKINS.includes(skin))skin='kras';
 D.setAttribute('data-skin',skin);if(DARK.includes(skin))D.setAttribute('data-dark','');
 const SKIP='script,style,textarea,input,select,.leaflet-container,.nol,svg,code';
 const SEP_END=/(\s*(?:\/|·)\s*)$/;
