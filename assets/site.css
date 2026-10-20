@@ -396,3 +396,22 @@ html[data-dark] .tabbar .plus svg{fill:#0b0f13}
 @media (max-width:720px){.site-head .container{flex-wrap:wrap}.nav.open{width:100%;order:3}}
 html[data-dark] .dossier .card,html[data-dark] .dossier .pit{background:var(--paper)}
 .dossier .enlarge-hint{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important}
+
+/* ---------- satellite cards ---------- */
+.sat{background:var(--soft);border-radius:var(--r) var(--r) 0 0;overflow:hidden;z-index:0}
+.sat .leaflet-control-attribution{font-size:9px;background:#ffffffb3!important;color:#333}
+.sat-lbl span{all:unset}
+.sat-lbl{white-space:nowrap}
+.sat-lbl span[data-l]{display:inline-block;transform:translate(-50%,-50%);font:700 14px/1.1 var(--font);color:#fff;text-shadow:0 0 3px #000,0 1px 2px #000,0 0 8px #000a;letter-spacing:.02em}
+.ks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.ks-grid.vasi{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.ks-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.ks-body{padding:12px 16px 14px;display:grid;gap:6px}
+.ks-body h3{margin:0;font-size:19px;line-height:1.2}
+.ks-body .letter{color:var(--accent);margin-right:2px}
+.ks-vasi{margin:0;color:var(--muted);font-size:15px}
+.ks-links{margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;font-weight:700}
+.svet.has-sat{padding-top:0;overflow:hidden}
+.svet.has-sat .sat.thumb{margin:0 -18px 12px;border-radius:0;pointer-events:none}
+.svet.has-sat .letter{top:142px}
+html[data-dark] .sat .leaflet-tile-pane{filter:none}
