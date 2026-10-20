@@ -453,3 +453,31 @@ html[data-dark] .sat .leaflet-tile-pane{filter:none}
 #pf[data-vrsta] .tcard{padding:8px 10px;align-items:center}
 #pf[data-vrsta] .tcard .ti{width:28px;height:28px;font-size:15px}
 @media (max-width:720px){.tgrid{grid-template-columns:1fr}#pf[data-vrsta] .tgrid{grid-template-columns:1fr 1fr}}
+
+/* ---------- icons ---------- */
+.ic{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;display:inline-block}
+.btn .ic{width:20px;height:20px;margin-right:2px}
+.btn.big{font-size:19px;padding:12px 22px}
+.nav a{flex-direction:row!important;align-items:center;gap:8px}
+.nav a .ic,.nav .dd>button .ic{width:20px;height:20px;color:var(--accent);opacity:.9}
+.nav .dd>button{flex-direction:row!important;align-items:center;gap:8px}
+.nav .nl{display:flex;flex-direction:column}
+.action .ico svg{width:24px;height:24px}
+.action .ico{display:grid;place-items:center}
+.tcard .ti .ic{width:20px;height:20px}
+.h .ic,.hsub .ic{color:var(--accent);margin-right:10px;width:.95em;height:.95em;vertical-align:-.08em}
+.hsub .ic{display:none}
+html[data-ui=it] .hsub .ic{display:inline-block}
+.mini .ic{width:14px;height:14px;vertical-align:-.15em}
+.news time .ic{width:15px;height:15px;vertical-align:-.15em;margin-right:2px}
+.pdf .ic{width:14px;height:14px;vertical-align:-.2em;margin-right:3px}
+.subnav a .ic{width:18px;height:18px}
+.field label .ic,.field .lbl .ic,.contacts legend .ic{color:var(--accent);width:18px;height:18px;margin-right:4px}
+.ks-links .ic,.hero-side a .ic{width:17px;height:17px}
+.tabs .ic{width:18px;height:18px;vertical-align:-.2em}
+.live .top .ic{width:15px;height:15px;color:var(--accent)}
+.site-foot .ic{width:16px;height:16px;vertical-align:-.2em}
+@media (max-width:720px){.nav a .ic{width:22px;height:22px}}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tcard:has(input:checked) .ti .ic{stroke:#fff}
+input[type=file]::file-selector-button{font:700 15px var(--font);background:var(--accent-l);color:var(--accent-d);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin-right:10px;cursor:pointer}

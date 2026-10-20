@@ -20,7 +20,7 @@ function card(p){
   const v=VRSTE[p.vrsta]||[p.vrsta,''], r=RES[p.resnost], n=NAP[p.napredek]||NAP.zbrano;
   const phs=(p.fotografije||[]).map(f=>`<img src="${E(fotoUrl(f))}" alt="" loading="lazy" data-zoom="${E(fotoUrl(f))}">`).join('');
   return `<article class="live r${p.resnost||0}" id="l-${E(p.id)}">
-   <div class="top">${p.oznaka?`<b>${E(p.oznaka)}</b>`:''}<b>${E(p.vas)}</b><span>${E(v[0])} / <em>${E(v[1])}</em></span>${r?`<span>${E(r[0])} / <em>${E(r[1])}</em></span>`:''}<span>${fmtDate(p.created_at)}</span><span class="chip p-${E(p.napredek)}">${E(n[0])} / ${E(n[1])}</span></div>
+   <div class="top">${p.oznaka?`<b>${E(p.oznaka)}</b>`:''}<b><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg> ${E(p.vas)}</b><span>${E(v[0])} / <em>${E(v[1])}</em></span>${r?`<span>${E(r[0])} / <em>${E(r[1])}</em></span>`:''}<span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg> ${fmtDate(p.created_at)}</span><span class="chip p-${E(p.napredek)}">${E(n[0])} / ${E(n[1])}</span></div>
    ${p.kje?`<p><b>Kje / <em>Dove</em>:</b> ${E(p.kje)}</p>`:''}
    <p>${E(p.opis)}</p>
    ${p.predlog?`<p><b>Predlog / <em>Proposta</em>:</b> ${E(p.predlog)}</p>`:''}

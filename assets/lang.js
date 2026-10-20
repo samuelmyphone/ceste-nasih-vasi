@@ -47,7 +47,7 @@ function inline(root){
     const nodes=[];let n=sepNode?sepNode.previousSibling:(sepTxt&&!lead?p:el.previousSibling);
     if(lead)n=el.previousSibling;
     while(n){
-      if(n.nodeType===1&&(n.tagName==='BR'||marked(n)||/^(P|DIV|UL|OL|LI|H\d|TABLE|SECTION|ARTICLE|HEADER|FOOTER|NAV|FIGURE|INPUT|SELECT|TEXTAREA|BUTTON|IMG)$/.test(n.tagName)))break;
+      if(n.nodeType===1&&(n.tagName==='BR'||n.nodeName.toLowerCase()==='svg'||marked(n)||/^(P|DIV|UL|OL|LI|H\d|TABLE|SECTION|ARTICLE|HEADER|FOOTER|NAV|FIGURE|INPUT|SELECT|TEXTAREA|BUTTON|IMG)$/.test(n.tagName)))break;
       if(n.nodeType===3){const t=n.textContent;const m=t.match(/^([\s\S]*?(?:[:;·]|\)|–)\s+)(?=\S)/);
         if(nodes.length===0&&!t.trim()){n=n.previousSibling;continue;}
         // stop at ": " or "· " boundaries inside the text node (keep the tail as SL)
