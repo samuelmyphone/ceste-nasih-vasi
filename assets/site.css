@@ -519,3 +519,25 @@ html.kov-on,html.kov-on body{overflow:hidden}
 .kov-b:hover{background:rgba(255,255,255,.22)}
 .kov-v{flex:1;min-height:0}
 .kov-c{margin:0;padding:.3rem .8rem;padding-bottom:max(.3rem,env(safe-area-inset-bottom));font-size:.75rem;color:#b9ad95;background:#221e18}
+/* historical maps v2: series, mosaic, jump nav, viewer nav */
+.kjump{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 .2rem}
+.kjump a{display:inline-flex;flex-direction:column;padding:.45rem .8rem;border:1px solid var(--line);border-radius:10px;background:var(--paper);text-decoration:none;color:var(--ink);font-weight:600;line-height:1.15}
+.kjump a small{font-weight:400;color:var(--muted);font-size:.78rem}
+.kjump a:hover{border-color:var(--accent)}
+.kser{margin:.6rem 0;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--paper) 60%,transparent);padding:.2rem .8rem .8rem}
+.kser>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;padding:.55rem 0;font-weight:600}
+.kser>summary::-webkit-details-marker{display:none}
+.kser>summary::before{content:'▸';color:var(--accent);margin-right:.2rem;transition:transform .2s}
+.kser[open]>summary::before{transform:rotate(90deg)}
+.kser>summary span{flex:1}
+.kser>summary small{color:var(--muted);font-weight:400;white-space:nowrap}
+.kser-d{margin:0 0 .7rem;color:var(--muted);font-size:.9rem}
+.kmoscard{grid-column:span 2;border-color:var(--accent)}
+.kmoscard .kthumb{aspect-ratio:auto;height:260px;background:#d8e3ec}
+.kmoscard .kthumb img{object-fit:contain}
+.kbadge{position:absolute;left:.5rem;top:.5rem;background:var(--accent);color:#fff;font-size:.8rem;font-weight:600;padding:.25rem .55rem;border-radius:20px;display:inline-flex;align-items:center;gap:.3rem}
+.kbadge .ic{width:.95rem;height:.95rem}
+@media (max-width:560px){.kmoscard{grid-column:1/-1}.kmoscard .kthumb{height:200px}}
+.kov-n{flex:none;color:#cfc3a8;font-size:.85rem;min-width:4.6rem;white-space:nowrap;text-align:center;font-variant-numeric:tabular-nums}
+.kov-a[hidden]{display:none}
+@media (max-width:560px){.kov-t{font-size:.85rem}.kov-b{width:2rem;height:2rem}.kov-act [data-z]{display:none}}
