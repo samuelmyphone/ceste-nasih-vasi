@@ -481,3 +481,7 @@ html[data-ui=it] .hsub .ic{display:inline-block}
 .ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .tcard:has(input:checked) .ti .ic{stroke:#fff}
 input[type=file]::file-selector-button{font:700 15px var(--font);background:var(--accent-l);color:var(--accent-d);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin-right:10px;cursor:pointer}
+/* footer always at the bottom of the window on short pages */
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+body>.page{flex:1 0 auto}
+body>.site-foot,body>.utility,body>.site-head{flex-shrink:0}
