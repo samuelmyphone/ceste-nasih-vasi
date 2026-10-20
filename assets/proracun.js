@@ -13,7 +13,7 @@ const sum=()=>{let s=0;$$('#bp-cost tbody input[type=number]').forEach(i=>s+=+i.
 tb.addEventListener('input',sum);sum();
 // map
 let map=null,mk=null;
-if(window.L&&$('#bp-map')){map=L.map('bp-map',{scrollWheelZoom:false},dragging:!L.Browser.mobile,tap:false}).setView([45.612,13.86],13);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+if(window.L&&$('#bp-map')){map=L.map('bp-map',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false}).setView([45.612,13.86],13);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
   map.on('click',e=>{if(mk)mk.setLatLng(e.latlng);else mk=L.marker(e.latlng,{draggable:true}).addTo(map);});
   document.addEventListener('click',e=>{if(e.target.closest('#t-pr'))setTimeout(()=>map.invalidateSize(),50);});}
 // submit

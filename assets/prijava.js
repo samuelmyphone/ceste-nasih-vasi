@@ -6,24 +6,29 @@ const qs=new URLSearchParams(location.search);
 if(!S||!S.ready()){ $('#off').hidden=false; form.querySelectorAll('input,select,textarea,button').forEach(e=>e.disabled=true); form.style.opacity=.55; }
 // consiglio → villages
 const svet=$('#f-svet'), vas=$('#f-vas');
-function fillVas(){const list=V[svet.value]||[];vas.innerHTML='<option value="">—</option>'+list.map(v=>`<option value="${S.E(v[0]+(v[1]&&v[1]!==v[0]?' / '+v[1]:''))}">${S.E(v[0])}${v[1]&&v[1]!==v[0]?' / '+S.E(v[1]):''}</option>`).join('');
+function fillVas(){const list=V[svet.value]||[];vas.innerHTML='<option value="">—</option><option value="Vse vasi" data-sl="Vse vasi" data-it="Tutte le località">Vse vasi</option>'+list.map(v=>`<option value="${S.E(v[0]+(v[1]&&v[1]!==v[0]?' / '+v[1]:''))}">${S.E(v[0])}${v[1]&&v[1]!==v[0]?' / '+S.E(v[1]):''}</option>`).join('');
+  if(window.KSLANG)KSLANG.apply(vas);if(form.dataset.vrsta==='cesta'){const o=vas.querySelector('option[value="Vse vasi"]');if(o)o.hidden=true;}
   if(map&&list.length)map.fitBounds(L.latLngBounds(list.map(v=>[v[2],v[3]])).pad(list.length>1?.5:0),{maxZoom:15});}
 // map picker
 let map=null, mk=null; const ll=$('#f-ll');
 if(window.L){
-  map=L.map('pickmap',{scrollWheelZoom:false},dragging:!L.Browser.mobile,tap:false}).setView([45.612,13.86],13);
+  map=L.map('pickmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false}).setView([45.612,13.86],13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
   map.on('click',e=>{if(mk)mk.setLatLng(e.latlng);else mk=L.marker(e.latlng,{draggable:true}).addTo(map).on('dragend',show);show();});
 }
 function show(){const p=mk.getLatLng();ll.innerHTML=`${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} – <span data-l="sl">izbrano</span><span data-l="it">selezionato</span>`;}
 vas.addEventListener('change',()=>{const v=(V[svet.value]||[]).find(v=>vas.value.indexOf(v[0])===0);if(v&&map)map.setView([v[2],v[3]],16);});
-svet.addEventListener('change',fillVas);
+svet.addEventListener('change',()=>{fillVas();if(map)setTimeout(()=>map.invalidateSize(),50);});
 // type-dependent fields
-function kind(){const k=(form.querySelector('[name=vrsta]:checked')||{}).value;$('#w-kat').hidden=$('#w-res').hidden=(k&&k!=='cesta');}
-$$('[name=vrsta]').forEach(r=>r.addEventListener('change',kind));
+const VSE=['Vse vasi','Tutte le località'];
+function kind(scroll){const k=(form.querySelector('[name=vrsta]:checked')||{}).value;if(!k)return;const first=!form.dataset.vrsta;form.dataset.vrsta=k;
+  const allOpt=vas.querySelector('option[value="'+VSE[0]+'"]');if(allOpt)allOpt.hidden=(k==='cesta');if(k==='cesta'&&vas.value===VSE[0])vas.value='';
+  if(map)setTimeout(()=>{map.invalidateSize();if(!mk){const list=V[svet.value]||[];if(list.length)map.fitBounds(L.latLngBounds(list.map(v=>[v[2],v[3]])).pad(list.length>1?.5:0),{maxZoom:15});else map.setView([45.612,13.86],13);}},80);
+  if(first&&scroll)setTimeout(()=>document.getElementById('pf-rest').scrollIntoView({behavior:'smooth',block:'start'}),80);}
+$$('[name=vrsta]').forEach(r=>r.addEventListener('change',()=>kind(true)));
 if(qs.get('svet')&&V[qs.get('svet')]){svet.value=qs.get('svet');fillVas();}
 if(qs.get('vrsta')){const r=form.querySelector(`[name=vrsta][value="${qs.get('vrsta')}"]`);if(r)r.checked=true;}
-kind();
+kind(false);
 // photo resize
 async function shrink(file){
   const url=URL.createObjectURL(file);
@@ -40,11 +45,12 @@ form.addEventListener('submit',async e=>{
   e.preventDefault(); if($('#f-hp').value)return;
   const vrsta=(form.querySelector('[name=vrsta]:checked')||{}).value;
   const opis=$('#f-opis').value.trim();
-  if(!svet.value||!vas.value||!vrsta||opis.length<5||!$('#f-ok').checked){msg('Izpolnite obvezna polja (*). / <em>Compilate i campi obbligatori (*).</em>');return;}
+  if(!svet.value||!vas.value||!vrsta||opis.length<5||!$('#f-ok').checked||(vrsta==='vprasanje'&&!$('#f-email').value.trim())){msg('Izpolnite obvezna polja (*). / <em>Compilate i campi obbligatori (*).</em>');return;}
+  const show=sel=>{const el=document.querySelector(sel);return !!(el&&el.offsetParent!==null);};
   const btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Pošiljam … / Invio …';
   try{
     const c=await S.getClient(); const id=crypto.randomUUID(); const fotos=[];
-    const files=[...$('#f-foto').files].slice(0,4);
+    const files=show('#f-foto')?[...$('#f-foto').files].slice(0,4):[];
     for(let i=0;i<files.length;i++){
       let blob; try{blob=await shrink(files[i]);}catch(_){blob=null;}
       if(!blob){continue;}
@@ -53,9 +59,9 @@ form.addEventListener('submit',async e=>{
       if(!error)fotos.push(path);
     }
     const res_=(form.querySelector('[name=res]:checked')||{}).value, ze=(form.querySelector('[name=ze]:checked')||{}).value;
-    const p=mk?mk.getLatLng():null;
-    const row={id,consiglio_id:svet.value,vas:vas.value,vrsta,kategorija:vrsta==='cesta'?($('#f-kat').value||null):null,kje:$('#f-kje').value.trim()||null,opis,predlog:$('#f-predlog').value.trim()||null,
-      resnost:vrsta==='cesta'&&res_?+res_:null,ze_prijavljeno:ze||null,lat:p?+p.lat.toFixed(6):null,lon:p?+p.lng.toFixed(6):null,fotografije:fotos};
+    const p=(mk&&show('#pickmap'))?mk.getLatLng():null;
+    const row={id,consiglio_id:svet.value,vas:vas.value,vrsta,kategorija:vrsta==='cesta'?($('#f-kat').value||null):null,kje:show('#f-kje')?($('#f-kje').value.trim()||null):null,opis,predlog:show('#f-predlog')?($('#f-predlog').value.trim()||null):null,
+      resnost:(vrsta==='cesta'||vrsta==='pripomba')&&res_?+res_:null,ze_prijavljeno:['cesta','pripomba','vprasanje'].includes(vrsta)?(ze||null):null,lat:p?+p.lat.toFixed(6):null,lon:p?+p.lng.toFixed(6):null,fotografije:fotos};
     const {error}=await c.from('prijave').insert(row); if(error)throw error;
     const ime=$('#f-ime').value.trim(),email=$('#f-email').value.trim(),tel=$('#f-tel').value.trim();
     if(ime||email||tel)await c.from('kontakti').insert({prijava_id:id,ime:ime||null,email:email||null,telefon:tel||null});
