@@ -1,4 +1,4 @@
 /* Povezava z bazo (Supabase) – Collegamento al database.
-   url: Project URL (Settings → API), key: anon public key. Vuoto = modulo non ancora attivo.
+   key = chiave "publishable" (pubblica per definizione: protetta dalle regole RLS).
    bpEmail: indirizzo del Comune per la valutazione preventiva delle proposte BP (da definire). */
-window.SVET_CFG = { url: '', key: '', bpEmail: '' };
+window.SVET_CFG = { url: 'https://ankbaizssmfjbtbeokdd.supabase.co', key: 'sb_publishable_zGcnkQTok2nUhxseEvOo_A_R8twgbOn', bpEmail: '' };
