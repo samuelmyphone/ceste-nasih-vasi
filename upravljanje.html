@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Upravljanje · Gestione</title>
+<meta name="description" content="Sveti krajevnih skupnosti Občine Dolina – Consigli delle frazioni del Comune di San Dorligo della Valle">
+<link rel="icon" href="assets/simbol.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="utility"><div class="container"><span>SVETI KRAJEVNIH SKUPNOSTI OBČINE DOLINA · <em>CONSIGLI DELLE FRAZIONI DEL COMUNE DI SAN DORLIGO DELLA VALLE</em></span><span>Posodobljeno / <em>Aggiornato</em>: 20. 10. 2026</span></div></div>
+<header class="site-head"><div class="container">
+<a class="brand" href="index.html"><img src="assets/simbol.png" alt=""><div><b>Sveti krajevnih skupnosti</b><span>Consigli delle frazioni</span></div></a>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">Meni / Menu</button>
+<nav class="nav" id="nav" aria-label="Glavna navigacija / Navigazione principale"><a href="index.html">Domov<small>Home</small></a><a href="predstavitev.html">Predstavitev<small>Presentazione</small></a><a href="proracun.html">Participativni proračun<small>Bilancio partecipativo</small></a><div class="dd"><button type="button" aria-expanded="false" aria-haspopup="true">Sveti ▾<small>Consigli</small></button><div class="dd-menu"><a href="sveti/dolina/">Dolina in Kroglje<small>Dolina e Crogole</small></a><a href="sveti/boljunec/">Boljunec in Gornji konec<small>Bagnoli della Rosandra e Bagnoli Superiore</small></a><a href="sveti/borst/">Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek<small>Sant&#x27;Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek</small></a><a href="sveti/ricmanje/">Ricmanje in Log<small>San Giuseppe della Chiusa e Log</small></a><a href="sveti/domjo/">Domjo, Pulje, Lakotišče in Krmenka<small>Domio, Puglie, Lacotisce e Mattonaia</small></a><a href="sveti/mackolje/">Mačkolje, Prebeneg, Križpot in Mont<small>Caresana, Prebeneg, Crociata e Monte d&#x27;Oro</small></a><a href="sveti/zavlje/">Žavlje in Frankovec<small>Aquilinia e Francovez</small></a></div></div></nav>
+</div></header>
+<main class="container">
+<section class="hero single"><div><p class="eyebrow">Upravljanje · Gestione</p><h1>Pregled prijav</h1><p class="sub">Revisione delle segnalazioni – za predsednike in podpredsednike / per Presidenti e Vicepresidenti</p></div></section>
+<div id="a-off" class="notice" hidden>Sistem še ni povezan z bazo podatkov. / Il sistema non è ancora collegato al database.</div>
+<section id="a-login" hidden class="panel" style="max-width:520px">
+ <h2 style="margin-top:0">Prijava / Accesso</h2>
+ <p>Vpišite e-naslov, ki ste ga sporočili Svetu. Prejeli boste povezavo za vstop (brez gesla).<br><em>Inserite l'email comunicata: riceverete un link di accesso (senza password).</em></p>
+ <form id="a-form" class="form"><div class="field"><label for="a-email">E-naslov / Email</label><input type="email" id="a-email" required autocomplete="email"></div><div><button class="btn" type="submit">Pošlji povezavo / Invia link</button></div><div id="a-msg" class="result" hidden></div></form>
+</section>
+<section id="a-app" hidden>
+ <div class="filters"><span id="a-who" class="legend-note"></span>
+  <select id="a-svet" aria-label="Svet / Consiglio"></select>
+  <select id="a-tab" aria-label="Seznam / Elenco"><option value="prijave">Prijave krajanov / Segnalazioni</option><option value="bp">Participativni proračun / Proposte BP</option></select>
+  <select id="a-status" aria-label="Status"><option value="novo">Nove / Nuove</option><option value="objavljeno">Objavljene / Pubblicate</option><option value="zavrnjeno">Zavrnjene / Rifiutate</option><option value="">Vse / Tutte</option></select>
+  <button class="btn ghost small" id="a-reload" type="button">Osveži / Aggiorna</button>
+  <button class="btn ghost small" id="a-out" type="button">Odjava / Esci</button></div>
+ <div id="a-list"></div>
+</section>
+</main>
+<footer class="site-foot"><div class="container">
+<div><b>Sveti krajevnih skupnosti Občine Dolina</b><br><em>Consigli delle frazioni del Comune di San Dorligo della Valle – Dolina</em><br>Pravilnik / <em>Regolamento</em>: sklep obč. sveta / <em>delibera C.C.</em> št. 19 z dne 16. 4. 2025.<br>
+To ni uradna spletna stran Občine Dolina. / <em>Questo non è il sito istituzionale del Comune.</em> <a href="https://www.comune.san-dorligo-della-valle.ts.it/" target="_blank" rel="noopener">Občina Dolina / Comune ↗</a></div>
+<div><b>Sveti / <em>Consigli</em></b><ul><li><a href="sveti/dolina/">Dolina in Kroglje</a></li><li><a href="sveti/boljunec/">Boljunec in Gornji konec</a></li><li><a href="sveti/borst/">Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek</a></li><li><a href="sveti/ricmanje/">Ricmanje in Log</a></li><li><a href="sveti/domjo/">Domjo, Pulje, Lakotišče in Krmenka</a></li><li><a href="sveti/mackolje/">Mačkolje, Prebeneg, Križpot in Mont</a></li><li><a href="sveti/zavlje/">Žavlje in Frankovec</a></li></ul></div>
+<div><b>Povezave / <em>Collegamenti</em></b><ul><li><a href="predstavitev.html">Pravilnik / Regolamento</a></li><li><a href="proracun.html">Participativni proračun / Bilancio partecipativo</a></li><li><a href="prijava.html">Pošlji prijavo / Invia una segnalazione</a></li><li><a href="upravljanje.html">Upravljanje (predsedniki) / Gestione</a></li></ul>
+<p>Imena prijaviteljev se ne objavljajo. / <em>I nomi dei segnalanti non vengono pubblicati.</em><br>Zemljevidi / <em>Mappe</em>: © OpenStreetMap contributors.</p></div>
+</div></footer>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+<script>window.CONS={"a": "Dolina in Kroglje", "b": "Boljunec in Gornji konec", "c": "Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek", "d": "Ricmanje in Log", "e": "Domjo, Pulje, Lakotišče in Krmenka", "f": "Mačkolje, Prebeneg, Križpot in Mont", "g": "Žavlje in Frankovec"};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="assets/live.js"></script><script src="assets/admin.js"></script>
+</body>
+</html>

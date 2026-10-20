@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pošlji prijavo · Invia una segnalazione</title>
+<meta name="description" content="Sveti krajevnih skupnosti Občine Dolina – Consigli delle frazioni del Comune di San Dorligo della Valle">
+<link rel="icon" href="assets/simbol.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="utility"><div class="container"><span>SVETI KRAJEVNIH SKUPNOSTI OBČINE DOLINA · <em>CONSIGLI DELLE FRAZIONI DEL COMUNE DI SAN DORLIGO DELLA VALLE</em></span><span>Posodobljeno / <em>Aggiornato</em>: 20. 10. 2026</span></div></div>
+<header class="site-head"><div class="container">
+<a class="brand" href="index.html"><img src="assets/simbol.png" alt=""><div><b>Sveti krajevnih skupnosti</b><span>Consigli delle frazioni</span></div></a>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">Meni / Menu</button>
+<nav class="nav" id="nav" aria-label="Glavna navigacija / Navigazione principale"><a href="index.html">Domov<small>Home</small></a><a href="predstavitev.html">Predstavitev<small>Presentazione</small></a><a href="proracun.html">Participativni proračun<small>Bilancio partecipativo</small></a><div class="dd"><button type="button" aria-expanded="false" aria-haspopup="true">Sveti ▾<small>Consigli</small></button><div class="dd-menu"><a href="sveti/dolina/">Dolina in Kroglje<small>Dolina e Crogole</small></a><a href="sveti/boljunec/">Boljunec in Gornji konec<small>Bagnoli della Rosandra e Bagnoli Superiore</small></a><a href="sveti/borst/">Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek<small>Sant&#x27;Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek</small></a><a href="sveti/ricmanje/">Ricmanje in Log<small>San Giuseppe della Chiusa e Log</small></a><a href="sveti/domjo/">Domjo, Pulje, Lakotišče in Krmenka<small>Domio, Puglie, Lacotisce e Mattonaia</small></a><a href="sveti/mackolje/">Mačkolje, Prebeneg, Križpot in Mont<small>Caresana, Prebeneg, Crociata e Monte d&#x27;Oro</small></a><a href="sveti/zavlje/">Žavlje in Frankovec<small>Aquilinia e Francovez</small></a></div></div></nav>
+</div></header>
+<main class="container">
+<section class="hero single"><div><p class="eyebrow">Prijava · Segnalazione</p><h1>Pošljite prijavo ali predlog</h1><p class="sub">Inviate una segnalazione o una proposta</p>
+<p class="lead">Prijavo pregleda predsednik ali podpredsednik vašega sveta. Po odobritvi bo objavljena na strani sveta – <b>brez vašega imena</b>.<br><em>La segnalazione viene esaminata dal Presidente o Vicepresidente del vostro Consiglio e, se approvata, pubblicata sulla pagina del Consiglio – <b>senza il vostro nome</b>.</em></p></div></section>
+<div id="off" class="notice" hidden>Spletni obrazec je v pripravi. Do takrat uporabite <a href="https://forms.gle/uCAQ1QswvVuFbSKS7" target="_blank" rel="noopener">obrazec Google</a> ali pišite na <a href="mailto:cfks.borst@gmail.com">cfks.borst@gmail.com</a>.<br><em>Il modulo è in attivazione: nel frattempo usate il modulo Google o scrivete a cfks.borst@gmail.com.</em></div>
+<form class="form" id="pf" novalidate>
+ <div class="field"><label for="f-svet">Svet krajevne skupnosti * <small>/ Consiglio delle frazioni</small></label><select id="f-svet" required><option value="">—</option><option value="a">a) Dolina in Kroglje – Dolina e Crogole</option><option value="b">b) Boljunec in Gornji konec – Bagnoli della Rosandra e Bagnoli Superiore</option><option value="c">c) Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek – Sant&#x27;Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek</option><option value="d">d) Ricmanje in Log – San Giuseppe della Chiusa e Log</option><option value="e">e) Domjo, Pulje, Lakotišče in Krmenka – Domio, Puglie, Lacotisce e Mattonaia</option><option value="f">f) Mačkolje, Prebeneg, Križpot in Mont – Caresana, Prebeneg, Crociata e Monte d&#x27;Oro</option><option value="g">g) Žavlje in Frankovec – Aquilinia e Francovez</option></select></div>
+ <div class="field"><label for="f-vas">Vas * <small>/ Frazione</small></label><select id="f-vas" required><option value="">—</option></select></div>
+ <div class="field"><span class="lbl">Vrsta * <small>/ Tipo</small></span><div class="choice" id="f-vrsta">
+  <label><input type="radio" name="vrsta" value="cesta" required> Težava na cesti / <em>Criticità stradale</em></label>
+  <label><input type="radio" name="vrsta" value="pripomba"> Pripomba / <em>Segnalazione</em></label>
+  <label><input type="radio" name="vrsta" value="predlog"> Predlog / <em>Proposta</em></label>
+  <label><input type="radio" name="vrsta" value="vprasanje"> Vprašanje / <em>Domanda</em></label>
+  <label><input type="radio" name="vrsta" value="ideja"> Ideja / <em>Idea</em></label>
+  <label><input type="radio" name="vrsta" value="projekt"> Projekt / <em>Progetto</em></label></div></div>
+ <div class="field" id="w-kat"><label for="f-kat">Kategorija <small>/ Categoria</small></label><select id="f-kat"><option value="">—</option>
+  <option>Luknje, poškodovan asfalt / Buche, manto dissestato</option><option>Javna razsvetljava / Illuminazione pubblica</option><option>Jaški, odvodnjavanje / Caditoie, acque</option><option>Signalizacija / Segnaletica</option><option>Hitrost, varnost pešcev / Velocità, sicurezza pedoni</option><option>Parkiranje / Parcheggi</option><option>Košnja, zelenje / Sfalci, verde</option><option>Nevarna drevesa / Alberi pericolanti</option><option>Javni prevoz / Trasporto pubblico</option><option>Drugo / Altro</option></select></div>
+ <div class="field"><label for="f-kje">Kje točno? <small>/ Dove esattamente? (ulica, hišna št., opis)</small></label><input type="text" id="f-kje" maxlength="300"></div>
+ <div class="field"><span class="lbl">Točka na zemljevidu <small>/ Punto sulla mappa – kliknite / cliccate</small></span><div id="pickmap"></div><p class="hint" id="f-ll">Ni izbrano / Non selezionato</p></div>
+ <div class="field"><label for="f-opis">Opis * <small>/ Descrizione</small></label><textarea id="f-opis" required maxlength="4000"></textarea></div>
+ <div class="field"><label for="f-predlog">Predlog rešitve <small>/ Proposta di soluzione</small></label><textarea id="f-predlog" maxlength="4000"></textarea></div>
+ <div class="field" id="w-res"><span class="lbl">Kako resna je težava? <small>/ Quanto è grave?</small></span><div class="choice">
+  <label><input type="radio" name="res" value="3"> Nevarnost / <em>Pericolo</em></label><label><input type="radio" name="res" value="2"> Vsakodnevna ovira / <em>Disagio quotidiano</em></label><label><input type="radio" name="res" value="1"> Manjša nevšečnost / <em>Fastidio</em></label></div></div>
+ <div class="field"><span class="lbl">Ali je bila že prijavljena Občini? <small>/ Già segnalata al Comune?</small></span><div class="choice"><label><input type="radio" name="ze" value="da"> Da / <em>Sì</em></label><label><input type="radio" name="ze" value="ne"> Ne / <em>No</em></label><label><input type="radio" name="ze" value="ne vem"> Ne vem / <em>Non so</em></label></div></div>
+ <div class="field"><label for="f-foto">Fotografije <small>/ Foto (facoltative, max 4) – JPG, PNG, HEIC</small></label><input type="file" id="f-foto" accept="image/*" multiple><p class="hint">Fotografije se pred pošiljanjem pomanjšajo. Na fotografijah naj ne bodo prepoznavne osebe ali registrske tablice. / <em>Le foto vengono ridotte; evitate persone riconoscibili o targhe.</em></p></div>
+ <div class="grid g3"><div class="field"><label for="f-ime">Ime in priimek <small>/ Nome (ni javno / non pubblico)</small></label><input type="text" id="f-ime" autocomplete="name"></div>
+ <div class="field"><label for="f-email">E-naslov <small>/ Email (za odgovor / per la risposta)</small></label><input type="email" id="f-email" autocomplete="email"></div>
+ <div class="field"><label for="f-tel">Telefon <small>/ Telefono</small></label><input type="tel" id="f-tel" autocomplete="tel"></div></div>
+ <input type="text" class="hp" id="f-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+ <label class="consent"><input type="checkbox" id="f-ok" required> <span>Strinjam se z objavo vsebine prijave (brez imena in kontaktov) po pregledu Sveta. Kontaktni podatki služijo samo Svetu za morebiten odgovor. *<br><em>Acconsento alla pubblicazione del contenuto (senza nome e contatti) dopo la verifica del Consiglio. I contatti servono solo al Consiglio per rispondere.</em></span></label>
+ <div><button class="btn" type="submit">Pošlji · <em>Invia</em></button></div>
+ <div id="f-res" class="result" hidden></div>
+</form>
+</main>
+<footer class="site-foot"><div class="container">
+<div><b>Sveti krajevnih skupnosti Občine Dolina</b><br><em>Consigli delle frazioni del Comune di San Dorligo della Valle – Dolina</em><br>Pravilnik / <em>Regolamento</em>: sklep obč. sveta / <em>delibera C.C.</em> št. 19 z dne 16. 4. 2025.<br>
+To ni uradna spletna stran Občine Dolina. / <em>Questo non è il sito istituzionale del Comune.</em> <a href="https://www.comune.san-dorligo-della-valle.ts.it/" target="_blank" rel="noopener">Občina Dolina / Comune ↗</a></div>
+<div><b>Sveti / <em>Consigli</em></b><ul><li><a href="sveti/dolina/">Dolina in Kroglje</a></li><li><a href="sveti/boljunec/">Boljunec in Gornji konec</a></li><li><a href="sveti/borst/">Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek</a></li><li><a href="sveti/ricmanje/">Ricmanje in Log</a></li><li><a href="sveti/domjo/">Domjo, Pulje, Lakotišče in Krmenka</a></li><li><a href="sveti/mackolje/">Mačkolje, Prebeneg, Križpot in Mont</a></li><li><a href="sveti/zavlje/">Žavlje in Frankovec</a></li></ul></div>
+<div><b>Povezave / <em>Collegamenti</em></b><ul><li><a href="predstavitev.html">Pravilnik / Regolamento</a></li><li><a href="proracun.html">Participativni proračun / Bilancio partecipativo</a></li><li><a href="prijava.html">Pošlji prijavo / Invia una segnalazione</a></li><li><a href="upravljanje.html">Upravljanje (predsedniki) / Gestione</a></li></ul>
+<p>Imena prijaviteljev se ne objavljajo. / <em>I nomi dei segnalanti non vengono pubblicati.</em><br>Zemljevidi / <em>Mappe</em>: © OpenStreetMap contributors.</p></div>
+</div></footer>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+<script>window.VASI={"a": [["Dolina", "San Dorligo della Valle", 45.60089, 13.85927], ["Kroglje", "Crogole", 45.60787, 13.85929]], "b": [["Boljunec", "Bagnoli della Rosandra", 45.61458, 13.85918], ["Gornji konec", "Bagnoli Superiore", 45.61888, 13.86536]], "c": [["Boršt", "Sant'Antonio in Bosco", 45.62477, 13.85839], ["Hrvati", "Hervati", 45.62494, 13.86669], ["Zabrežec", "Moccò", 45.6226, 13.862], ["Jezero", "San Lorenzo", 45.62706, 13.872], ["Botač", "Botazzo", 45.61502, 13.88412], ["Gročana", "Grozzana", 45.6339, 13.90854], ["Draga", "Draga", 45.62043, 13.88957], ["Pesek", "Pesek", 45.62691, 13.89818]], "d": [["Ricmanje", "San Giuseppe della Chiusa", 45.62529, 13.84116], ["Log", "Log", 45.62227, 13.83718]], "e": [["Domjo", "Domio", 45.6133, 13.82735], ["Pulje", "Puglie", 45.61682, 13.83323], ["Lakotišče", "Lacotisce", 45.60967, 13.83388], ["Krmenka", "Mattonaia", 45.60557, 13.83605]], "f": [["Mačkolje", "Caresana", 45.59058, 13.83819], ["Prebeneg", "Prebeneg", 45.58804, 13.84933], ["Križpot", "Crociata", 45.58451, 13.83772], ["Mont", "Monte d'Oro", 45.59686, 13.81783]], "g": [["Žavlje", "Aquilinia", 45.60504, 13.80812], ["Frankovec", "Francovez", 45.60628, 13.82055]]};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="assets/live.js"></script><script src="assets/prijava.js"></script>
+</body>
+</html>
