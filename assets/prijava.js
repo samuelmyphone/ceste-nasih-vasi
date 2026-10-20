@@ -11,7 +11,7 @@ function fillVas(){const list=V[svet.value]||[];vas.innerHTML='<option value="">
 // map picker
 let map=null, mk=null; const ll=$('#f-ll');
 if(window.L){
-  map=L.map('pickmap',{scrollWheelZoom:false}).setView([45.612,13.86],13);
+  map=L.map('pickmap',{scrollWheelZoom:false},dragging:!L.Browser.mobile,tap:false}).setView([45.612,13.86],13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
   map.on('click',e=>{if(mk)mk.setLatLng(e.latlng);else mk=L.marker(e.latlng,{draggable:true}).addTo(map).on('dragend',show);show();});
 }

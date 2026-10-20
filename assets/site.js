@@ -3,6 +3,13 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 // mobile menu + dropdown
 const mb=$('.menu-btn'), nav=$('.nav');
 if(mb&&nav){mb.addEventListener('click',()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});}
+const tm=$('.tb-menu');if(tm&&nav){tm.addEventListener('click',e=>{e.stopPropagation();const o=nav.classList.toggle('open');if(mb)mb.setAttribute('aria-expanded',o);if(o){scrollTo({top:0});const d=$('.dd',nav);if(d){d.classList.add('open');}}});}
+// collapsible cards on phones (long lists)
+const MQ=matchMedia('(max-width:720px)');
+function collapsible(sel,headSel){$$(sel).forEach(c=>{if(c.dataset.col)return;c.dataset.col=1;c.classList.add('collapsible');const h=headSel?$(headSel,c):c.firstElementChild;if(!h)return;h.classList.add('col-head');h.setAttribute('role','button');h.tabIndex=0;h.setAttribute('aria-expanded','false');const t=()=>{const o=c.classList.toggle('open');h.setAttribute('aria-expanded',o);};h.addEventListener('click',e=>{if(e.target.closest('a,button:not(.col-head)'))return;if(!MQ.matches)return;t();});h.addEventListener('keydown',e=>{if(MQ.matches&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t();}});});}
+window.KSCOLLAPSE=collapsible;
+addEventListener('DOMContentLoaded',()=>{collapsible('.dossier .card','header');collapsible('.dossier article.pit','h3');collapsible('#bplist .proj','header');});
+document.addEventListener('click',e=>{const b=e.target.closest('.pbtn');if(b){const c=document.getElementById('c-'+b.dataset.id);if(c)c.classList.add('open');}});
 $$('.dd>button').forEach(b=>{b.addEventListener('click',e=>{const d=b.parentElement;const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o);e.stopPropagation();});});
 document.addEventListener('click',e=>{$$('.dd.open').forEach(d=>{if(!d.contains(e.target)){d.classList.remove('open');$('button',d).setAttribute('aria-expanded','false');}});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.dd.open').forEach(d=>d.classList.remove('open'));closeLb();}});

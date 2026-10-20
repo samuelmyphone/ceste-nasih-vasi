@@ -74,6 +74,11 @@ if(roads){
     map.on('zoomend moveend',draw);addEventListener('draft-filter',draw);
     if(window.ResizeObserver)new ResizeObserver(()=>map.invalidateSize()).observe($('#lmap'));
     window.draftFit();draw();
+    const MQ=matchMedia('(max-width:720px)'), panel=document.querySelector('.map-panel'), head=panel&&panel.querySelector('.panel-head');
+    if(head){const fb=document.createElement('button');fb.type='button';fb.className='full-btn';fb.innerHTML='<span data-l="sl">⤢ Celozaslonsko</span><span data-l="it">⤢ Schermo intero</span>';head.append(fb);
+      const setDrag=()=>{if(MQ.matches&&!panel.classList.contains('full'))map.dragging.disable();else map.dragging.enable();};setDrag();MQ.addEventListener('change',setDrag);
+      fb.addEventListener('click',()=>{const o=panel.classList.toggle('full');document.body.classList.toggle('noscroll',o);fb.innerHTML=o?'<span data-l="sl">✕ Zapri</span><span data-l="it">✕ Chiudi</span>':'<span data-l="sl">⤢ Celozaslonsko</span><span data-l="it">⤢ Schermo intero</span>';setDrag();setTimeout(()=>{map.invalidateSize();window.draftFit();},60);});
+      document.addEventListener('click',e=>{if(e.target.closest('.pbtn')&&panel.classList.contains('full'))fb.click();});}
     document.addEventListener('click',e=>{if(e.target.closest('.showmap'))reset();},true);
   });
 }else{

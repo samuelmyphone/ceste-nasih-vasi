@@ -298,3 +298,65 @@ html[data-ui=it] .dossier .village h2 em[data-l=it]{font-size:inherit;color:inhe
 .vista{opacity:.85}
 span[data-l]{all:unset}
 html[data-ui=it] .dossier [data-l=it] em{font-style:normal}
+
+/* ---------- phones ---------- */
+.tabbar{display:none}
+.full-btn{display:none}
+@media (max-width:720px){
+  body{font-size:17px;padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .utility .container>span:first-child{display:none}
+  .utility .container{justify-content:flex-end;padding-block:5px}
+  .langsw button{padding:5px 12px;font-size:14px}
+  .skinsw button{width:24px;height:24px}
+  .site-head .container{min-height:60px}
+  .brand img{width:38px;height:38px}
+  .menu-btn{display:none!important}
+  .site-head{position:static}
+  .nav.open{position:static;display:flex;box-shadow:none;border:0;padding:6px 0 10px}
+  .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));box-shadow:0 -4px 16px #0000000f}
+  .tabbar a,.tabbar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;text-decoration:none;color:var(--muted);font:700 12px/1.1 var(--font);background:none;border:0;border-radius:10px}
+  .tabbar svg{width:24px;height:24px;fill:currentColor}
+  .tabbar [aria-current=page]{color:var(--accent-d);background:var(--accent-l)}
+  .tabbar .plus{color:#fff}
+  .tabbar .plus svg{background:var(--accent);border-radius:50%;width:38px;height:38px;padding:7px;margin-top:-18px;box-shadow:0 3px 10px #00000033}
+  .tabbar .plus{color:var(--accent-d)}
+  .back-top{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .hero{padding-top:18px}
+  .hero h1{font-size:32px}
+  .hero-side{padding:12px 0 0 14px}
+  .h{font-size:26px}
+  .subnav{position:sticky;top:0;z-index:20;background:var(--bg);margin:0 -16px 14px;padding:8px 16px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{white-space:nowrap;flex:none}
+  .steps span,.legend-note,.hint,.tag{font-size:13px}
+  .field label,.field .lbl{font-size:17px}
+  .field input[type=text],.field input[type=email],.field input[type=tel],.field select,.field textarea{font-size:17px;min-height:48px}
+  input[type=file]{font-size:16px;width:100%;padding:12px;border:1px dashed var(--line);border-radius:8px;background:var(--paper)}
+  .choice label{min-height:46px}
+  .btn{min-height:48px}
+  .form button[type=submit]{width:100%;justify-content:center}
+  /* collapsible cards */
+  .collapsible .col-head{cursor:pointer;position:relative;padding-right:30px}
+  .collapsible .col-head::after{content:"";position:absolute;right:4px;top:50%;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+  .collapsible.open .col-head::after{transform:translateY(-30%) rotate(-135deg)}
+  .dossier .card.collapsible:not(.open)>:not(header){display:none!important}
+  .dossier .card.collapsible:not(.open){padding-block:14px;gap:0}
+  .dossier article.pit.collapsible:not(.open)>:not(.tags):not(h3){display:none!important}
+  #bplist .proj.collapsible:not(.open)>:not(header){display:none}
+  #bplist .proj header{grid-template-columns:1fr}
+  /* dossier: overview table duplicates the cards → hide on phones */
+  .dossier .tbl{display:none}
+  .dossier .village-buttons{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .dossier .village-buttons button{flex:none!important;min-height:42px!important;font-size:14px!important}
+  .dossier .village-buttons button b{font-size:12px!important}
+  .dossier .sidebar-note,.dossier .section-kicker{display:none}
+  .dossier .dstats span,.dossier .card footer,.dossier .tags,.dossier .legend,.dossier .fig figcaption,.dossier .st{font-size:13px!important}
+  .dossier .maplinks a,.dossier .maplinks button{font-size:13px!important;min-height:44px!important}
+  .full-btn{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 10px;font:700 13px var(--font);color:var(--ink);min-height:40px}
+  .map-panel.full{position:fixed;inset:0;z-index:100;border-radius:0;display:flex;flex-direction:column}
+  .map-panel.full #lmap{flex:1;height:auto!important}
+  .dossier #lmap{height:300px}
+  body.noscroll{overflow:hidden}
+  .lbx svg{width:96vw!important}
+}
+@media (max-width:720px){.tabbar .plus svg{fill:#fff}.map-panel .panel-head{flex-wrap:wrap}}
