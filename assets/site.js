@@ -10,7 +10,7 @@ function collapsible(sel,headSel){$$(sel).forEach(c=>{if(c.dataset.col)return;c.
 window.KSCOLLAPSE=collapsible;
 addEventListener('DOMContentLoaded',()=>{collapsible('.dossier .card','header');collapsible('.dossier article.pit','h3');collapsible('#bplist .proj','header');});
 document.addEventListener('click',e=>{const b=e.target.closest('.pbtn');if(b){const c=document.getElementById('c-'+b.dataset.id);if(c)c.classList.add('open');}});
-$$('.dd>button').forEach(b=>{b.addEventListener('click',e=>{const d=b.parentElement;const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o);e.stopPropagation();});});
+$$('.dd>button').forEach(b=>{b.addEventListener('click',e=>{const d=b.parentElement;$$('.dd.open').forEach(x=>{if(x!==d){x.classList.remove('open');$('button',x).setAttribute('aria-expanded','false');}});const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o);e.stopPropagation();});});
 document.addEventListener('click',e=>{$$('.dd.open').forEach(d=>{if(!d.contains(e.target)){d.classList.remove('open');$('button',d).setAttribute('aria-expanded','false');}});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.dd.open').forEach(d=>d.classList.remove('open'));closeLb();}});
 // tabs
