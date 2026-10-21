@@ -39,6 +39,17 @@ if(hh){const v=$('.hh-video',hh),btn=$('.hpp',hh);
   label();tryPlay();
  }
 }
+// light depth effects (fine pointer + motion allowed only)
+if(!RM&&FINE){
+ const hin=$('.hh-in'),hh2=$('.hh');
+ if(hin&&hh2){let raf=0;const f=()=>{raf=0;const y=Math.max(0,Math.min(scrollY,hh2.offsetHeight));hin.style.transform=`translate3d(0,${(y*.22).toFixed(1)}px,0)`;hin.style.opacity=String(1-Math.min(.6,y/hh2.offsetHeight*.9));};
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(f);},{passive:true});}
+ $$('.tilt').forEach(el=>{let r=null;
+  el.addEventListener('pointerenter',()=>{r=el.getBoundingClientRect();el.classList.add('tilting');});
+  el.addEventListener('pointermove',e=>{if(!r)r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+   el.style.transform=`perspective(900px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*6).toFixed(2)}deg) translateY(-4px)`;el.style.setProperty('--gx',((x+.5)*100).toFixed(1)+'%');el.style.setProperty('--gy',((y+.5)*100).toFixed(1)+'%');});
+  el.addEventListener('pointerleave',()=>{r=null;el.classList.remove('tilting');el.style.transform='';});});
+}
 // dated items: an event that has ended must not look upcoming
 const now=Date.now();
 $$('[data-until]').forEach(el=>{const t=Date.parse(el.dataset.until);if(!isNaN(t)&&now>t){el.classList.add('past');$$('[data-when=future]',el).forEach(x=>x.hidden=true);$$('[data-when=past]',el).forEach(x=>x.hidden=false);}});
