@@ -9,7 +9,10 @@ function sel(name,obj,val){return `<select data-f="${name}">`+Object.entries(obj
 async function init(){
   c=await S.getClient();
   const {data:{session}}=await c.auth.getSession();
-  c.auth.onAuthStateChange((ev,s)=>{if(ev==='SIGNED_IN'||ev==='SIGNED_OUT')location.reload();});
+  const had=!!session;
+  // reload only on a real change (login from the email link / logout), never on session restore or token refresh
+  c.auth.onAuthStateChange((ev,s)=>{if(ev==='SIGNED_OUT'&&had)location.reload();else if(ev==='SIGNED_IN'&&!had&&s)location.reload();});
+  if(session&&/access_token|^#$/.test(location.hash)||location.hash==='#')history.replaceState(null,'',location.pathname+location.search);
   if(!session){$('#a-login').hidden=false;return;}
   const email=session.user.email;
   const {data}=await c.from('admini').select('email,consiglio_id,vloga').ilike('email',email);
