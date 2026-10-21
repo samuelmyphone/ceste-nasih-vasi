@@ -15,17 +15,29 @@ const rv=$$('.rv');
 if(!RM&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px',threshold:.06});rv.forEach(el=>io.observe(el));
   setTimeout(()=>rv.forEach(el=>el.classList.add('in')),2500);}
 else rv.forEach(el=>el.classList.add('in'));
-// hero: parallax on the illustration layers (fine pointer + motion allowed), pause control, optional video
+// hero video: source chosen once (mobile/desktop), poster first, respects reduced motion + save-data,
+// pauses off-screen / in background tabs, manual pause sticks, failures keep the poster.
 const hh=$('.hh');
-if(hh){const layers=$$('.hl',hh),vid=$('video',hh),pp=$('.hpp',hh);let paused=false;try{paused=localStorage.getItem('ks-motion')==='off';}catch(_){}
-  const canPar=!RM&&FINE&&layers.length;
-  function apply(){if(paused||!canPar){layers.forEach(l=>l.style.transform='');return;}const y=Math.min(scrollY,700);layers.forEach(l=>{const d=+l.dataset.depth||0;l.style.transform=`translate3d(0,${(y*d).toFixed(1)}px,0)`;});}
-  function set(p){paused=p;hh.classList.toggle('paused',p);if(pp){pp.setAttribute('aria-pressed',p);}if(vid){p?vid.pause():vid.play().catch(()=>{});}try{localStorage.setItem('ks-motion',p?'off':'on');}catch(_){}apply();}
-  if(RM&&vid){vid.removeAttribute('autoplay');vid.pause();paused=true;}
-  if(pp)pp.addEventListener('click',()=>set(!paused));
-  set(paused);
-  if(canPar){let raf=0;addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;apply();});},{passive:true});}
-  if(!canPar&&!vid&&pp)pp.hidden=true;
+if(hh){const v=$('.hh-video',hh),btn=$('.hpp',hh);
+ if(v&&btn){
+  const LBL={pause:{sl:'Ustavi video',it:'Metti in pausa il video'},play:{sl:'Predvajaj video',it:'Avvia il video'}};
+  const saveData=!!(navigator.connection&&navigator.connection.saveData);
+  let userPaused=false,visible=true,loaded=false,failed=false;
+  const lang=()=>(window.KSLANG&&KSLANG.get())||'sl';
+  function label(){const k=v.paused?'play':'pause';const t=LBL[k][lang()];btn.setAttribute('aria-label',t);btn.title=t;btn.setAttribute('aria-pressed',String(!v.paused));hh.classList.toggle('paused',v.paused);}
+  function load(){if(loaded)return;loaded=true;const mob=matchMedia('(max-width:860px)').matches;v.src=mob?v.dataset.srcMobile:v.dataset.src;}
+  function tryPlay(){if(failed||userPaused||!visible||document.hidden)return;load();const p=v.play();if(p&&p.catch)p.catch(()=>{label();});}
+  v.addEventListener('playing',()=>{hh.classList.add('vplay');label();});
+  v.addEventListener('pause',label);
+  v.addEventListener('error',()=>{failed=true;hh.classList.remove('vplay');btn.hidden=true;});
+  btn.hidden=false;
+  btn.addEventListener('click',()=>{if(v.paused){userPaused=false;failed=false;load();v.play().catch(()=>{});}else{userPaused=true;v.pause();}label();});
+  addEventListener('ks-lang',label);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)v.pause();else tryPlay();});
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;if(!visible)v.pause();else tryPlay();}),{threshold:.15}).observe(hh);
+  if(RM||saveData){userPaused=true;}  // poster only; the button starts the video on request
+  label();tryPlay();
+ }
 }
 // dated items: an event that has ended must not look upcoming
 const now=Date.now();
