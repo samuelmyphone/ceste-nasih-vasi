@@ -483,3 +483,14 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .bpc .bar{flex:1;height:8px}
 .bpc b{min-width:3.2em;text-align:right}
 @media (max-width:640px){.bpt th:nth-child(3),.bpt td:nth-child(3){display:none}.bpc{min-width:92px;gap:6px}.bpt td{padding:7px 4px}.plog li{grid-template-columns:1fr}}
+/* village satellite overlay */
+.ks-card.vas .sat{cursor:zoom-in}
+.vov{position:fixed;inset:0;z-index:120;background:var(--paper);display:flex;flex-direction:column}
+.vov-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.vov-t{font-size:20px;margin-right:auto}
+.vov-l{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}.vov-l a{display:inline-flex;gap:4px;align-items:center}
+.vov-sw{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.vov-sw button{border:0;background:none;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.vov-sw button[aria-pressed=true]{background:var(--brand);color:var(--on-brand,#fff)}
+.vov-x{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:50%;width:38px;height:38px;font-size:16px;cursor:pointer}
+.vov-m{flex:1;min-height:0}
