@@ -512,3 +512,14 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .vov-src{font-size:13px;color:var(--muted)}
 .vov-dot i{display:block;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0006}
 @media (max-width:760px){.vov-body{flex-direction:column}.vov-p{width:auto;border-left:0;border-top:1px solid var(--line);max-height:52%}.vov-t{width:100%}}
+/* meeting page: per-point details */
+.ses-pts{display:grid;gap:10px}
+.ses-d{padding:0}
+.ses-d>summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:17px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.ses-d>summary::-webkit-details-marker{display:none}
+.ses-d>summary::after{content:"+";font-size:22px;line-height:1;color:var(--brand)}
+.ses-d[open]>summary::after{content:"–"}
+.ses-d>.ses-lead,.ses-d>ul{margin:0 18px 14px}
+.ses-d>.ses-lead{font-weight:600}
+.ses-d>ul{padding-left:18px;display:grid;gap:6px}
+.ses-t td,.ses-t th{vertical-align:top}
