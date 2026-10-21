@@ -66,4 +66,9 @@ map.on('mousedown',stopOrbit);map.on('touchstart',stopOrbit);map.on('wheel',stop
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopOrbit();});
 addEventListener('ks-lang',()=>{if(pop)pop.remove();});
 select('all');
+// deep link from a village card: #ll=lat,lon&n=name
+(()=>{const h=new URLSearchParams(location.hash.slice(1)),ll=(h.get('ll')||'').split(',').map(Number);
+ if(ll.length===2&&ll.every(isFinite)){select('');const v={c:[ll[1],ll[0]],z:15.6,p:68,b:-20};
+  const go=()=>{if(RM)map.jumpTo({center:v.c,zoom:v.z,pitch:v.p,bearing:v.b});else map.flyTo({center:v.c,zoom:v.z,pitch:v.p,bearing:v.b,duration:3500,essential:false});};
+  if(map.loaded())go();else map.once('load',()=>setTimeout(go,300));}})();
 })();
