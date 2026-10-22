@@ -101,8 +101,8 @@ async function act(el,a,bp,p){
   if(!error&&(a==='pub'||a==='rej'||a==='mail'))setTimeout(load,600);
 }
 $('#a-form')?.addEventListener('submit',async e=>{e.preventDefault();const em=$('#a-email').value.trim();const r=$('#a-msg');
-  const {error}=await c.auth.signInWithOtp({email:em,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});
-  r.hidden=false;r.className='result '+(error?'err':'ok');r.innerHTML=error?E(error.message):'Povezava je bila poslana – preverite e-pošto. / <em>Link inviato: controllate la posta.</em>';});
+  const {error}=await c.auth.signInWithOtp({email:em,options:{shouldCreateUser:false,emailRedirectTo:location.origin+location.pathname}});
+  r.hidden=false;r.className='result '+(error?'err':'ok');r.innerHTML=error?(/signup|not allowed|not found/i.test(error.message)?'Ta e-naslov nima dostopa. Za dostop se obrnite na upravitelja strani. / <em>Questo indirizzo non è abilitato: chiedete l’accesso all’amministratore del sito.</em>':E(error.message)):'Povezava je bila poslana – preverite e-pošto. / <em>Link inviato: controllate la posta.</em>';});
 
 /* ================= OBVESTILA / AVVISI ================= */
 const VRO={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
@@ -164,7 +164,7 @@ function bindForm(el,o){
     const m=el.querySelector('[data-msg]'), f=k=>el.querySelector(`[data-f="${k}"]`), v=k=>f(k).value.trim();
     if(v('naslov_sl').length<3){m.textContent='Manjka naslov (SL). / Manca il titolo (SL).';return;}
     const row={consiglio_id:v('consiglio_id')||null,vrsta:v('vrsta'),naslov_sl:v('naslov_sl'),naslov_it:v('naslov_it')||null,besedilo_sl:v('besedilo_sl')||null,besedilo_it:v('besedilo_it')||null,
-      zacetek:toISO(v('zd'),v('zt')),konec:v('kd')?toISO(v('kd'),v('kt')):(v('kt')&&v('zd')?toISO(v('zd'),v('kt')):null),kraj:v('kraj')||null,povezava:v('povezava')||null,objavljeno:f('objavljeno').checked,avtor:me.email};
+      zacetek:toISO(v('zd'),v('zt')),konec:v('kd')?toISO(v('kd'),v('kt')):(v('kt')&&v('zd')?toISO(v('zd'),v('kt')):null),kraj:v('kraj')||null,povezava:(/^https?:\/\//i.test(v('povezava'))?v('povezava'):null),objavljeno:f('objavljeno').checked,avtor:me.email};
     m.textContent='Shranjujem … / Salvataggio …';
     const files=[...f('files').files]; let pri=[...(o.priloge||[])];
     for(const file of files){const path=`${row.consiglio_id||'vsi'}/${Date.now()}-${file.name.replace(/[^\w.\-]+/g,'_')}`;

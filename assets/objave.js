@@ -53,7 +53,7 @@ function card(o,opt={}){
    <h3>${T(E(o.naslov_sl),E(it))}</h3>
    ${o.zacetek?`<p class="obj-w">${when(o)}${o.kraj?` · ${E(o.kraj)}`:''}</p>`:(o.kraj?`<p class="obj-w">${E(o.kraj)}</p>`:'')}
    ${(o.besedilo_sl||bit)?`<div class="obj-t">${T(E(o.besedilo_sl||'').replace(/\n/g,'<br>'),E(bit).replace(/\n/g,'<br>'))}</div>`:''}
-   <p class="obj-a">${files}${o.povezava?`<a href="${E(o.povezava)}" target="_blank" rel="noopener">${T('Več','Dettagli')} ↗</a>`:''}${o.zacetek&&!past?`<button type="button" class="obj-ics" data-id="${E(o.id)}">${T('Dodaj v koledar','Aggiungi al calendario')}</button><a href="${E(gcal(o))}" target="_blank" rel="noopener">Google ${T('Koledar','Calendar')} ↗</a>`:''}</p>
+   <p class="obj-a">${files}${/^https?:\/\//i.test(o.povezava||'')?`<a href="${E(o.povezava)}" target="_blank" rel="noopener">${T('Več','Dettagli')} ↗</a>`:''}${o.zacetek&&!past?`<button type="button" class="obj-ics" data-id="${E(o.id)}">${T('Dodaj v koledar','Aggiungi al calendario')}</button><a href="${E(gcal(o))}" target="_blank" rel="noopener">Google ${T('Koledar','Calendar')} ↗</a>`:''}</p>
   </div></article>`;
 }
 document.addEventListener('click',e=>{const b=e.target.closest('.obj-ics');if(!b)return;const o=CACHE[b.dataset.id];if(o)download('obvestilo-'+(o.zacetek||'').slice(0,10)+'.ics',ics([o]));});
