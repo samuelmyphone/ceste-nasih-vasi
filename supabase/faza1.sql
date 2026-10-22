@@ -83,20 +83,19 @@ declare od timestamptz := now() - make_interval(days => greatest(1, least(dni, 4
 begin
   if not public.je_katerikoli_admin() then raise exception 'ni dovoljeno / non autorizzato'; end if;
   return jsonb_build_object(
-    'skupaj',   (select count(*) from obiski where t >= od),
-    'po_dnevih',(select coalesce(jsonb_agg(x order by x->>'d'), '[]') from
-                  (select jsonb_build_object('d', to_char(date_trunc('day', t at time zone 'Europe/Rome'),'YYYY-MM-DD'), 'n', count(*)) x
-                   from obiski where t >= od group by 1) s),
-    'strani',   (select coalesce(jsonb_agg(x), '[]') from
-                  (select jsonb_build_object('p', pot, 'n', count(*)) x from obiski where t >= od
-                   group by pot order by count(*) desc limit 25) s),
-    'viri',     (select coalesce(jsonb_agg(x), '[]') from
-                  (select jsonb_build_object('v', coalesce(nullif(vir,''),'neposredno · diretto'), 'n', count(*)) x from obiski where t >= od
-                   group by 1 order by count(*) desc limit 15) s),
-    'jeziki',   (select coalesce(jsonb_object_agg(coalesce(jezik,'?'), n), '{}') from
-                  (select jezik, count(*) n from obiski where t >= od group by jezik) s),
-    'naprave',  (select coalesce(jsonb_object_agg(coalesce(naprava,'?'), n), '{}') from
-                  (select naprava, count(*) n from obiski where t >= od group by naprava) s)
+    'skupaj',    (select count(*) from obiski where t >= od),
+    'po_dnevih', (select coalesce(jsonb_agg(jsonb_build_object('d', d, 'n', n) order by d), '[]'::jsonb)
+                  from (select to_char(t at time zone 'Europe/Rome', 'YYYY-MM-DD') d, count(*) n
+                        from obiski where t >= od group by 1) s),
+    'strani',    (select coalesce(jsonb_agg(jsonb_build_object('p', pot, 'n', n) order by n desc), '[]'::jsonb)
+                  from (select pot, count(*) n from obiski where t >= od group by pot order by count(*) desc limit 25) s),
+    'viri',      (select coalesce(jsonb_agg(jsonb_build_object('v', v, 'n', n) order by n desc), '[]'::jsonb)
+                  from (select coalesce(nullif(vir, ''), 'neposredno · diretto') v, count(*) n
+                        from obiski where t >= od group by 1 order by count(*) desc limit 15) s),
+    'jeziki',    (select coalesce(jsonb_object_agg(coalesce(jezik, '?'), n), '{}'::jsonb)
+                  from (select jezik, count(*) n from obiski where t >= od group by jezik) s),
+    'naprave',   (select coalesce(jsonb_object_agg(coalesce(naprava, '?'), n), '{}'::jsonb)
+                  from (select naprava, count(*) n from obiski where t >= od group by naprava) s)
   );
 end $$;
 grant execute on function public.statistika(int) to authenticated;
