@@ -24,11 +24,12 @@ async function init(){
   sv.innerHTML=(me.consiglio_id?'':'<option value="">Vsi sveti / Tutti</option>')+Object.entries(CONS).filter(([k])=>!me.consiglio_id||k===me.consiglio_id).map(([k,v])=>`<option value="${k}">${k}) ${E(v)}</option>`).join('');
   ['#a-svet','#a-tab','#a-status'].forEach(s=>$(s).addEventListener('change',()=>{if(s==='#a-tab')statusOpts();load();}));
   $('#a-reload').onclick=load;$('#a-out').onclick=()=>c.auth.signOut();
-  statusOpts();load();
+  statusOpts();load();badge();
 }
-function statusOpts(){const bp=$('#a-tab').value==='bp',s=$('#a-status');s.innerHTML=bp?'<option value="">Vsi / Tutti</option>'+Object.entries(BPST).map(([k,v])=>`<option value="${k}">${v}</option>`).join(''):'<option value="novo">Nove / Nuove</option><option value="objavljeno">Objavljene / Pubblicate</option><option value="zavrnjeno">Zavrnjene / Rifiutate</option><option value="">Vse / Tutte</option>';if(bp)s.value='';}
+function statusOpts(){const tab=$('#a-tab').value;$('#a-status').hidden=(tab==='objave'||tab==='stat');const bp=tab==='bp',s=$('#a-status');s.innerHTML=bp?'<option value="">Vsi / Tutti</option>'+Object.entries(BPST).map(([k,v])=>`<option value="${k}">${v}</option>`).join(''):'<option value="novo">Nove / Nuove</option><option value="objavljeno">Objavljene / Pubblicate</option><option value="zavrnjeno">Zavrnjene / Rifiutate</option><option value="">Vse / Tutte</option>';if(bp)s.value='';}
 async function load(){
   const L=$('#a-list');L.innerHTML='<p class="empty">Nalagam … / Caricamento …</p>';
+  const tab=$('#a-tab').value; if(tab==='objave')return loadObj(); if(tab==='stat')return loadStat();
   const bp=$('#a-tab').value==='bp', sv=$('#a-svet').value, st=$('#a-status').value;
   let q=c.from(bp?'bp_predlogi':'prijave').select('*').order('created_at',{ascending:false}).limit(300);
   if(sv)q=q.eq('consiglio_id',sv); if(st)q=q.eq('status',st);
@@ -101,5 +102,112 @@ async function act(el,a,bp,p){
 $('#a-form')?.addEventListener('submit',async e=>{e.preventDefault();const em=$('#a-email').value.trim();const r=$('#a-msg');
   const {error}=await c.auth.signInWithOtp({email:em,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});
   r.hidden=false;r.className='result '+(error?'err':'ok');r.innerHTML=error?E(error.message):'Povezava je bila poslana – preverite e-pošto. / <em>Link inviato: controllate la posta.</em>';});
+
+/* ================= OBVESTILA / AVVISI ================= */
+const VRO={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
+const SITE=location.href.replace(/upravljanje\.html.*$/,'');
+const pad=n=>String(n).padStart(2,'0');
+function locDT(iso){if(!iso)return ['',''];const d=new Date(iso);return [d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),(d.getHours()||d.getMinutes())?pad(d.getHours())+':'+pad(d.getMinutes()):''];}
+function toISO(d,t){if(!d)return null;return new Date(d+'T'+(t||'00:00')).toISOString();}
+function svetOpts(val){const own=me.consiglio_id;let o=own?'':`<option value=""${val==null?' selected':''}>Vsi sveti / Tutti i Consigli</option>`;
+  o+=Object.entries(CONS).filter(([k])=>!own||k===own).map(([k,v])=>`<option value="${k}"${k===val?' selected':''}>${k}) ${E(v)}</option>`).join('');return o;}
+function objForm(o={}){
+  const [zd,zt]=locDT(o.zacetek),[kd,kt]=locDT(o.konec);
+  return `<article class="adm-item obj-form" data-id="${o.id||''}">
+  <h3 style="margin:0 0 8px">${o.id?'Uredi obvestilo / Modifica avviso':'Novo obvestilo / Nuovo avviso'}</h3>
+  <div class="grid g2"><label class="field"><span class="lbl">Svet / Consiglio</span><select data-f="consiglio_id">${svetOpts(o.id?o.consiglio_id:(me.consiglio_id||($('#a-svet').value||null)))}</select></label>
+  <label class="field"><span class="lbl">Vrsta / Tipo</span><select data-f="vrsta">${Object.entries(VRO).map(([k,v])=>`<option value="${k}"${k===(o.vrsta||'obvestilo')?' selected':''}>${v[0]} / ${v[1]}</option>`).join('')}</select></label></div>
+  <div class="grid g2"><label class="field"><span class="lbl">Naslov (SL) *</span><input data-f="naslov_sl" maxlength="160" value="${E(o.naslov_sl||'')}"></label>
+  <label class="field"><span class="lbl">Titolo (IT)</span><input data-f="naslov_it" maxlength="160" value="${E(o.naslov_it||'')}"></label></div>
+  <div class="grid g2"><label class="field"><span class="lbl">Besedilo (SL)</span><textarea data-f="besedilo_sl" rows="4">${E(o.besedilo_sl||'')}</textarea></label>
+  <label class="field"><span class="lbl">Testo (IT)</span><textarea data-f="besedilo_it" rows="4">${E(o.besedilo_it||'')}</textarea></label></div>
+  <div class="grid g4"><label class="field"><span class="lbl">Datum / Data</span><input type="date" data-f="zd" value="${zd}"></label><label class="field"><span class="lbl">Ura / Ora</span><input type="time" data-f="zt" value="${zt}"></label>
+  <label class="field"><span class="lbl">Do (datum) / Fino a</span><input type="date" data-f="kd" value="${kd}"></label><label class="field"><span class="lbl">Do (ura) / Ora fine</span><input type="time" data-f="kt" value="${kt}"></label></div>
+  <div class="grid g2"><label class="field"><span class="lbl">Kraj / Luogo</span><input data-f="kraj" maxlength="200" value="${E(o.kraj||'')}"></label>
+  <label class="field"><span class="lbl">Povezava / Link (neobvezno)</span><input data-f="povezava" type="url" maxlength="500" value="${E(o.povezava||'')}"></label></div>
+  <label class="field"><span class="lbl">Priloge (PDF, slike) / Allegati</span><input type="file" data-f="files" multiple accept="application/pdf,image/*">${(o.priloge||[]).length?`<span class="hint">${o.priloge.map(p=>E(p.split('/').pop())).join(', ')}</span>`:''}</label>
+  <label style="display:flex;gap:8px;align-items:center;margin:6px 0"><input type="checkbox" data-f="objavljeno"${o.objavljeno===false?'':' checked'}> Objavljeno / Pubblicato</label>
+  <div class="row-btn"><button class="btn small" type="button" data-o="save">Shrani / Salva</button><button class="btn ghost small" type="button" data-o="cancel">Prekliči / Annulla</button></div>
+  <p class="hint" data-msg></p></article>`;
+}
+function waText(o){
+  const v=VRO[o.vrsta]||VRO.obvestilo, w=o.zacetek?new Date(o.zacetek):null;
+  const t=w&&(w.getHours()||w.getMinutes())?pad(w.getHours())+'.'+pad(w.getMinutes()):'';
+  const sv=o.consiglio_id?CONS[o.consiglio_id]:'';
+  const sl=[`*${v[0].toUpperCase()}: ${o.naslov_sl}*`, w?`📅 ${w.getDate()}. ${w.getMonth()+1}. ${w.getFullYear()}${t?', ob '+t:''}`:'', o.kraj?`📍 ${o.kraj}`:'', o.besedilo_sl||''].filter(Boolean);
+  const it=[`*${v[1].toUpperCase()}: ${o.naslov_it||o.naslov_sl}*`, w?`📅 ${pad(w.getDate())}/${pad(w.getMonth()+1)}/${w.getFullYear()}${t?', ore '+t:''}`:'', o.kraj?`📍 ${o.kraj}`:'', o.besedilo_it||''].filter(Boolean);
+  return [...sl,'',...it,'',`${sv?'Svet KS '+sv.split(',')[0]+' · ':''}${SITE}koledar.html${o.consiglio_id?'?svet='+o.consiglio_id:''}`].join('\n');
+}
+function objItem(o){
+  const v=VRO[o.vrsta]||VRO.obvestilo, w=o.zacetek?new Date(o.zacetek).toLocaleString('sl-SI',{dateStyle:'short',timeStyle:'short'}):'—';
+  return `<article class="adm-item" data-id="${o.id}"><div class="top"><span class="status s-${o.objavljeno?'objavljeno':'novo'}">${o.objavljeno?'Objavljeno / Pubblicato':'Osnutek / Bozza'}</span><b>${E(o.consiglio_id?CONS[o.consiglio_id]:'Vsi sveti / Tutti')}</b><span>${E(v[0])} / ${E(v[1])}</span><span>${E(w)}</span></div>
+  <h3 style="margin:6px 0">${E(o.naslov_sl)}${o.naslov_it?` / <em>${E(o.naslov_it)}</em>`:''}</h3>${o.kraj?`<p>📍 ${E(o.kraj)}</p>`:''}
+  <div class="row-btn"><button class="btn small" type="button" data-o="wa">WhatsApp</button><button class="btn ghost small" type="button" data-o="edit">Uredi / Modifica</button><button class="btn ghost small danger" type="button" data-o="del">Izbriši / Elimina</button></div>
+  <div data-wa hidden><textarea readonly rows="9" style="width:100%;font-family:inherit"></textarea><div class="row-btn"><button class="btn small" type="button" data-o="copy">Kopiraj / Copia</button><a class="btn ghost small" target="_blank" rel="noopener" data-o="share">Odpri WhatsApp / Apri WhatsApp</a></div></div><p class="hint" data-msg></p></article>`;
+}
+let OBJ=[];
+async function loadObj(){
+  const L=$('#a-list'), sv=$('#a-svet').value;
+  let q=c.from('objave').select('*').order('zacetek',{ascending:false,nullsFirst:true}).order('created_at',{ascending:false}).limit(200);
+  if(sv)q=q.eq('consiglio_id',sv);
+  const {data,error}=await q;
+  if(error){L.innerHTML=`<p class="result err">${E(error.message)}</p><p class="hint">Če tabela še ne obstaja, je treba v Supabase zagnati faza1.sql. / Se la tabella non esiste ancora va eseguito faza1.sql su Supabase.</p>`;return;}
+  OBJ=data;
+  L.innerHTML=`<p class="row-btn"><button class="btn" type="button" id="o-new">+ Novo obvestilo / Nuovo avviso</button><a class="btn ghost" href="koledar.html" target="_blank">Koledar / Calendario ↗</a></p><div id="o-form"></div>`+(data.length?data.map(objItem).join(''):'<p class="empty">Ni obvestil. / Nessun avviso.</p>');
+  $('#o-new').onclick=()=>{$('#o-form').innerHTML=objForm();bindForm($('#o-form .obj-form'),{});};
+  $$('.adm-item[data-id]',L).forEach(el=>{if(el.classList.contains('obj-form'))return;el.addEventListener('click',e=>{const b=e.target.closest('[data-o]');if(b)objAct(el,b.dataset.o,OBJ.find(x=>x.id===el.dataset.id));});});
+}
+function bindForm(el,o){
+  el.querySelector('[data-o="cancel"]').onclick=()=>{el.remove();};
+  el.querySelector('[data-o="save"]').onclick=async()=>{
+    const m=el.querySelector('[data-msg]'), f=k=>el.querySelector(`[data-f="${k}"]`), v=k=>f(k).value.trim();
+    if(v('naslov_sl').length<3){m.textContent='Manjka naslov (SL). / Manca il titolo (SL).';return;}
+    const row={consiglio_id:v('consiglio_id')||null,vrsta:v('vrsta'),naslov_sl:v('naslov_sl'),naslov_it:v('naslov_it')||null,besedilo_sl:v('besedilo_sl')||null,besedilo_it:v('besedilo_it')||null,
+      zacetek:toISO(v('zd'),v('zt')),konec:v('kd')?toISO(v('kd'),v('kt')):(v('kt')&&v('zd')?toISO(v('zd'),v('kt')):null),kraj:v('kraj')||null,povezava:v('povezava')||null,objavljeno:f('objavljeno').checked,avtor:me.email};
+    m.textContent='Shranjujem … / Salvataggio …';
+    const files=[...f('files').files]; let pri=[...(o.priloge||[])];
+    for(const file of files){const path=`${row.consiglio_id||'vsi'}/${Date.now()}-${file.name.replace(/[^\w.\-]+/g,'_')}`;
+      const {error}=await c.storage.from('objave').upload(path,file,{upsert:false,contentType:file.type});if(error){m.textContent=error.message;return;}pri.push(path);}
+    row.priloge=pri;
+    const r=o.id?await c.from('objave').update(row).eq('id',o.id).select().single():await c.from('objave').insert(row).select().single();
+    if(r.error){m.textContent=r.error.message;return;}
+    await loadObj(); const it=$(`.adm-item[data-id="${r.data.id}"]`); if(it){objAct(it,'wa',r.data);it.scrollIntoView({block:'center'});}
+  };
+}
+async function objAct(el,a,o){
+  const m=el.querySelector('[data-msg]');
+  if(a==='edit'){$('#o-form').innerHTML=objForm(o);bindForm($('#o-form .obj-form'),o);$('#o-form').scrollIntoView({block:'start'});return;}
+  if(a==='del'){if(!confirm('Izbrišem obvestilo? / Eliminare l’avviso?'))return;
+    if((o.priloge||[]).length)await c.storage.from('objave').remove(o.priloge);
+    const {error}=await c.from('objave').delete().eq('id',o.id);if(error){m.textContent=error.message;return;}el.remove();return;}
+  if(a==='wa'){const box=el.querySelector('[data-wa]'),t=waText(o);box.hidden=false;box.querySelector('textarea').value=t;box.querySelector('[data-o="share"]').href='https://wa.me/?text='+encodeURIComponent(t);return;}
+  if(a==='copy'){const t=el.querySelector('[data-wa] textarea');try{await navigator.clipboard.writeText(t.value);}catch(_){t.select();document.execCommand('copy');}m.textContent='Kopirano – prilepite v skupino WhatsApp. / Copiato – incollalo nel gruppo WhatsApp.';}
+}
+/* ================= STATISTIKA ================= */
+async function loadStat(){
+  const L=$('#a-list'); const dni=+(L.dataset.dni||30);
+  const {data,error}=await c.rpc('statistika',{dni});
+  if(error){L.innerHTML=`<p class="result err">${E(error.message)}</p><p class="hint">Če funkcija še ne obstaja, je treba v Supabase zagnati faza1.sql. / Se la funzione non esiste ancora va eseguito faza1.sql su Supabase.</p>`;return;}
+  const d=data||{}, days=d.po_dnevih||[], mx=Math.max(1,...days.map(x=>x.n));
+  const tbl=(rows,k,h)=>`<table class="bpt"><thead><tr><th>${h}</th><th style="text-align:right">#</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${E(r[k])}</td><td style="text-align:right">${r.n}</td></tr>`).join('')||'<tr><td colspan="2">—</td></tr>'}</tbody></table>`;
+  const j=d.jeziki||{},n=d.naprave||{};
+  L.innerHTML=`<div class="row-btn">${[7,30,90,365].map(x=>`<button type="button" class="btn small${x===dni?'':' ghost'}" data-dni="${x}">${x} dni / giorni</button>`).join('')}</div>
+  <div class="stats"><div><b>${d.skupaj||0}</b><span>ogledov strani / pagine viste</span></div><div><b>${j.sl||0} · ${j.it||0}</b><span>SLO · ITA</span></div><div><b>${n.m||0} · ${n.d||0}</b><span>telefon · računalnik / telefono · computer</span></div></div>
+  <div class="panel"><h3 style="margin-top:0">Po dnevih / Per giorno</h3><div class="st-bars">${days.map(x=>`<div title="${x.d}: ${x.n}"><i style="height:${Math.round(x.n/mx*100)}%"></i></div>`).join('')}</div><p class="hint">${days.length?days[0].d+' → '+days[days.length-1].d:''}</p></div>
+  <div class="grid g2"><div class="panel"><h3 style="margin-top:0">Strani / Pagine</h3>${tbl(d.strani||[],'p','Stran / Pagina')}</div><div class="panel"><h3 style="margin-top:0">Od kod / Provenienza</h3>${tbl(d.viri||[],'v','Vir / Fonte')}</div></div>
+  <p class="hint">Brez piškotkov in osebnih podatkov. / Senza cookie né dati personali.</p>`;
+  $$('[data-dni]',L).forEach(b=>b.onclick=()=>{L.dataset.dni=b.dataset.dni;loadStat();});
+}
+/* ================= ŠTEVEC / CONTATORE ================= */
+async function badge(){
+  try{const sv=me.consiglio_id;
+    let q1=c.from('prijave').select('id',{count:'exact',head:true}).eq('status','novo'); if(sv)q1=q1.eq('consiglio_id',sv);
+    let q2=c.from('bp_predlogi').select('id',{count:'exact',head:true}).eq('status','novo'); if(sv)q2=q2.eq('consiglio_id',sv);
+    const [a,b]=await Promise.all([q1,q2]);
+    const o1=$('#a-tab option[value="prijave"]'),o2=$('#a-tab option[value="bp"]');
+    if(a.count)o1.textContent+=` (${a.count} novih / nuove)`; if(b.count)o2.textContent+=` (${b.count} novih / nuove)`;
+    const w=$('#a-who'); if(a.count||b.count)w.insertAdjacentHTML('afterend',`<span class="chip-new">${(a.count||0)+(b.count||0)} za pregled / da moderare</span>`);
+  }catch(_){}
+}
 init();
 })();

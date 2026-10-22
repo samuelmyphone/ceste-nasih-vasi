@@ -54,3 +54,15 @@ if(!RM&&FINE){
 const now=Date.now();
 $$('[data-until]').forEach(el=>{const t=Date.parse(el.dataset.until);if(!isNaN(t)&&now>t){el.classList.add('past');$$('[data-when=future]',el).forEach(x=>x.hidden=true);$$('[data-when=past]',el).forEach(x=>x.hidden=false);}});
 })();
+
+/* Anonymous page-view counter (no cookies, no IP, no personal data): page, language, referring site, phone/computer */
+(()=>{try{
+  const C=window.SVET_CFG; if(!C||!C.url||!C.key)return;
+  if(/^(localhost|127\.|\[::1\])/.test(location.hostname)||navigator.doNotTrack==='1'||/upravljanje\.html/.test(location.pathname))return;
+  const pot=(location.pathname.replace(/^\/krajevne-skupnosti/,'')||'/').slice(0,200);
+  let vir=''; try{const r=document.referrer&&new URL(document.referrer); if(r&&r.hostname!==location.hostname)vir=r.hostname.replace(/^www\./,'').slice(0,100);}catch(_){}
+  const jezik=(window.KSLANG&&KSLANG.get&&KSLANG.get())||document.documentElement.dataset.ui||'sl';
+  const naprava=matchMedia('(max-width: 760px)').matches?'m':'d';
+  fetch(C.url+'/rest/v1/obiski',{method:'POST',keepalive:true,headers:{apikey:C.key,'Content-Type':'application/json',Prefer:'return=minimal'},
+    body:JSON.stringify({pot,jezik:jezik==='it'?'it':'sl',vir,naprava})}).catch(()=>{});
+}catch(_){}})();
