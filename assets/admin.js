@@ -24,6 +24,7 @@ async function init(){
   sv.innerHTML=(me.consiglio_id?'':'<option value="">Vsi sveti / Tutti</option>')+Object.entries(CONS).filter(([k])=>!me.consiglio_id||k===me.consiglio_id).map(([k,v])=>`<option value="${k}">${k}) ${E(v)}</option>`).join('');
   ['#a-svet','#a-tab','#a-status'].forEach(s=>$(s).addEventListener('change',()=>{if(s==='#a-tab')statusOpts();load();}));
   $('#a-reload').onclick=load;$('#a-out').onclick=()=>c.auth.signOut();
+  $$('.adm-tabs [data-t]').forEach(btn=>btn.addEventListener('click',()=>{$$('.adm-tabs [data-t]').forEach(x=>x.setAttribute('aria-selected',x===btn));const t=$('#a-tab');t.value=btn.dataset.t;t.dispatchEvent(new Event('change'));}));
   statusOpts();load();badge();
 }
 function statusOpts(){const tab=$('#a-tab').value;$('#a-status').hidden=(tab==='objave'||tab==='stat');const bp=tab==='bp',s=$('#a-status');s.innerHTML=bp?'<option value="">Vsi / Tutti</option>'+Object.entries(BPST).map(([k,v])=>`<option value="${k}">${v}</option>`).join(''):'<option value="novo">Nove / Nuove</option><option value="objavljeno">Objavljene / Pubblicate</option><option value="zavrnjeno">Zavrnjene / Rifiutate</option><option value="">Vse / Tutte</option>';if(bp)s.value='';}
@@ -204,9 +205,8 @@ async function badge(){
     let q1=c.from('prijave').select('id',{count:'exact',head:true}).eq('status','novo'); if(sv)q1=q1.eq('consiglio_id',sv);
     let q2=c.from('bp_predlogi').select('id',{count:'exact',head:true}).eq('status','novo'); if(sv)q2=q2.eq('consiglio_id',sv);
     const [a,b]=await Promise.all([q1,q2]);
-    const o1=$('#a-tab option[value="prijave"]'),o2=$('#a-tab option[value="bp"]');
-    if(a.count)o1.textContent+=` (${a.count} novih / nuove)`; if(b.count)o2.textContent+=` (${b.count} novih / nuove)`;
-    const w=$('#a-who'); if(a.count||b.count)w.insertAdjacentHTML('afterend',`<span class="chip-new">${(a.count||0)+(b.count||0)} za pregled / da moderare</span>`);
+    const n1=$('[data-n="prijave"]'),n2=$('[data-n="bp"]');
+    if(n1)n1.textContent=a.count||''; if(n2)n2.textContent=b.count||'';
   }catch(_){}
 }
 init();
