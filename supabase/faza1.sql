@@ -126,7 +126,7 @@ create or replace function public.obvesti_upravitelje() returns trigger
 language plpgsql security definer set search_path = public, extensions as $$
 declare
   k text; snd text; prejemniki jsonb; zadeva text; vsebina text; svet text;
-  site constant text := 'https://samuelmyphone.github.io/krajevne-skupnosti/upravljanje.html';
+  site constant text := 'https://cfks-dolina.org/upravljanje.html';
 begin
   begin
     select decrypted_secret into k   from vault.decrypted_secrets where name = 'brevo_api_key' limit 1;

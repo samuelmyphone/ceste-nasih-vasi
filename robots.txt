@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /upravljanje.html
+Disallow: /stara/
+Sitemap: https://cfks-dolina.org/sitemap.xml
