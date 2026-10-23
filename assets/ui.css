@@ -610,3 +610,13 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 @media (max-width:720px){.step1 .tcard{padding:12px;gap:8px}.step1 .tcard .ti{width:52px;height:52px}.step1 .tcard .tt b{font-size:17px}.step1 .tcard .tt small{font-size:13px}}
 @media (max-width:720px){.step1 .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 .step1 .tcard{justify-content:flex-start;padding-top:24px}@media (max-width:720px){.step1 .tcard{padding-top:16px}}
+
+/* Intestazioni uniformi: stesso riquadro delle pagine delle frazioni */
+.hero.card{position:relative;margin:12px 0 28px;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,var(--soft2),var(--soft));border:1px solid var(--line);min-height:220px;padding:34px 40px;align-items:center;isolation:isolate;border-bottom:1px solid var(--line)}
+.hero.card .vista-svg{position:absolute;right:0;bottom:0;width:62%;height:100%;z-index:-1;opacity:.9}
+.hero.card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--soft2) 30%,transparent 75%)}
+.hero.card .vista::after{display:none}
+.hero.card .eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.12em;color:var(--terra-d)}
+.hero.card h1{font-size:clamp(32px,4.4vw,52px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
+.hero.card .hero-side{background:color-mix(in srgb,var(--soft2) 82%,transparent);border-radius:0 12px 12px 0;padding:12px 16px 12px 18px}
+@media (max-width:860px){.hero.card{padding:26px 22px;min-height:0}.hero.card .vista-svg{width:100%;opacity:.35}.hero.card .hero-side{border-radius:0 0 12px 12px}}

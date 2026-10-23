@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Koledar · Calendario</title>
 <meta name="description" content="Seje, zbori krajanov in obvestila svetov krajevnih skupnosti. / Riunioni, assemblee e avvisi dei Consigli delle frazioni.">
-<script src="assets/lang.js?v=d78f6480"></script>
+<script src="assets/lang.js?v=fac52466"></script>
 <link rel="icon" href="assets/simbol.png">
 <link rel="apple-touch-icon" href="assets/simbol.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 
-<link rel="stylesheet" href="assets/site.css?v=d78f6480">
-<link rel="stylesheet" href="assets/ui.css?v=d78f6480">
+<link rel="stylesheet" href="assets/site.css?v=fac52466">
+<link rel="stylesheet" href="assets/ui.css?v=fac52466">
 <link rel="canonical" href="https://cfks-dolina.org/koledar.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Krajevne skupnosti Občine Dolina · Consigli delle frazioni">
@@ -43,8 +43,44 @@
 </div></header>
 <div class="page">
 <main class="container" id="main">
-
-<section class="hero single"><div><p class="eyebrow"><span data-l="sl" lang="sl">Obvestila in seje</span><span data-l="it" lang="it">Avvisi e riunioni</span></p>
+<nav class="crumbs" aria-label="Drobtine / Percorso"><a href="index.html"><span data-l="sl" lang="sl">Domov</span><span data-l="it" lang="it">Home</span></a><span class="sep" aria-hidden="true">/</span><span aria-current="page"><span data-l="sl" lang="sl">Koledar</span><span data-l="it" lang="it">Calendario</span></span></nav>
+<section class="hero card single"><div class="vista" aria-hidden="true" style="display:contents"><svg class="vista-svg" viewBox="0 0 1600 340" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<!-- far karst ridge: Monte Carso / Cocusso -->
+<path fill="var(--v1)" d="M0 170 C120 150 210 120 300 128 C380 135 430 100 520 96 C610 92 660 128 740 122 C820 116 880 70 980 64 C1080 58 1130 104 1220 100 C1310 96 1380 72 1470 80 C1530 85 1570 100 1600 104 V340 H0Z"/>
+<!-- left gorge wall (Monte Carso side) with limestone bands -->
+<path fill="var(--v2)" d="M0 210 C90 190 170 168 260 160 C340 152 420 150 500 156 C560 160 610 176 650 196 L700 262 L690 340 H0Z"/>
+<g stroke="var(--vl)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9">
+ <path d="M520 168 C560 176 600 190 630 206"/><path d="M470 186 C530 192 580 206 615 226"/><path d="M430 208 C500 212 560 226 600 248"/>
+ <path d="M560 160 L575 190 M590 172 L603 204 M618 188 L632 222 M640 205 L652 238"/>
+</g>
+<!-- right gorge wall: Stena with church Santa Maria in Siaris / Sv. Marija na Pečah on top -->
+<path fill="var(--v2)" d="M1600 196 C1500 176 1420 150 1330 142 C1250 136 1170 140 1090 150 C1020 158 960 176 920 196 L870 262 L880 340 H1600Z"/>
+<g stroke="var(--vl)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9">
+ <path d="M940 196 L930 232 M965 182 L952 226 M992 170 L980 214 M1022 160 L1012 206 M1052 154 L1044 200"/>
+ <path d="M920 214 C980 200 1040 190 1110 186"/><path d="M905 240 C970 226 1030 216 1100 212"/>
+</g>
+<g fill="var(--v3)">
+ <rect x="1420" y="120" width="40" height="24" rx="2"/><path d="M1416 122 L1440 105 L1464 122Z"/>
+ <rect x="1462" y="102" width="13" height="42"/><path d="M1460 104 L1468.5 89 L1477 104Z"/>
+</g>
+<!-- old railway (ciclopedonale) viaduct across the left slope -->
+<g fill="none" stroke="var(--vl)" stroke-width="3" stroke-linecap="round">
+ <path d="M140 196 H430"/>
+ <path d="M160 196 V232 M200 196 V236 M240 196 V238 M280 196 V238 M320 196 V236 M360 196 V232 M400 196 V226"/>
+ <path d="M160 214 Q180 200 200 214 M200 214 Q220 200 240 214 M240 214 Q260 200 280 214 M280 214 Q300 200 320 214 M320 214 Q340 200 360 214 M360 214 Q380 200 400 214"/>
+</g>
+<!-- waterfall (slap) in the gorge -->
+<g stroke="var(--vw)" stroke-width="5" stroke-linecap="round"><path d="M772 214 V262"/><path d="M786 210 V266"/><path d="M800 216 V260"/></g>
+<!-- foreground: stream Glinščica / Rosandra and banks -->
+<path fill="var(--v3)" d="M0 268 C140 250 260 262 380 270 C500 278 620 262 720 270 C780 275 830 278 880 272 C1000 258 1120 262 1240 272 C1380 284 1500 266 1600 258 V340 H0Z"/>
+<path fill="var(--vw)" d="M0 312 C160 300 300 318 460 306 C600 296 700 284 790 270 C820 288 900 300 1020 304 C1180 310 1360 296 1600 304 V322 C1400 316 1200 326 1000 322 C860 318 800 300 790 290 C720 306 600 318 460 324 C300 332 160 320 0 328Z"/>
+<!-- trees (black pine, oak) -->
+<g fill="var(--v2)">
+ <path d="M60 268 L74 232 L88 268Z"/><path d="M96 266 L112 222 L128 266Z"/><circle cx="520" cy="262" r="14"/><circle cx="545" cy="258" r="18"/>
+ <path d="M1300 268 L1316 226 L1332 268Z"/><path d="M1338 270 L1352 236 L1366 270Z"/><circle cx="1460" cy="262" r="16"/><circle cx="1490" cy="266" r="12"/>
+</g>
+</svg>
+</div><div><p class="eyebrow"><span data-l="sl" lang="sl">Obvestila in seje</span><span data-l="it" lang="it">Avvisi e riunioni</span></p>
  <h1>Koledar krajevnih skupnosti</h1><p class="sub">Calendario dei Consigli delle frazioni</p>
  <p class="lead">Seje svetov, zbori krajanov, dogodki in obvestila o delih. Vsak dogodek lahko dodate v svoj koledar.<br><em>Riunioni dei Consigli, assemblee pubbliche, eventi e avvisi sui lavori. Ogni evento si può aggiungere al proprio calendario.</em></p></div></section>
 <div class="filters"><select id="kal-svet" aria-label="Svet / Consiglio"><option value="" data-sl="Vse krajevne skupnosti" data-it="Tutte le frazioni">Vse krajevne skupnosti</option><option value="a" data-sl="a) Dolina–Kroglje" data-it="a) Dolina–Crogole">a) Dolina–Kroglje</option><option value="b" data-sl="b) Boljunec" data-it="b) Bagnoli della Rosandra">b) Boljunec</option><option value="c" data-sl="c) Boršt–Pesek" data-it="c) Boršt–Pesek">c) Boršt–Pesek</option><option value="d" data-sl="d) Ricmanje–Log" data-it="d) San Giuseppe–Log">d) Ricmanje–Log</option><option value="e" data-sl="e) Domjo" data-it="e) Domio">e) Domjo</option><option value="f" data-sl="f) Mačkolje–Prebeneg" data-it="f) Caresana–Prebeneg">f) Mačkolje–Prebeneg</option><option value="g" data-sl="g) Žavlje–Frankovec" data-it="g) Aquilinia–Francovez">g) Žavlje–Frankovec</option></select>
@@ -68,9 +104,9 @@
  <a href="proracun.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h3v10zm6.5 0V4h3v16zM17 20v-7h3v7z"/></svg><span data-l="sl" lang="sl">Proračun</span><span data-l="it" lang="it">Bilancio</span></a>
  <button type="button" class="tb-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg><span data-l="sl" lang="sl">Meni</span><span data-l="it" lang="it">Menu</span></button>
 </nav>
-<script src="assets/config.js?v=d78f6480"></script>
-<script src="assets/site.js?v=d78f6480"></script>
-<script src="assets/ui.js?v=d78f6480"></script>
-<script>window.KS_CONS={"a": {"sl": "Dolina in Kroglje", "it": "Dolina e Crogole", "ssl": "Dolina–Kroglje", "sit": "Dolina–Crogole", "slug": "dolina"}, "b": {"sl": "Boljunec in Gornji konec", "it": "Bagnoli della Rosandra e Bagnoli Superiore", "ssl": "Boljunec", "sit": "Bagnoli della Rosandra", "slug": "boljunec"}, "c": {"sl": "Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek", "it": "Sant'Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek", "ssl": "Boršt–Pesek", "sit": "Boršt–Pesek", "slug": "borst"}, "d": {"sl": "Ricmanje in Log", "it": "San Giuseppe della Chiusa e Log", "ssl": "Ricmanje–Log", "sit": "San Giuseppe–Log", "slug": "ricmanje"}, "e": {"sl": "Domjo, Pulje, Lakotišče in Krmenka", "it": "Domio, Puglie, Lacotisce e Mattonaia", "ssl": "Domjo", "sit": "Domio", "slug": "domjo"}, "f": {"sl": "Mačkolje, Prebeneg, Križpot in Mont", "it": "Caresana, Prebeneg, Crociata e Monte d'Oro", "ssl": "Mačkolje–Prebeneg", "sit": "Caresana–Prebeneg", "slug": "mackolje"}, "g": {"sl": "Žavlje in Frankovec", "it": "Aquilinia e Francovez", "ssl": "Žavlje–Frankovec", "sit": "Aquilinia–Francovez", "slug": "zavlje"}};</script><script src="assets/live.js?v=d78f6480"></script><script src="assets/objave.js?v=d78f6480"></script><script>OBJAVE.calendar(document.getElementById("kal"));</script>
+<script src="assets/config.js?v=fac52466"></script>
+<script src="assets/site.js?v=fac52466"></script>
+<script src="assets/ui.js?v=fac52466"></script>
+<script>window.KS_CONS={"a": {"sl": "Dolina in Kroglje", "it": "Dolina e Crogole", "ssl": "Dolina–Kroglje", "sit": "Dolina–Crogole", "slug": "dolina"}, "b": {"sl": "Boljunec in Gornji konec", "it": "Bagnoli della Rosandra e Bagnoli Superiore", "ssl": "Boljunec", "sit": "Bagnoli della Rosandra", "slug": "boljunec"}, "c": {"sl": "Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek", "it": "Sant'Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek", "ssl": "Boršt–Pesek", "sit": "Boršt–Pesek", "slug": "borst"}, "d": {"sl": "Ricmanje in Log", "it": "San Giuseppe della Chiusa e Log", "ssl": "Ricmanje–Log", "sit": "San Giuseppe–Log", "slug": "ricmanje"}, "e": {"sl": "Domjo, Pulje, Lakotišče in Krmenka", "it": "Domio, Puglie, Lacotisce e Mattonaia", "ssl": "Domjo", "sit": "Domio", "slug": "domjo"}, "f": {"sl": "Mačkolje, Prebeneg, Križpot in Mont", "it": "Caresana, Prebeneg, Crociata e Monte d'Oro", "ssl": "Mačkolje–Prebeneg", "sit": "Caresana–Prebeneg", "slug": "mackolje"}, "g": {"sl": "Žavlje in Frankovec", "it": "Aquilinia e Francovez", "ssl": "Žavlje–Frankovec", "sit": "Aquilinia–Francovez", "slug": "zavlje"}};</script><script src="assets/live.js?v=fac52466"></script><script src="assets/objave.js?v=fac52466"></script><script>OBJAVE.calendar(document.getElementById("kal"));</script>
 </body>
 </html>
