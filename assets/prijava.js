@@ -28,7 +28,7 @@ function kind(scroll){const k=(form.querySelector('[name=vrsta]:checked')||{}).v
 $$('[name=vrsta]').forEach(r=>r.addEventListener('change',()=>kind(true)));
 if(qs.get('svet')&&V[qs.get('svet')]){svet.value=qs.get('svet');fillVas();}
 if(qs.get('vas')){const o=[...vas.options].find(o=>o.value.indexOf(qs.get('vas'))===0&&o.value!=='Vse vasi');if(o){vas.value=o.value;vas.dispatchEvent(new Event('change'));}}
-if(qs.get('vrsta')){const vq={ideja:'predlog',projekt:'predlog'}[qs.get('vrsta')]||qs.get('vrsta');const r=form.querySelector(`[name=vrsta][value="${vq}"]`);if(r)r.checked=true;}
+if(qs.get('vrsta')){const vq=qs.get('vrsta');const r=form.querySelector(`[name=vrsta][value="${vq}"]`);if(r)r.checked=true;}
 kind(false);
 // photo resize
 async function shrink(file){

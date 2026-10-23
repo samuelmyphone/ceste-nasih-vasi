@@ -598,8 +598,8 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 #pf[data-vrsta] .tgrid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
 #pf[data-vrsta] .tcard{min-height:72px;padding:14px 16px}
 @media (max-width:720px){.tgrid{grid-template-columns:1fr}#pf[data-vrsta] .tgrid{grid-template-columns:1fr 1fr}.tcard{min-height:84px}}
-/* 4 scelte quadrate 2x2 */
-.step1 .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px;max-width:540px}
+/* 6 scelte quadrate uguali: 3x2 (telefono 2x3) */
+.step1 .tgrid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px;max-width:760px}
 .step1 .tcard{flex-direction:column;align-items:center;justify-content:center;text-align:center;aspect-ratio:1/1;min-height:0;padding:18px;gap:12px}
 .step1 .tcard .tt{justify-items:center}
 .step1 .tcard .ti{width:64px;height:64px}.step1 .tcard .ti .ic{width:32px;height:32px}
@@ -608,3 +608,5 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 #pf[data-vrsta] .step1 .tcard .tt{justify-items:start}#pf[data-vrsta] .step1 .tcard small{display:none}
 #pf[data-vrsta] .step1 .tcard .ti{width:40px;height:40px}#pf[data-vrsta] .step1 .tcard .tt b{font-size:16px}
 @media (max-width:720px){.step1 .tcard{padding:12px;gap:8px}.step1 .tcard .ti{width:52px;height:52px}.step1 .tcard .tt b{font-size:17px}.step1 .tcard .tt small{font-size:13px}}
+@media (max-width:720px){.step1 .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+.step1 .tcard{justify-content:flex-start;padding-top:24px}@media (max-width:720px){.step1 .tcard{padding-top:16px}}
