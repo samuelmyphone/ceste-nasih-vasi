@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sincronizzazione notturna: notizie (RSS) e albo pretorio del Comune di San Dorligo della Valle - Dolina.
+"""Sincronizzazione (ogni 3 ore): allerte meteo, notizie (RSS) e albo pretorio del Comune di San Dorligo della Valle - Dolina.
 
 Scrive assets/comune.json. Se una fonte non risponde o cambia forma, mantiene i dati precedenti
 di quella fonte e termina con codice 1, così GitHub segnala l'errore via email.
@@ -219,13 +219,53 @@ def rss():
     return res[:40]
 
 
+# --- allerte meteo (MeteoAlarm, Friuli Venezia Giulia) -------------------------------------
+METEO_FEED = 'https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-italy'
+METEO_AREA = 'IT020'  # Friuli Venezia Giulia
+TIPI_METEO = {'1': ('Veter', 'Vento'), '2': ('Sneg in poledica', 'Neve e ghiaccio'), '3': ('Nevihte', 'Temporali'),
+              '4': ('Megla', 'Nebbia'), '5': ('Vročina', 'Alte temperature'), '6': ('Mraz', 'Basse temperature'),
+              '7': ('Pojavi ob obali', 'Eventi costieri'), '8': ('Požari v naravi', 'Incendi boschivi'),
+              '9': ('Plazovi', 'Valanghe'), '10': ('Dež', 'Pioggia'), '12': ('Poplave', 'Alluvioni'), '13': ('Dež in poplave', 'Pioggia e alluvioni')}
+
+
+def meteo():
+    ns = {'a': 'http://www.w3.org/2005/Atom', 'cap': 'urn:oasis:names:tc:emergency:cap:1.2'}
+    root = ET.fromstring(fetch(METEO_FEED))
+    if root.tag != '{http://www.w3.org/2005/Atom}feed':
+        raise ValueError('feed MeteoAlarm cambiato')
+    now = datetime.datetime.now(datetime.timezone.utc)
+    out = []
+    for e in root.findall('a:entry', ns):
+        code = [v.text for v in e.iter('{http://www.w3.org/2005/Atom}value')]
+        if METEO_AREA not in code:
+            continue
+        exp = datetime.datetime.fromisoformat(e.findtext('cap:expires', namespaces=ns))
+        if exp < now:
+            continue
+        ev = e.findtext('cap:event', namespaces=ns) or ''
+        lvl = 'red' if ev.startswith('Red') else 'orange' if ev.startswith('Orange') else 'yellow' if ev.startswith('Yellow') else ''
+        if not lvl:
+            continue
+        typ = re.sub(r'^(Red|Orange|Yellow)\s+|\s+Warning$', '', ev).strip().lower()
+        key = {'wind': '1', 'snow-ice': '2', 'snow/ice': '2', 'thunderstorm': '3', 'thunderstorms': '3', 'fog': '4',
+               'high-temperature': '5', 'high temperature': '5', 'low-temperature': '6', 'low temperature': '6',
+               'coastalevent': '7', 'coastal event': '7', 'forest-fire': '8', 'forest fire': '8', 'avalanches': '9',
+               'rain': '10', 'flooding': '12', 'rain-flood': '13', 'rain flood': '13'}.get(typ, '')
+        sl, it = TIPI_METEO.get(key, (typ, typ))
+        out.append(dict(level=lvl, sl=sl, it=it, onset=e.findtext('cap:onset', namespaces=ns),
+                        expires=e.findtext('cap:expires', namespaces=ns)))
+    order = {'red': 0, 'orange': 1, 'yellow': 2}
+    out.sort(key=lambda x: (order[x['level']], x['onset']))
+    return out
+
+
 def main():
     try:
         prev = json.load(open(OUT, encoding='utf-8'))
     except Exception:
         prev = {'albo': [], 'rss': [], 'stato': {}}
     res, stato, errori = {}, {}, []
-    for nome, fn in (('albo', albo), ('rss', rss)):
+    for nome, fn in (('albo', albo), ('rss', rss), ('meteo', meteo)):
         try:
             res[nome] = fn()
             stato[nome] = {'ok': True, 'aggiornato': TODAY.isoformat(), 'voci': len(res[nome])}
@@ -235,7 +275,9 @@ def main():
             errori.append(f'{nome}: {e}')
     # atti scaduti: fuori
     res['albo'] = [x for x in res['albo'] if not x['until'] or x['until'] >= TODAY.isoformat()]
-    data = {'stato': stato, 'albo': res['albo'], 'rss': res['rss']}
+    if not stato['meteo']['ok']:
+        res['meteo'] = []  # mai mostrare un'allerta vecchia
+    data = {'stato': stato, 'meteo': res['meteo'], 'albo': res['albo'], 'rss': res['rss']}
     new = json.dumps(data, ensure_ascii=False, indent=1)
     old = json.dumps(prev, ensure_ascii=False, indent=1)
     if new != old:

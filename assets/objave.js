@@ -3,7 +3,7 @@
 const S=window.SVET; if(!S)return;
 const E=S.E;
 const T=(sl,it)=>`<span data-l="sl" lang="sl">${sl}</span><span data-l="it" lang="it">${it}</span>`;
-const VR={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
+const VR={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],zupan:['Sestanek z županom','Riunione col Sindaco'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
 const MS=['jan','feb','mar','apr','maj','jun','jul','avg','sep','okt','nov','dec'],MI=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
 const MSL=['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'],MIT=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 const CONS=window.KS_CONS||{};   // {a:{sl,it,slug}}

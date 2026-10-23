@@ -105,7 +105,7 @@ $('#a-form')?.addEventListener('submit',async e=>{e.preventDefault();const em=$(
   r.hidden=false;r.className='result '+(error?'err':'ok');r.innerHTML=error?(/signup|not allowed|not found/i.test(error.message)?'Ta e-naslov nima dostopa. Za dostop se obrnite na upravitelja strani. / <em>Questo indirizzo non è abilitato: chiedete l’accesso all’amministratore del sito.</em>':E(error.message)):'Povezava je bila poslana – preverite e-pošto. / <em>Link inviato: controllate la posta.</em>';});
 
 /* ================= OBVESTILA / AVVISI ================= */
-const VRO={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
+const VRO={obvestilo:['Obvestilo','Avviso'],sestanek:['Seja sveta','Riunione del Consiglio'],zupan:['Sestanek z županom','Riunione col Sindaco'],skupscina:['Zbor krajanov','Assemblea pubblica'],dogodek:['Dogodek','Evento'],dela:['Dela, zapore','Lavori, chiusure']};
 const SITE=location.href.replace(/upravljanje\.html.*$/,'');
 const pad=n=>String(n).padStart(2,'0');
 function locDT(iso){if(!iso)return ['',''];const d=new Date(iso);return [d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),(d.getHours()||d.getMinutes())?pad(d.getHours())+':'+pad(d.getMinutes()):''];}

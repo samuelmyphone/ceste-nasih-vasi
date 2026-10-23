@@ -181,3 +181,8 @@ create trigger bp_obvesti after insert on public.bp_predlogi for each row execut
 
 -- verifica: le ultime chiamate a Brevo (status 201 = inviata)
 -- select id, status_code, content from net._http_response order by id desc limit 5;
+
+-- 2026-10-23: nuovo tipo di avviso "Sestanek z županom / Riunione col Sindaco"
+alter table public.objave drop constraint if exists objave_vrsta_check;
+alter table public.objave add constraint objave_vrsta_check
+  check (vrsta in ('obvestilo','sestanek','zupan','skupscina','dogodek','dela'));

@@ -2,7 +2,7 @@ name: Dal Comune / Iz občine
 
 on:
   schedule:
-    - cron: '17 3 * * *'   # ogni notte / vsako noč
+    - cron: '17 */3 * * *'   # ogni 3 ore / vsake 3 ure
   workflow_dispatch:
   push:
     paths:

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Krajevne skupnosti · Consigli delle frazioni</title>
 <meta name="description" content="Krajevne skupnosti Občine Dolina – Consigli delle frazioni del Comune di San Dorligo della Valle">
-<script src="assets/lang.js?v=fac52466"></script>
+<script src="assets/lang.js?v=fd70f1d2"></script>
 <link rel="icon" href="assets/simbol.png">
 <link rel="apple-touch-icon" href="assets/simbol.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 
-<link rel="stylesheet" href="assets/site.css?v=fac52466">
-<link rel="stylesheet" href="assets/ui.css?v=fac52466">
+<link rel="stylesheet" href="assets/site.css?v=fd70f1d2">
+<link rel="stylesheet" href="assets/ui.css?v=fd70f1d2">
 <link rel="canonical" href="https://cfks-dolina.org/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Krajevne skupnosti Občine Dolina · Consigli delle frazioni">
@@ -43,6 +43,7 @@
 </div></header>
 <div class="page">
 <main class="container" id="main">
+<div id="meteo-alert" class="meteo" role="status" hidden></div>
 
 <section class="hh" aria-labelledby="hh-t">
  <div class="hh-art" aria-hidden="true"><img class="hh-poster" src="assets/video/territorio-home-poster.jpg" srcset="assets/video/territorio-home-poster-mobile.jpg 854w, assets/video/territorio-home-poster.jpg 1920w" sizes="(max-width:860px) 100vw, 1240px" alt="" width="1920" height="1080" fetchpriority="high"><video class="hh-video" muted loop playsinline preload="none" disablepictureinpicture data-src="assets/video/territorio-home.mp4" data-src-mobile="assets/video/territorio-home-mobile.mp4"></video></div>
@@ -90,6 +91,11 @@
  <div class="sec-h rv"><div><h2 id="ob-t"><span data-l="sl" lang="sl">Obvestila in seje</span><span data-l="it" lang="it">Avvisi e riunioni</span></h2><p><span data-l="sl" lang="sl">Kaj pripravljajo sveti krajevnih skupnosti.</span><span data-l="it" lang="it">Gli appuntamenti dei Consigli delle frazioni.</span></p></div><a class="more" href="koledar.html"><span data-l="sl" lang="sl">Koledar</span><span data-l="it" lang="it">Calendario</span> <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
  <div class="obj-l" id="obj-home"></div>
 </section>
+<section class="sec" aria-labelledby="cm-t">
+ <div class="sec-h rv"><div><h2 id="cm-t"><span data-l="sl" lang="sl">Iz občine</span><span data-l="it" lang="it">Dal Comune</span></h2><p><span data-l="sl" lang="sl">Odredbe o prometu, javna dela, obvestila in razpisi z oglasne deske in spletne strani Občine – samodejno, vsako noč.</span><span data-l="it" lang="it">Ordinanze sulla viabilità, lavori pubblici, avvisi e bandi dall’albo pretorio e dal sito del Comune – in automatico, ogni notte.</span></p></div></div>
+ <div class="sz-box" id="sz-home" hidden></div>
+ <div id="cm-home"></div>
+</section>
 <section class="sec sec-rez" aria-labelledby="rz-t">
  <div class="sec-h rv"><div><h2 id="rz-t"><span data-l="sl" lang="sl">Doseženi rezultati</span><span data-l="it" lang="it">Risultati ottenuti</span></h2><p><span data-l="sl" lang="sl">Tu zbiramo zaključene posege in dokumentirane rezultate prijav krajanov.</span><span data-l="it" lang="it">Qui raccogliamo gli interventi conclusi e i risultati documentati delle segnalazioni dei residenti.</span></p></div></div>
  <div class="live-list" id="rez-home"></div>
@@ -102,7 +108,7 @@
 <span data-l="sl" lang="sl">To ni uradna spletna stran Občine Dolina.</span><span data-l="it" lang="it">Questo non è il sito istituzionale del Comune.</span> <a href="https://www.comune.san-dorligo-della-valle.ts.it/" target="_blank" rel="noopener"><span data-l="sl" lang="sl">Občina Dolina</span><span data-l="it" lang="it">Comune</span> ↗</a>
 <p class="note"><span data-l="sl" lang="sl">Posodobljeno</span><span data-l="it" lang="it">Aggiornato</span>: 23. 10. 2026</p></div>
 <div><b><span data-l="sl" lang="sl">Krajevne skupnosti in e-naslovi svetov</span><span data-l="it" lang="it">Frazioni e indirizzi email dei Consigli</span></b><ul class="foot-ks"><li><a href="sveti/dolina/">a) <span data-l="sl" lang="sl">Dolina–Kroglje</span><span data-l="it" lang="it">Dolina–Crogole</span></a><span class="fe"><a href="mailto:cfks.dolinakroglje@gmail.com">cfks.dolinakroglje@gmail.com</a></span></li><li><a href="sveti/boljunec/">b) <span data-l="sl" lang="sl">Boljunec</span><span data-l="it" lang="it">Bagnoli della Rosandra</span></a><span class="fe"><span data-l="sl" lang="sl">svet še ni ustanovljen</span><span data-l="it" lang="it">Consiglio non ancora costituito</span></span></li><li><a href="sveti/borst/">c) <span data-l="sl" lang="sl">Boršt–Pesek</span><span data-l="it" lang="it">Boršt–Pesek</span></a><span class="fe"><a href="mailto:cfks.borst@gmail.com">cfks.borst@gmail.com</a></span></li><li><a href="sveti/ricmanje/">d) <span data-l="sl" lang="sl">Ricmanje–Log</span><span data-l="it" lang="it">San Giuseppe–Log</span></a><span class="fe"><a href="mailto:consigliofrazioniricmanjelog@gmail.com">consigliofrazioniricmanjelog@gmail.com</a></span></li><li><a href="sveti/domjo/">e) <span data-l="sl" lang="sl">Domjo</span><span data-l="it" lang="it">Domio</span></a><span class="fe"><a href="mailto:cf.ks.domio@gmail.com">cf.ks.domio@gmail.com</a></span></li><li><a href="sveti/mackolje/">f) <span data-l="sl" lang="sl">Mačkolje–Prebeneg</span><span data-l="it" lang="it">Caresana–Prebeneg</span></a><span class="fe"><a href="mailto:kscf2025@gmail.com">kscf2025@gmail.com</a></span></li><li><a href="sveti/zavlje/">g) <span data-l="sl" lang="sl">Žavlje–Frankovec</span><span data-l="it" lang="it">Aquilinia–Francovez</span></a><span class="fe"><a href="mailto:consigliofrazioniaquifran@gmail.com">consigliofrazioniaquifran@gmail.com</a></span></li></ul></div>
-<div><b><span data-l="sl" lang="sl">Povezave</span><span data-l="it" lang="it">Collegamenti</span></b><ul><li><a href="predstavitev.html"><span data-l="sl" lang="sl">Pravilnik</span><span data-l="it" lang="it">Regolamento</span></a></li><li><a href="proracun.html"><span data-l="sl" lang="sl">Participativni proračun</span><span data-l="it" lang="it">Bilancio partecipativo</span></a></li><li><a href="koledar.html"><span data-l="sl" lang="sl">Koledar obvestil</span><span data-l="it" lang="it">Calendario avvisi</span></a></li><li><a href="teritorij-3d.html"><span data-l="sl" lang="sl">Ozemlje v 3D</span><span data-l="it" lang="it">Il territorio in 3D</span></a></li><li><a href="prijava.html"><span data-l="sl" lang="sl">Pošlji prijavo</span><span data-l="it" lang="it">Invia una segnalazione</span></a></li><li><a href="upravljanje.html"><span data-l="sl" lang="sl">Upravljanje (predsedniki)</span><span data-l="it" lang="it">Gestione (presidenti)</span></a></li><li><a href="navodila.html"><span data-l="sl" lang="sl">Navodila za predsednike</span><span data-l="it" lang="it">Guida per i presidenti</span></a></li></ul>
+<div><b><span data-l="sl" lang="sl">Povezave</span><span data-l="it" lang="it">Collegamenti</span></b><ul><li><a href="predstavitev.html"><span data-l="sl" lang="sl">Pravilnik</span><span data-l="it" lang="it">Regolamento</span></a></li><li><a href="predstavitev.html#dokumenti"><span data-l="sl" lang="sl">Dokumenti</span><span data-l="it" lang="it">Documenti</span></a></li><li><a href="proracun.html"><span data-l="sl" lang="sl">Participativni proračun</span><span data-l="it" lang="it">Bilancio partecipativo</span></a></li><li><a href="koledar.html"><span data-l="sl" lang="sl">Koledar obvestil</span><span data-l="it" lang="it">Calendario avvisi</span></a></li><li><a href="teritorij-3d.html"><span data-l="sl" lang="sl">Ozemlje v 3D</span><span data-l="it" lang="it">Il territorio in 3D</span></a></li><li><a href="prijava.html"><span data-l="sl" lang="sl">Pošlji prijavo</span><span data-l="it" lang="it">Invia una segnalazione</span></a></li><li><a href="upravljanje.html"><span data-l="sl" lang="sl">Upravljanje (predsedniki)</span><span data-l="it" lang="it">Gestione (presidenti)</span></a></li><li><a href="navodila.html"><span data-l="sl" lang="sl">Navodila za predsednike</span><span data-l="it" lang="it">Guida per i presidenti</span></a></li></ul>
 <p class="note"><span data-l="sl" lang="sl">Imena prijaviteljev se ne objavljajo.</span><span data-l="it" lang="it">I nomi dei segnalanti non vengono pubblicati.</span><br><span data-l="sl" lang="sl">Zemljevidi</span><span data-l="it" lang="it">Mappe</span>: © OpenStreetMap contributors · <span data-l="sl" lang="sl">Ortofoto</span><span data-l="it" lang="it">Ortofoto</span>: © Esri, Maxar, Earthstar Geographics.</p></div>
 </div></footer>
 <nav class="tabbar" aria-label="Hitra navigacija / Navigazione rapida">
@@ -112,9 +118,11 @@
  <a href="proracun.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h3v10zm6.5 0V4h3v16zM17 20v-7h3v7z"/></svg><span data-l="sl" lang="sl">Proračun</span><span data-l="it" lang="it">Bilancio</span></a>
  <button type="button" class="tb-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg><span data-l="sl" lang="sl">Meni</span><span data-l="it" lang="it">Menu</span></button>
 </nav>
-<script src="assets/config.js?v=fac52466"></script>
-<script src="assets/site.js?v=fac52466"></script>
-<script src="assets/ui.js?v=fac52466"></script>
-<script>window.KS_CONS={"a": {"sl": "Dolina in Kroglje", "it": "Dolina e Crogole", "ssl": "Dolina–Kroglje", "sit": "Dolina–Crogole", "slug": "dolina"}, "b": {"sl": "Boljunec in Gornji konec", "it": "Bagnoli della Rosandra e Bagnoli Superiore", "ssl": "Boljunec", "sit": "Bagnoli della Rosandra", "slug": "boljunec"}, "c": {"sl": "Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek", "it": "Sant'Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek", "ssl": "Boršt–Pesek", "sit": "Boršt–Pesek", "slug": "borst"}, "d": {"sl": "Ricmanje in Log", "it": "San Giuseppe della Chiusa e Log", "ssl": "Ricmanje–Log", "sit": "San Giuseppe–Log", "slug": "ricmanje"}, "e": {"sl": "Domjo, Pulje, Lakotišče in Krmenka", "it": "Domio, Puglie, Lacotisce e Mattonaia", "ssl": "Domjo", "sit": "Domio", "slug": "domjo"}, "f": {"sl": "Mačkolje, Prebeneg, Križpot in Mont", "it": "Caresana, Prebeneg, Crociata e Monte d'Oro", "ssl": "Mačkolje–Prebeneg", "sit": "Caresana–Prebeneg", "slug": "mackolje"}, "g": {"sl": "Žavlje in Frankovec", "it": "Aquilinia e Francovez", "ssl": "Žavlje–Frankovec", "sit": "Aquilinia–Francovez", "slug": "zavlje"}};</script><script src="assets/live.js?v=fac52466"></script><script src="assets/objave.js?v=fac52466"></script><script>OBJAVE.mount(document.getElementById("obj-home"),{limit:6});OBJAVE.badges();OBJAVE.mojaVas(document.getElementById("moja-vas"));OBJAVE.rezultati(document.getElementById("rez-home"));</script>
+<script src="assets/config.js?v=fd70f1d2"></script>
+<script src="assets/site.js?v=fd70f1d2"></script>
+<script src="assets/ui.js?v=fd70f1d2"></script>
+<script src="assets/comune.js?v=fd70f1d2"></script>
+<script>window.KS_CONS={"a": {"sl": "Dolina in Kroglje", "it": "Dolina e Crogole", "ssl": "Dolina–Kroglje", "sit": "Dolina–Crogole", "slug": "dolina"}, "b": {"sl": "Boljunec in Gornji konec", "it": "Bagnoli della Rosandra e Bagnoli Superiore", "ssl": "Boljunec", "sit": "Bagnoli della Rosandra", "slug": "boljunec"}, "c": {"sl": "Boršt, Hrvati, Zabrežec, Jezero, Botač, Gročana, Draga in Pesek", "it": "Sant'Antonio in Bosco, Hervati, Moccò, San Lorenzo, Botazzo, Grozzana, Draga e Pesek", "ssl": "Boršt–Pesek", "sit": "Boršt–Pesek", "slug": "borst"}, "d": {"sl": "Ricmanje in Log", "it": "San Giuseppe della Chiusa e Log", "ssl": "Ricmanje–Log", "sit": "San Giuseppe–Log", "slug": "ricmanje"}, "e": {"sl": "Domjo, Pulje, Lakotišče in Krmenka", "it": "Domio, Puglie, Lacotisce e Mattonaia", "ssl": "Domjo", "sit": "Domio", "slug": "domjo"}, "f": {"sl": "Mačkolje, Prebeneg, Križpot in Mont", "it": "Caresana, Prebeneg, Crociata e Monte d'Oro", "ssl": "Mačkolje–Prebeneg", "sit": "Caresana–Prebeneg", "slug": "mackolje"}, "g": {"sl": "Žavlje in Frankovec", "it": "Aquilinia e Francovez", "ssl": "Žavlje–Frankovec", "sit": "Aquilinia–Francovez", "slug": "zavlje"}};</script><script src="assets/live.js?v=fd70f1d2"></script><script src="assets/objave.js?v=fd70f1d2"></script><script>OBJAVE.mount(document.getElementById("obj-home"),{limit:6});OBJAVE.badges();OBJAVE.mojaVas(document.getElementById("moja-vas"));OBJAVE.rezultati(document.getElementById("rez-home"));</script><script>KS_COMUNE.home(document.getElementById("cm-home"));KS_COMUNE.sezona(document.getElementById("sz-home"));</script>
+<script>KS_COMUNE.meteo(document.getElementById("meteo-alert"));</script>
 </body>
 </html>
