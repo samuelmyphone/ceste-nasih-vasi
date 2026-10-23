@@ -1,0 +1,45 @@
+name: Dal Comune / Iz občine
+
+on:
+  schedule:
+    - cron: '17 3 * * *'   # ogni notte / vsako noč
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/comune_sync.py'
+      - '.github/workflows/comune.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: comune-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Leggi notizie e albo del Comune
+        id: sync
+        continue-on-error: true
+        run: python3 scripts/comune_sync.py
+      - name: Pubblica se ci sono novità
+        run: |
+          if ! git diff --quiet -- assets/comune.json; then
+            git config user.name "cfks-dolina bot"
+            git config user.email "obvestila@cfks-dolina.org"
+            git add assets/comune.json
+            git commit -m "Iz občine: posodobitev / Dal Comune: aggiornamento"
+            git pull --rebase -q origin main
+            git push -q origin main
+          fi
+      - name: Segnala errori (email di GitHub)
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "::error::Una fonte del Comune non risponde o ha cambiato forma: i dati precedenti restano online. Vedere il log del passo 'Leggi notizie e albo del Comune'."
+          exit 1

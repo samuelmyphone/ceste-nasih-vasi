@@ -1,0 +1,488 @@
+{
+ "stato": {
+  "albo": {
+   "ok": true,
+   "aggiornato": "2026-10-23",
+   "voci": 16
+  },
+  "rss": {
+   "ok": true,
+   "aggiornato": "2026-10-23",
+   "voci": 20
+  }
+ },
+ "albo": [
+  {
+   "id": "albo-10057924",
+   "src": "albo",
+   "cat": "viabilita",
+   "tipo_sl": "Odredba",
+   "tipo_it": "Ordinanza",
+   "num": "78/2026",
+   "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione su un tratto di strada comunale p.c.n. 2884/1 del c.c. di Draga Sant’Elia, in località Draga nei pressi del civ. 18 per la posa in opera di una nuova linea elettrica",
+   "sl": "Začasna prometna ureditev - omejitev prometa na odseku občinske ceste na k. p. št. 2884/1 k. o. Draga v Dragi pri h. št. 18 zaradi namestitve novega električnega voda",
+   "date": "2026-10-23",
+   "until": "2026-11-06",
+   "svet": [
+    "c"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10055485",
+   "src": "albo",
+   "cat": "viabilita",
+   "tipo_sl": "Odredba",
+   "tipo_it": "Ordinanza",
+   "num": "77/2026",
+   "it": "Limitazione della circolazione veicolare in loc. Dolina. Istituzione di un percorso pedonale su tratto di strada comunale in località Dolina compreso tra il civico n. 187 e il civico n. 361.",
+   "sl": "Omejitev prometa v Dolini. Vzpostavitev pešpoti na občinski cesti v Dolini med hišnima številkama 187 in 361.",
+   "date": "2026-10-22",
+   "until": "2026-11-05",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10054419",
+   "src": "albo",
+   "cat": "avvisi",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "853/2026",
+   "it": "TARI 2026 – riduzione compostaggio per utenze domestiche",
+   "sl": "",
+   "date": "2026-10-22",
+   "until": "2026-11-06",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10054417",
+   "src": "albo",
+   "cat": "avvisi",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "852/2026",
+   "it": "TARI 2026 - riduzioni ed agevolazioni per utenze domestiche - anziano in casa di riposo",
+   "sl": "",
+   "date": "2026-10-22",
+   "until": "2026-11-06",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10054361",
+   "src": "albo",
+   "cat": "avvisi",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "850/2026",
+   "it": "Contributo Regione FVG - LR 1/2016, art 19 e l431/1998, art.11 - fondo per il sostegno all’accesso alle abitazioni in locazione. (decreto 2026-grfvg-52954",
+   "sl": "",
+   "date": "2026-10-22",
+   "until": "2026-11-06",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10044103",
+   "src": "albo",
+   "cat": "bp",
+   "tipo_sl": "Sklep odbora",
+   "tipo_it": "Delibera di Giunta",
+   "num": "112/2026",
+   "it": "Indirizzi per la realizzazione del progetto di bilancio partecipativo n. 22 \"sistemazione della sicurezza stradale per i pedoni tra la zona Šanca di Dolina e la palestra comunale\". smernice za izvedbo projekta participativnega proračuna št. 22 »ureditev prometne varnosti za pešce med šanco v Dolini in občinsko telovadnico«.",
+   "sl": "",
+   "date": "2026-10-19",
+   "until": "2026-11-02",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10043613",
+   "src": "albo",
+   "cat": "lavori",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "827/2026",
+   "it": "Lavori di manutenzione ordinaria dei corsi d’acqua. Decisione a contrarre: affidamento dei lavori all’operatore economico tecnogreen s.n.c. di marko biekar e stefano biekar di trieste.",
+   "sl": "",
+   "date": "2026-10-15",
+   "until": "2026-10-30",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10043455",
+   "src": "albo",
+   "cat": "bp",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "820/2026",
+   "it": "Processo del bilancio partecipativo. Fornitura e installazione di n. 11 bacheche metalliche per la promozione di eventi e iniziative della comunità e realizzazione ed installazione di n. 6 tabelle informative-storiche nei centri abitati del territorio comunale. Decisione a contrarre: affidamento all’operatore economico segnaletika s.r.l. di San Dorligo della Valle - Dolina.",
+   "sl": "",
+   "date": "2026-10-15",
+   "until": "2026-10-30",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10042850",
+   "src": "albo",
+   "cat": "viabilita",
+   "tipo_sl": "Odredba",
+   "tipo_it": "Ordinanza",
+   "num": "76/2026",
+   "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione veicolare su strade comunali nel centro abitato di Sant’Antonio in Bosco - Boršt per consentire lavori di asfaltatura.",
+   "sl": "Začasna prometna ureditev - omejitev prometa na občinskih cestah v Borštu zaradi asfaltiranja cestišča.",
+   "date": "2026-10-14",
+   "until": "2026-10-28",
+   "svet": [
+    "c"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10042745",
+   "src": "albo",
+   "cat": "viabilita",
+   "tipo_sl": "Odredba",
+   "tipo_it": "Ordinanza",
+   "num": "75/2026",
+   "it": "Ordinanza temporanea in linea di viabilita’ – limitazione della circolazione veicolare e pedonale su strada comunale nel centro abitato di Dolina per consentire i lavori di consolidamento e mitigazione del dissesto idrogeologico in prossimità del ponte sul torrente Dolina",
+   "sl": "Začasna prometna ureditev - omejitev prometa vozil in pešcev na občinski cesti v Dolini, da se omogočijo dela za utrditev in zmanjšanje hidrogeološke nestabilnosti v bližini mostu čez potok Dolina",
+   "date": "2026-10-14",
+   "until": "2026-10-28",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10042531",
+   "src": "albo",
+   "cat": "viabilita",
+   "tipo_sl": "Odredba",
+   "tipo_it": "Ordinanza",
+   "num": "74/2026",
+   "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione veicolare su strada comunale nel centro abitato di Draga presso il civ. n. 22, per consentire lavori di abbattimento e ricostruzione di un muro di sostegno stradale.",
+   "sl": "Začasna prometna ureditev - omejitev prometa na občinski cesti v Dragi pri h. št. 22 zaradi rušenja in obnove cestnega podpornega zidu.",
+   "date": "2026-10-14",
+   "until": "2026-10-28",
+   "svet": [
+    "c"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10032058",
+   "src": "albo",
+   "cat": "lavori",
+   "tipo_sl": "Sklep odbora",
+   "tipo_it": "Delibera di Giunta",
+   "num": "110/2026",
+   "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan. Cup: c72h25000970006. Approvazione del progetto esecutivo. Izredna vzdrževalna dela in funkcionalna preureditev nogometnega igrišča z umetno travnato podlago v športnem kompleksu občinskega športnega centra silvana klabjana. Cup: c72h25000970006. Sprejem izvedbenega projekta.",
+   "sl": "",
+   "date": "2026-10-12",
+   "until": "2026-10-26",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10032056",
+   "src": "albo",
+   "cat": "lavori",
+   "tipo_sl": "Sklep odbora",
+   "tipo_it": "Delibera di Giunta",
+   "num": "111/2026",
+   "it": "Nuovi allacciamenti idrici nel territorio comunale a servizio di fontanelle pubbliche sia storiche e riattivate che di nuova costruzione – indirizzi della giunta comunale agli uffici. Novi vodovodni priključki na ozemlju občine za oskrbo tako zgodovinskih in ponovno aktiviranih kot novih javnih pitnikov – smernice občinskega odbora uradom.",
+   "sl": "",
+   "date": "2026-10-12",
+   "until": "2026-10-26",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10033771",
+   "src": "albo",
+   "cat": "lavori",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "815/2026",
+   "it": "Lavori di completamento e ottimizzazione funzionale del nuovo centro comunale di raccolta dei rifiuti urbani del Comune di San Dorligo della Valle – Dolina, sito in località Bagnoli della Rosandra-Boljunec 279/a. decisione a contrarre: affidamento dei lavori all’operatore cerbone giovanni & filgio s.r.l. di San Dorligo della Valle - Dolina.",
+   "sl": "",
+   "date": "2026-10-08",
+   "until": "2026-10-23",
+   "svet": [
+    "b"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10032781",
+   "src": "albo",
+   "cat": "lavori",
+   "tipo_sl": "Odločba",
+   "tipo_it": "Determinazione",
+   "num": "807/2026",
+   "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan. Pagamento delle spese relative alla procedura di valutazione del prgetto esecutivo e rilascio del parere preventivo a favore della lnd impianti s.r.l. di roma.",
+   "sl": "",
+   "date": "2026-10-08",
+   "until": "2026-10-23",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  },
+  {
+   "id": "albo-10013642",
+   "src": "albo",
+   "cat": "avvisi",
+   "tipo_sl": "Županova odredba",
+   "tipo_it": "Ordinanza sindacale",
+   "num": "10318/2026",
+   "it": "Ordinanza sindacale ai sensi dell’art. 192, comma 3, del D.Lgs. 3 aprile 2006, n. 152 e ss.mm.ii., per la rimozione e il corretto conferimento di rifiuto costituito da autovettura fuori uso marca [OMISSIS...], tipo [OMISSIS...], targata [OMISSIS...], presente sul terreno di pertinenza del civico n. [OMISSIS...] di località [OMISSIS...], nel Comune di San Dorligo della Valle-Dolina",
+   "sl": "Županova odredba v skladu s tretjim odstavkom 192. člena ZU št. 152 z dne 3. 4. 2006 z n. s. d. o odstranitvi in pravilni oddaji odpadka, in sicer izrabljenega avtomobila znamke […], modela […], z registrsko tablico […], ki se nahaja na zemljišču pri hišni številki […]v […] v občini Dolina",
+   "date": "2026-09-24",
+   "until": "2026-11-02",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+  }
+ ],
+ "rss": [
+  {
+   "id": "rss-175092",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Bando per la concessione di contributi per l’installazione di sistemi antifurto, antirapina o antintrusione e di videosorveglianza – anno 2026",
+   "sl": "Razpis za dodeljevanje prispevkov za namestitev protivlomnih ali protiropnih naprav in video nadzornih sistemov v skladu s pravilnikom – leto 2026",
+   "date": "2026-10-21",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/bando-per-la-concessione-di-contributi-per-linstallazione-di-sistemi-antifurto-antirapina-o-antintrusione-e-di-videosorveglianza-anno-2026-175092"
+  },
+  {
+   "id": "rss-174950",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "La comunità come cura. Reti territoriali, servizi e partecipazione nella Dementia Friendly Community di Muggia",
+   "sl": "Skupnost kot oblika oskrbe. Lokalne mreže, storitve in sodelovanje v okviru Dementia Friendly Community Milje",
+   "date": "2026-10-19",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/la-comunita-come-cura-reti-territoriali-servizi-e-partecipazione-nella-dementia-friendly-community-di-muggia-174950"
+  },
+  {
+   "id": "rss-174752",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Avviso di interruzione della fornitura di energia elettrica",
+   "sl": "Obvestilo o prekinitvi dobave električne energije",
+   "date": "2026-10-14",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/sl/novita-85680/notizie-85681/avviso-di-interruzione-della-fornitura-di-energia-elettrica-174752"
+  },
+  {
+   "id": "rss-174389",
+   "src": "rss",
+   "cat": "lavori",
+   "it": "Avviso relativo all’avvio della consultazione per la selezione di 10 operatori economici per l’affidamento dei lavori consistenti nella riqualificazione della piazza principale Gorica e del centro storico del borgo di Dolina",
+   "sl": "Avviso relativo all’avvio della consultazione per la selezione di 10 operatori economici per l’affidamento dei lavori consistenti nella riqualificazione della piazza principale Gorica e del centro storico del borgo di Dolina",
+   "date": "2026-10-06",
+   "until": "",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/amministrazione-trasparente-3527/bandi-di-gara-e-contratti-3568/avviso-relativo-allavvio-della-consultazione-per-la-selezione-di-10-operatori-economici-per-laffidamento-dei-lavori-consistenti-nella-riqualificazione-della-piazza-principale-gorica-e-del-centro-storico-del-borgo-di-dolina-174389"
+  },
+  {
+   "id": "rss-174160",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Attività di socializzazione, ricreazione, laboratori creativi e stimolazione cognitiva nel centro di aggregazione Dolina",
+   "sl": "Dejavnosti druženja, rekreacije, kreativnih delavnic in kognitivne stimulacije v centru druženja Dolina",
+   "date": "2026-09-30",
+   "until": "",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/attivita-di-socializzazione-ricreazione-laboratori-creativi-e-stimolazione-cognitiva-nel-centro-di-aggregazione-dolina-174160"
+  },
+  {
+   "id": "rss-173231",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Attività di socializzazione, ricreazione, laboratori creativi e stimolazione cognitiva nel centro di aggregazione Dolina",
+   "sl": "Dejavnosti druženja, rekreacije, kreativnih delavnic in kognitivne stimulacije v centru druženja Dolina",
+   "date": "2026-09-10",
+   "until": "",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/attivita-di-socializzazione-ricreazione-laboratori-creativi-e-stimolazione-cognitiva-nel-centro-di-aggregazione-dolina-173231"
+  },
+  {
+   "id": "rss-173232",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Incontro conoscitivo con il nuovo Comandante Provinciale dei Vigili del Fuoco",
+   "sl": "Spoznavno srečanje z novim pokrajinskim poveljnikom gasilcev",
+   "date": "2026-09-10",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/comunicati-85682/incontro-conoscitivo-con-il-nuovo-comandante-provinciale-dei-vigili-del-fuoco-173232"
+  },
+  {
+   "id": "rss-173163",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Avviso pubblico finalizzato all'individuazione di operatori economici da invitare alla successiva procedura di affidamento del servizio di gestione operativa, assistenza tecnica,accoglienza e presidio delle condizioni di sicurezza del teatro comunale \"France Prešeren\" di Bagnoli d. Rosandra-Boljunec",
+   "sl": "Avviso pubblico finalizzato all'individuazione di operatori economici da invitare alla successiva procedura di affidamento del servizio di gestione operativa, assistenza tecnica,accoglienza e presidio delle condizioni di sicurezza del teatro comunale \"France Prešeren\" di Bagnoli d. Rosandra-Boljunec",
+   "date": "2026-09-09",
+   "until": "",
+   "svet": [
+    "b"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/amministrazione-trasparente-3527/bandi-di-gara-e-contratti-3568/avviso-pubblico-finalizzato-allindividuazione-di-operatori-economici-da-invitare-alla-successiva-procedura-di-affidamento-del-servizio-di-gestione-operativa-assistenza-tecnicaaccoglienza-e-presidio-delle-condizioni-di-sicurezza-del-teatro-comunale-france-preseren-di-bagnoli-d-rosandra-boljunec-173163"
+  },
+  {
+   "id": "rss-172429",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Avviso pubblico di manifestazione d'interesse per l’affidamento dell'attuazione di azioni di valorizzazione dell’Amministrazione di sostegno",
+   "sl": "Javni razpis za prijavo interesa za izvajanje ukrepov za okrepitev institucije podpornega upravljanja",
+   "date": "2026-08-19",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/avviso-pubblico-di-manifestazione-dinteresse-per-laffidamento-dellattuazione-di-azioni-di-valorizzazione-dellamministrazione-di-sostegno-172429"
+  },
+  {
+   "id": "rss-172402",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Adesione all’Accordo territoriale per i contratti di locazione a canone concordato",
+   "sl": "Adesione all’Accordo territoriale per i contratti di locazione a canone concordato",
+   "date": "2026-08-18",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/adesione-allaccordo-territoriale-per-i-contratti-di-locazione-a-canone-concordato-172402"
+  },
+  {
+   "id": "rss-172313",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Settembre \"viola\" nell'ambito - Eventi organizzati per il Mese Mondiale dell'Alzheimer",
+   "sl": "Vijolični september v socialni službi – Dogodki ob svetovnem mesecu Alzheimerjeve bolezni",
+   "date": "2026-08-14",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/settembre-viola-nellambito-eventi-organizzati-per-il-mese-mondiale-dellalzheimer-172313"
+  },
+  {
+   "id": "rss-171083",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Manifestazione di interesse-concessione temporanea e occasionale dell'utilizzo delle bancarelle comunali e dei materiali per l'organizzazione e il coordinamento dell'area degustazione nell'ambito dell'iniziativa \"Le Notti del vino\"--",
+   "sl": "Manifestazione di interesse-concessione temporanea e occasionale dell'utilizzo delle bancarelle comunali e dei materiali per l'organizzazione e il coordinamento dell'area degustazione nell'ambito dell'iniziativa \"Le Notti del vino\"--",
+   "date": "2026-07-15",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/amministrazione-trasparente-3527/bandi-di-gara-e-contratti-3568/manifestazione-di-interesse-concessione-temporanea-e-occasionale-dellutilizzo-delle-bancarelle-comunali-e-dei-materiali-per-lorganizzazione-e-il-coordinamento-dellarea-degustazione-nellambito-delliniziativa-le-notti-del-vino-171083"
+  },
+  {
+   "id": "rss-170719",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Bando per la concessione di contributi per l’installazione di sistemi antifurto, antirapina o antintrusione e di videosorveglianza – anno 2025",
+   "sl": "Razpis za dodeljevanje prispevkov za namestitev protivlomnih ali protiropnih naprav in video nadzornih sistemov – leto 2025",
+   "date": "2026-07-06",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/avvisi-85683/bando-per-la-concessione-di-contributi-per-linstallazione-di-sistemi-antifurto-antirapina-o-antintrusione-e-di-videosorveglianza-anno-2025-170719"
+  },
+  {
+   "id": "rss-170735",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Attività di socializzazione, ricreazione, laboratori creativi e stimolazione cognitiva nel centro di aggregazione Dolina",
+   "sl": "Dejavnosti druženja, rekreacije, kreativnih delavnic in kognitivne stimulacije v centru druženja dolina",
+   "date": "2026-07-06",
+   "until": "",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/attivita-di-socializzazione-ricreazione-laboratori-creativi-e-stimolazione-cognitiva-nel-centro-di-aggregazione-dolina-170735"
+  },
+  {
+   "id": "rss-170556",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Nuovi orari estivi del Centro comunale di raccolta dei rifiuti urbani",
+   "sl": "Novi poletni urnik zbirnega centra za komunalne odpadke",
+   "date": "2026-07-01",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/nuovi-orari-estivi-del-centro-comunale-di-raccolta-dei-rifiuti-urbani-170556"
+  },
+  {
+   "id": "rss-168883",
+   "src": "rss",
+   "cat": "eventi",
+   "it": "Attività di socializzazione, ricreazione, laboratori creativi e stimolazione cognitiva nel centro di aggregazione Dolina",
+   "sl": "Dejavnosti druženja, rekreacije, kreativnih delavnic in kognitivne stimulacije v centru druženja Dolina",
+   "date": "2026-05-28",
+   "until": "",
+   "svet": [
+    "a"
+   ],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/attivita-di-socializzazione-ricreazione-laboratori-creativi-e-stimolazione-cognitiva-nel-centro-di-aggregazione-dolina-168883"
+  },
+  {
+   "id": "rss-168479",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Benefici per abbattimento rette servizi prima infanzia - anno educativo 2026/2027",
+   "sl": "Olajšave za znižanje oskrbnin za storitve zgodnjega otroštva – šolsko leto 2026/2027",
+   "date": "2026-05-21",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/benefici-per-abbattimento-rette-servizi-prima-infanzia-anno-educativo-20262027-168479"
+  },
+  {
+   "id": "rss-168395",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Apertura iscrizioni ai servizi scolastici mensa e trasporto a.s. 2026/2027",
+   "sl": "Prijave za šolsko prehrano in šolski prevoz š.l. 2026/2027",
+   "date": "2026-05-20",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/apertura-iscrizioni-ai-servizi-scolastici-mensa-e-trasporto-as-20262027-168395"
+  },
+  {
+   "id": "rss-168294",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Nuovo accordo territoriale per contratti di locazione a canone concordato",
+   "sl": "Novi območni sporazum za pogodbe o najemu z usklajeno najemnino",
+   "date": "2026-05-19",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/novita-85680/notizie-85681/nuovo-accordo-territoriale-per-contratti-di-locazione-a-canone-concordato-168294"
+  },
+  {
+   "id": "rss-167393",
+   "src": "rss",
+   "cat": "avvisi",
+   "it": "Avviso pubblico finalizzato all’accertamento dell’esistenza o meno di interesse transfrontaliero certo / Javno obvestilo o ugotavljanju obstoja ali neobstoja jasnega čezmejnega interesa",
+   "sl": "Avviso pubblico finalizzato all’accertamento dell’esistenza o meno di interesse transfrontaliero certo / Javno obvestilo o ugotavljanju obstoja ali neobstoja jasnega čezmejnega interesa",
+   "date": "2026-04-29",
+   "until": "",
+   "svet": [],
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/amministrazione-trasparente-3527/bandi-di-gara-e-contratti-3568/avviso-pubblico-finalizzato-allaccertamento-dellesistenza-o-meno-di-interesse-transfrontaliero-certo-javno-obvestilo-o-ugotavljanju-obstoja-ali-neobstoja-jasnega-cezmejnega-interesa-167393"
+  }
+ ]
+}
