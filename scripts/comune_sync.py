@@ -162,7 +162,7 @@ EVENTO = re.compile(r'concert|festival|serata|mostra|presentazion|spettacol|nott
                     r'predstavitev|prireditev|srečanje|laboratori|delavnic|evento|dogod', re.I)
 
 
-NON_EVENTO = re.compile(r'manifestazione d.interesse|avviso pubblico|bando|razpis|operatori economici', re.I)
+NON_EVENTO = re.compile(r'manifestazione d\w*.?interesse|avviso pubblico|bando|razpis|operatori economici', re.I)
 
 
 def lang_of(t):
