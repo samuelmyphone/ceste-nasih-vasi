@@ -586,3 +586,8 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .site-head .nav a,.site-head .nav .dd>button{white-space:nowrap}
 @media (min-width:901px) and (max-width:1320px){.site-head .nav a,.site-head .nav .dd>button{padding:10px 8px;font-size:14.5px}.brand span{display:none}.hcta .lbl{display:none}.hcta{padding-left:12px;padding-right:12px}.htools{gap:6px}}
 @media (min-width:901px) and (max-width:1100px){.brand>div{display:none}.site-head .nav{gap:0}}
+.sec-rez.is-empty .sec-h{margin-bottom:0}.sec-rez.is-empty .live-list{display:none}
+.sec-rez.is-empty{padding-top:8px;padding-bottom:8px}
+.sec-news .nl{margin-top:4px}
+.nl-more{margin-top:10px}.nl-more summary{cursor:pointer;font-weight:700;color:var(--brand)}
+@media (min-width:1150px){.hcta .lbl{display:inline!important}}

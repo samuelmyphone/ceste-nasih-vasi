@@ -142,7 +142,8 @@ async function rezultati(el){
   if(!el||!S.ready())return; const c=await S.getClient(); if(!c)return;
   const {data,error}=await c.from('prijave').select('id,created_at,updated_at,consiglio_id,vas,vrsta,kategorija,kje,opis,predlog,resnost,fotografije,napredek,odgovor,oznaka').eq('status','objavljeno').eq('napredek','reseno').order('updated_at',{ascending:false}).limit(6);
   if(error){el.innerHTML=`<p class="empty">${T('Podatkov trenutno ni mogoče naložiti.','Dati non disponibili al momento.')}</p>`;return;}
-  el.innerHTML=data.length?data.map(S.card).join(''):`<p class="empty">${T('Ko bo Občina rešila prvo prijavo, jo bomo pokazali tukaj.','Quando il Comune risolverà la prima segnalazione, la mostreremo qui.')}</p>`;
+  if(!data.length){el.closest('section')?.classList.add('is-empty');el.innerHTML='';return;}
+  el.innerHTML=data.map(S.card).join('');
 }
 window.OBJAVE={mount,calendar,card,load,ics,VR,fileUrl,badges,mojaVas,rezultati};
 })();
