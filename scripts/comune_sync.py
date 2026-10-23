@@ -101,6 +101,65 @@ AVVISI = re.compile(r'TARI\b|CONTRIBUT|RIDUZION|AGEVOLAZION|BANDO|RIFIUTI|ACQUA|
 VIAB = re.compile(r'VIABILIT|CIRCOLAZION|SOSTA|TRANSITO|PEDONAL|SENSO UNICO|DIVIETO', re.I)
 
 
+LUOGHI = [("Sant'Antonio in Bosco", 'Boršt'), ('Bagnoli della Rosandra', 'Boljunec'), ('Bagnoli Superiore', 'Gornji konec'),
+          ('San Giuseppe della Chiusa', 'Ricmanje'), ('Caresana', 'Mačkolje'), ('Aquilinia', 'Žavlje'), ('Francovez', 'Frankovec'),
+          ('Grozzana', 'Gročana'), ('Hervati', 'Hrvati'), ('Moccò', 'Zabrežec'), ('Botazzo', 'Botač'), ('San Lorenzo', 'Jezero'),
+          ('Domio', 'Domjo'), ('Puglie', 'Pulje'), ('Mattonaia', 'Krmenka'), ('Crogole', 'Kroglje'), ('Crociata', 'Križpot'),
+          ('Prebeneg', 'Prebeneg'), ('Pesek', 'Pesek'), ('Draga', 'Draga'), ('Dolina', 'Dolina'), ('Log', 'Log')]
+
+
+def sintesi(it, sl, tipo):
+    """Titolo breve e motivo, solo da ciò che il titolo dice; None se non applicabile."""
+    if not tipo.startswith('Ordinanz') or not VIAB.search(it):
+        return None
+    t = it.replace('’', "'")
+    luogo = next(((a, b) for a, b in LUOGHI if re.search(r'\b' + re.escape(a) + r'\b', t, re.I)), None)
+    civ = re.search(r'\bciv(?:ico|\.)?\s*(?:n\.\s*)?(\d+\w?)', t, re.I)
+    tra = re.search(r'\btra (?:il )?civ(?:ico|\.)?\s*(?:n\.\s*)?(\d+\w?) e (?:il )?civ(?:ico|\.)?\s*(?:n\.\s*)?(\d+\w?)', t, re.I)
+    if not luogo:
+        return None
+    pedon = re.search(r'percorso pedonal', t, re.I)
+    cosa_it = 'percorso pedonale e limitazioni alla circolazione' if pedon else 'limitazioni alla circolazione'
+    cosa_sl = 'pešpot in omejitev prometa' if pedon else 'omejitev prometa'
+    if tra:
+        head_it = f'{luogo[0]}, tra i civici {tra.group(1)} e {tra.group(2)}: {cosa_it}'
+        head_sl = f'{luogo[1]}, med h. št. {tra.group(1)} in {tra.group(2)}: {cosa_sl}'
+    else:
+        head_it = luogo[0] + (f', presso il civ. {civ.group(1)}' if civ else '') + ': ' + cosa_it
+        head_sl = luogo[1] + (f', pri h. št. {civ.group(1)}' if civ else '') + ': ' + cosa_sl
+    m = re.search(r"\bper (?:consentire |permettere )?(?:i |il |la |le |gli |l['’])?(lavori .+|la .+|posa .+|.+)$", t, re.I)
+    mot_it = m.group(1).strip(' .') if m else ''
+    mot_it = re.sub(r'^(la|le|il|i|gli) ', '', mot_it, flags=re.I)
+    ms = re.search(r'\b((?:zaradi|da se omogočijo) .+)$', sl or '', re.I)
+    mot_sl = ms.group(1).strip(' .') if ms else ''
+    cap = lambda x: x[:1].upper() + x[1:] if x else ''
+    return dict(h_it=head_it, h_sl=head_sl, m_it=cap(mot_it), m_sl=cap(mot_sl))
+
+
+def fase(raw):
+    r = norm(raw)
+    if re.search(r'AFFIDAMENTO|DECISIONE A CONTRARRE|DETERMINA(ZIONE)? A CONTRARRE|AGGIUDICAZION', r):
+        return 'affidamento'
+    if re.search(r'APPROVAZIONE DEL PROGETTO|PROGETTO (DI FATTIBILITA|ESECUTIVO|DEFINITIVO)|INDIRIZZI', r):
+        return 'progetto'
+    if re.search(r'COLLAUDO|REGOLARE ESECUZIONE|ULTIMAZIONE', r):
+        return 'concluso'
+    return ''
+
+
+OPPORTUNITA = re.compile(r'CONTRIBUT|BANDO|RIDUZION|AGEVOLAZION|BENEFIC|ISCRIZION|RAZPIS|PRISPEV|OLAJSAV|ABBATTIMENTO RETTE|SOSTEGNO', re.I)
+
+
+def split_lingue(t):
+    """Titolo IT e SL sulla stessa riga: separa dove inizia la parte slovena."""
+    pezzi = re.split(r'(?<=[."»])\s+(?=[a-zčšžA-ZČŠŽ])', t)
+    for k in range(1, len(pezzi)):
+        a, b = ' '.join(pezzi[:k]), ' '.join(pezzi[k:])
+        if lang_of(b) == 'sl' and lang_of(a) == 'it' and re.search(r'[čšž]|\b(za|na|in|med|pri)\b', b, re.I):
+            return [a, b]
+    return [t]
+
+
 def numero(x):
     n = x.get('numeroAtto') or ''
     m = re.search(r'n\s*\.?\s*0*(\d+)', n, re.I)
@@ -134,6 +193,8 @@ def albo():
             continue  # avvisi di terzi (gestori di rete, ministeri…)
         raw = html.unescape(x['oggetto'])
         parts = [p for p in raw.split('\r\n') if p.strip()]
+        if len(parts) == 1:
+            parts = split_lingue(parts[0])
         it_t, sl_t = frase(clean(parts[0])), frase(clean(parts[1])) if len(parts) > 1 else ''
         if ESCLUDI.search(raw):
             continue
@@ -147,10 +208,23 @@ def albo():
             cat = 'avvisi'
         else:
             continue
+        if cat == 'avvisi' and OPPORTUNITA.search(norm(raw)):
+            cat = 'prilike'
         ts, ti = TIPO_SL.get(tipo, (tipo, tipo))
-        out.append(dict(id='albo-' + x['id'], src='albo', cat=cat, tipo_sl=ts, tipo_it=ti, num=numero(x),
-                        it=it_t, sl=sl_t, date=x['dataInizioPubblicazione'][:10], until=x['dataFinePubblicazione'][:10],
-                        svet=svet_of(raw), url=ALBO_PAGE))
+        d = dict(id='albo-' + x['id'], src='albo', cat=cat, tipo_sl=ts, tipo_it=ti, tipologia=tipo, num=numero(x),
+                 it=it_t, sl=sl_t, date=x['dataInizioPubblicazione'][:10], until=x['dataFinePubblicazione'][:10],
+                 svet=svet_of(raw), url=ALBO_PAGE)
+        sx = sintesi(it_t, sl_t, tipo)
+        if sx:
+            d['sint'] = sx
+        if cat in ('lavori', 'bp'):
+            f = fase(raw)
+            if f:
+                d['fase'] = f
+        m = re.search(r'BILANCIO PARTECIPATIVO N\.?\s*(\d+)', norm(raw))
+        if m:
+            d['bp_n'] = int(m.group(1))
+        out.append(d)
     return out
 
 
@@ -207,6 +281,8 @@ def rss():
             itt, slt = ti.get('it') or ti.get('sl'), ti.get('sl') or ti.get('it')
             raw = f'{itt} {slt}'
             cat = 'eventi' if EVENTO.search(raw) and not NON_EVENTO.search(raw) else ('lavori' if LAVORI.search(raw) and not AVVISI.search(raw) else 'avvisi')
+            if cat == 'avvisi' and OPPORTUNITA.search(norm(raw)):
+                cat = 'prilike'
             out.append(dict(id=a['id'], src='rss', cat=cat, it=itt, sl=slt, date=day, until='', svet=svet_of(raw), url=a['url']))
     # doppioni: stessa notizia due volte nello stesso giorno -> tiene la versione bilingue
     out.sort(key=lambda x: (x['date'], x['it'] != x['sl']), reverse=True)

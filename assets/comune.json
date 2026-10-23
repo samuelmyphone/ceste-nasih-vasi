@@ -32,6 +32,7 @@
    "cat": "viabilita",
    "tipo_sl": "Odredba",
    "tipo_it": "Ordinanza",
+   "tipologia": "Ordinanze dirigenziali",
    "num": "78/2026",
    "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione su un tratto di strada comunale p.c.n. 2884/1 del c.c. di Draga Sant’Elia, in località Draga nei pressi del civ. 18 per la posa in opera di una nuova linea elettrica",
    "sl": "Začasna prometna ureditev - omejitev prometa na odseku občinske ceste na k. p. št. 2884/1 k. o. Draga v Dragi pri h. št. 18 zaradi namestitve novega električnega voda",
@@ -40,7 +41,13 @@
    "svet": [
     "c"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "sint": {
+    "h_it": "Draga, presso il civ. 18: limitazioni alla circolazione",
+    "h_sl": "Draga, pri h. št. 18: omejitev prometa",
+    "m_it": "Posa in opera di una nuova linea elettrica",
+    "m_sl": "Zaradi namestitve novega električnega voda"
+   }
   },
   {
    "id": "albo-10055485",
@@ -48,6 +55,7 @@
    "cat": "viabilita",
    "tipo_sl": "Odredba",
    "tipo_it": "Ordinanza",
+   "tipologia": "Ordinanze dirigenziali",
    "num": "77/2026",
    "it": "Limitazione della circolazione veicolare in loc. Dolina. Istituzione di un percorso pedonale su tratto di strada comunale in località Dolina compreso tra il civico n. 187 e il civico n. 361.",
    "sl": "Omejitev prometa v Dolini. Vzpostavitev pešpoti na občinski cesti v Dolini med hišnima številkama 187 in 361.",
@@ -56,14 +64,21 @@
    "svet": [
     "a"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "sint": {
+    "h_it": "Dolina, tra i civici 187 e 361: percorso pedonale e limitazioni alla circolazione",
+    "h_sl": "Dolina, med h. št. 187 in 361: pešpot in omejitev prometa",
+    "m_it": "",
+    "m_sl": ""
+   }
   },
   {
    "id": "albo-10054419",
    "src": "albo",
-   "cat": "avvisi",
+   "cat": "prilike",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "853/2026",
    "it": "TARI 2026 – riduzione compostaggio per utenze domestiche",
    "sl": "",
@@ -75,9 +90,10 @@
   {
    "id": "albo-10054417",
    "src": "albo",
-   "cat": "avvisi",
+   "cat": "prilike",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "852/2026",
    "it": "TARI 2026 - riduzioni ed agevolazioni per utenze domestiche - anziano in casa di riposo",
    "sl": "",
@@ -89,9 +105,10 @@
   {
    "id": "albo-10054361",
    "src": "albo",
-   "cat": "avvisi",
+   "cat": "prilike",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "850/2026",
    "it": "Contributo Regione FVG - LR 1/2016, art 19 e l431/1998, art.11 - fondo per il sostegno all’accesso alle abitazioni in locazione. (decreto 2026-grfvg-52954",
    "sl": "",
@@ -106,15 +123,18 @@
    "cat": "bp",
    "tipo_sl": "Sklep odbora",
    "tipo_it": "Delibera di Giunta",
+   "tipologia": "Deliberazioni giuntali",
    "num": "112/2026",
-   "it": "Indirizzi per la realizzazione del progetto di bilancio partecipativo n. 22 \"sistemazione della sicurezza stradale per i pedoni tra la zona Šanca di Dolina e la palestra comunale\". smernice za izvedbo projekta participativnega proračuna št. 22 »ureditev prometne varnosti za pešce med šanco v Dolini in občinsko telovadnico«.",
-   "sl": "",
+   "it": "Indirizzi per la realizzazione del progetto di bilancio partecipativo n. 22 \"sistemazione della sicurezza stradale per i pedoni tra la zona Šanca di Dolina e la palestra comunale\".",
+   "sl": "Smernice za izvedbo projekta participativnega proračuna št. 22 »ureditev prometne varnosti za pešce med šanco v Dolini in občinsko telovadnico«.",
    "date": "2026-10-19",
    "until": "2026-11-02",
    "svet": [
     "a"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "progetto",
+   "bp_n": 22
   },
   {
    "id": "albo-10043613",
@@ -122,13 +142,15 @@
    "cat": "lavori",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "827/2026",
    "it": "Lavori di manutenzione ordinaria dei corsi d’acqua. Decisione a contrarre: affidamento dei lavori all’operatore economico tecnogreen s.n.c. di marko biekar e stefano biekar di trieste.",
    "sl": "",
    "date": "2026-10-15",
    "until": "2026-10-30",
    "svet": [],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "affidamento"
   },
   {
    "id": "albo-10043455",
@@ -136,13 +158,15 @@
    "cat": "bp",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "820/2026",
    "it": "Processo del bilancio partecipativo. Fornitura e installazione di n. 11 bacheche metalliche per la promozione di eventi e iniziative della comunità e realizzazione ed installazione di n. 6 tabelle informative-storiche nei centri abitati del territorio comunale. Decisione a contrarre: affidamento all’operatore economico segnaletika s.r.l. di San Dorligo della Valle - Dolina.",
    "sl": "",
    "date": "2026-10-15",
    "until": "2026-10-30",
    "svet": [],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "affidamento"
   },
   {
    "id": "albo-10042850",
@@ -150,6 +174,7 @@
    "cat": "viabilita",
    "tipo_sl": "Odredba",
    "tipo_it": "Ordinanza",
+   "tipologia": "Ordinanze dirigenziali",
    "num": "76/2026",
    "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione veicolare su strade comunali nel centro abitato di Sant’Antonio in Bosco - Boršt per consentire lavori di asfaltatura.",
    "sl": "Začasna prometna ureditev - omejitev prometa na občinskih cestah v Borštu zaradi asfaltiranja cestišča.",
@@ -158,7 +183,13 @@
    "svet": [
     "c"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "sint": {
+    "h_it": "Sant'Antonio in Bosco: limitazioni alla circolazione",
+    "h_sl": "Boršt: omejitev prometa",
+    "m_it": "Lavori di asfaltatura",
+    "m_sl": "Zaradi asfaltiranja cestišča"
+   }
   },
   {
    "id": "albo-10042745",
@@ -166,6 +197,7 @@
    "cat": "viabilita",
    "tipo_sl": "Odredba",
    "tipo_it": "Ordinanza",
+   "tipologia": "Ordinanze dirigenziali",
    "num": "75/2026",
    "it": "Ordinanza temporanea in linea di viabilita’ – limitazione della circolazione veicolare e pedonale su strada comunale nel centro abitato di Dolina per consentire i lavori di consolidamento e mitigazione del dissesto idrogeologico in prossimità del ponte sul torrente Dolina",
    "sl": "Začasna prometna ureditev - omejitev prometa vozil in pešcev na občinski cesti v Dolini, da se omogočijo dela za utrditev in zmanjšanje hidrogeološke nestabilnosti v bližini mostu čez potok Dolina",
@@ -174,7 +206,13 @@
    "svet": [
     "a"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "sint": {
+    "h_it": "Dolina: limitazioni alla circolazione",
+    "h_sl": "Dolina: omejitev prometa",
+    "m_it": "Lavori di consolidamento e mitigazione del dissesto idrogeologico in prossimità del ponte sul torrente Dolina",
+    "m_sl": "Da se omogočijo dela za utrditev in zmanjšanje hidrogeološke nestabilnosti v bližini mostu čez potok Dolina"
+   }
   },
   {
    "id": "albo-10042531",
@@ -182,6 +220,7 @@
    "cat": "viabilita",
    "tipo_sl": "Odredba",
    "tipo_it": "Ordinanza",
+   "tipologia": "Ordinanze dirigenziali",
    "num": "74/2026",
    "it": "Ordinanza temporanea in linea di viabilita’ - limitazione della circolazione veicolare su strada comunale nel centro abitato di Draga presso il civ. n. 22, per consentire lavori di abbattimento e ricostruzione di un muro di sostegno stradale.",
    "sl": "Začasna prometna ureditev - omejitev prometa na občinski cesti v Dragi pri h. št. 22 zaradi rušenja in obnove cestnega podpornega zidu.",
@@ -190,7 +229,13 @@
    "svet": [
     "c"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "sint": {
+    "h_it": "Draga, presso il civ. 22: limitazioni alla circolazione",
+    "h_sl": "Draga, pri h. št. 22: omejitev prometa",
+    "m_it": "Lavori di abbattimento e ricostruzione di un muro di sostegno stradale",
+    "m_sl": "Zaradi rušenja in obnove cestnega podpornega zidu"
+   }
   },
   {
    "id": "albo-10032058",
@@ -198,13 +243,15 @@
    "cat": "lavori",
    "tipo_sl": "Sklep odbora",
    "tipo_it": "Delibera di Giunta",
+   "tipologia": "Deliberazioni giuntali",
    "num": "110/2026",
-   "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan. Cup: c72h25000970006. Approvazione del progetto esecutivo. Izredna vzdrževalna dela in funkcionalna preureditev nogometnega igrišča z umetno travnato podlago v športnem kompleksu občinskega športnega centra silvana klabjana. Cup: c72h25000970006. Sprejem izvedbenega projekta.",
-   "sl": "",
+   "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan.",
+   "sl": "Cup: c72h25000970006. Approvazione del progetto esecutivo. Izredna vzdrževalna dela in funkcionalna preureditev nogometnega igrišča z umetno travnato podlago v športnem kompleksu občinskega športnega centra silvana klabjana. Cup: c72h25000970006. Sprejem izvedbenega projekta.",
    "date": "2026-10-12",
    "until": "2026-10-26",
    "svet": [],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "progetto"
   },
   {
    "id": "albo-10032056",
@@ -212,13 +259,15 @@
    "cat": "lavori",
    "tipo_sl": "Sklep odbora",
    "tipo_it": "Delibera di Giunta",
+   "tipologia": "Deliberazioni giuntali",
    "num": "111/2026",
-   "it": "Nuovi allacciamenti idrici nel territorio comunale a servizio di fontanelle pubbliche sia storiche e riattivate che di nuova costruzione – indirizzi della giunta comunale agli uffici. Novi vodovodni priključki na ozemlju občine za oskrbo tako zgodovinskih in ponovno aktiviranih kot novih javnih pitnikov – smernice občinskega odbora uradom.",
-   "sl": "",
+   "it": "Nuovi allacciamenti idrici nel territorio comunale a servizio di fontanelle pubbliche sia storiche e riattivate che di nuova costruzione – indirizzi della giunta comunale agli uffici.",
+   "sl": "Novi vodovodni priključki na ozemlju občine za oskrbo tako zgodovinskih in ponovno aktiviranih kot novih javnih pitnikov – smernice občinskega odbora uradom.",
    "date": "2026-10-12",
    "until": "2026-10-26",
    "svet": [],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "progetto"
   },
   {
    "id": "albo-10033771",
@@ -226,6 +275,7 @@
    "cat": "lavori",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "815/2026",
    "it": "Lavori di completamento e ottimizzazione funzionale del nuovo centro comunale di raccolta dei rifiuti urbani del Comune di San Dorligo della Valle – Dolina, sito in località Bagnoli della Rosandra-Boljunec 279/a. decisione a contrarre: affidamento dei lavori all’operatore cerbone giovanni & filgio s.r.l. di San Dorligo della Valle - Dolina.",
    "sl": "",
@@ -234,7 +284,8 @@
    "svet": [
     "b"
    ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
+   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
+   "fase": "affidamento"
   },
   {
    "id": "albo-10032781",
@@ -242,6 +293,7 @@
    "cat": "lavori",
    "tipo_sl": "Odločba",
    "tipo_it": "Determinazione",
+   "tipologia": "Determinazioni dirigenziali",
    "num": "807/2026",
    "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan. Pagamento delle spese relative alla procedura di valutazione del prgetto esecutivo e rilascio del parere preventivo a favore della lnd impianti s.r.l. di roma.",
    "sl": "",
@@ -256,6 +308,7 @@
    "cat": "avvisi",
    "tipo_sl": "Županova odredba",
    "tipo_it": "Ordinanza sindacale",
+   "tipologia": "Ordinanze sindacali",
    "num": "10318/2026",
    "it": "Ordinanza sindacale ai sensi dell’art. 192, comma 3, del D.Lgs. 3 aprile 2006, n. 152 e ss.mm.ii., per la rimozione e il corretto conferimento di rifiuto costituito da autovettura fuori uso marca [OMISSIS...], tipo [OMISSIS...], targata [OMISSIS...], presente sul terreno di pertinenza del civico n. [OMISSIS...] di località [OMISSIS...], nel Comune di San Dorligo della Valle-Dolina",
    "sl": "Županova odredba v skladu s tretjim odstavkom 192. člena ZU št. 152 z dne 3. 4. 2006 z n. s. d. o odstranitvi in pravilni oddaji odpadka, in sicer izrabljenega avtomobila znamke […], modela […], z registrsko tablico […], ki se nahaja na zemljišču pri hišni številki […]v […] v občini Dolina",
@@ -269,7 +322,7 @@
   {
    "id": "rss-175092",
    "src": "rss",
-   "cat": "avvisi",
+   "cat": "prilike",
    "it": "Bando per la concessione di contributi per l’installazione di sistemi antifurto, antirapina o antintrusione e di videosorveglianza – anno 2026",
    "sl": "Razpis za dodeljevanje prispevkov za namestitev protivlomnih ali protiropnih naprav in video nadzornih sistemov v skladu s pravilnikom – leto 2026",
    "date": "2026-10-21",
@@ -365,7 +418,7 @@
   {
    "id": "rss-172429",
    "src": "rss",
-   "cat": "avvisi",
+   "cat": "prilike",
    "it": "Avviso pubblico di manifestazione d'interesse per l’affidamento dell'attuazione di azioni di valorizzazione dell’Amministrazione di sostegno",
    "sl": "Javni razpis za prijavo interesa za izvajanje ukrepov za okrepitev institucije podpornega upravljanja",
    "date": "2026-08-19",
@@ -409,7 +462,7 @@
   {
    "id": "rss-170719",
    "src": "rss",
-   "cat": "avvisi",
+   "cat": "prilike",
    "it": "Bando per la concessione di contributi per l’installazione di sistemi antifurto, antirapina o antintrusione e di videosorveglianza – anno 2025",
    "sl": "Razpis za dodeljevanje prispevkov za namestitev protivlomnih ali protiropnih naprav in video nadzornih sistemov – leto 2025",
    "date": "2026-07-06",
@@ -457,7 +510,7 @@
   {
    "id": "rss-168479",
    "src": "rss",
-   "cat": "avvisi",
+   "cat": "prilike",
    "it": "Benefici per abbattimento rette servizi prima infanzia - anno educativo 2026/2027",
    "sl": "Olajšave za znižanje oskrbnin za storitve zgodnjega otroštva – šolsko leto 2026/2027",
    "date": "2026-05-21",
@@ -468,7 +521,7 @@
   {
    "id": "rss-168395",
    "src": "rss",
-   "cat": "avvisi",
+   "cat": "prilike",
    "it": "Apertura iscrizioni ai servizi scolastici mensa e trasporto a.s. 2026/2027",
    "sl": "Prijave za šolsko prehrano in šolski prevoz š.l. 2026/2027",
    "date": "2026-05-20",

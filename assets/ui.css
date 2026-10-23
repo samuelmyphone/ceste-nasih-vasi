@@ -664,3 +664,29 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .dot.yellow{background:#e6c200}.dot.orange{background:#e8742a}.dot.red{background:#c62828}
 .meteo-src{font-size:12.5px;opacity:.85}.meteo a{color:inherit}
 .cm-desc{color:var(--muted);margin:-4px 0 14px;max-width:72ch}
+
+/* Dal Comune v2: tema scuro, sintesi, dettagli, zone */
+.cm-item{background:var(--paper)}
+.cm-filt button{background:var(--paper);color:var(--ink)}
+.cm-filt button .n,.cm-grp h3 .n{display:inline-block;min-width:20px;padding:0 6px;border-radius:10px;background:var(--soft);color:var(--muted);font-size:12px;font-weight:700;margin-left:4px}
+.cm-filt button[aria-selected="true"] .n{background:rgba(255,255,255,.25);color:inherit}
+html[data-dark] .cm-filt button[aria-selected="true"]{color:#0b0f13}
+.cm-why{margin:0;color:var(--muted);font-size:14.5px}
+.cm-fase{font-size:11.5px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:0 8px;color:var(--muted)}
+.cm-det{font-size:13.5px;color:var(--muted)}
+.cm-det summary{cursor:pointer;font-weight:600;color:var(--brand)}
+.cm-det dl{margin:6px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}.cm-det dt{font-weight:700}.cm-det dd{margin:0}
+.cm-full{margin:6px 0;color:var(--ink)}
+.cm-how{margin:6px 0 0}
+.cm-copy{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--soft2);color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;margin-left:4px}
+.cm-copy.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.cm-bar{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 10px;align-items:center}
+.cm-zone{display:flex;flex-wrap:wrap;gap:6px}
+.cm-zone button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer}
+.cm-zone button[aria-pressed="true"]{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand);color:var(--brand)}
+.cm-zsel,.cm-q{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.cm-q{flex:1 1 280px;min-width:0}
+.cm-all{margin:12px 0 0}
+.cm-item.cm-prilike{border-left-color:#3f8a5a}
+.bp-akt{margin:8px 0;padding:10px 12px;border-radius:10px;background:var(--accent-l);border:1px solid var(--line);font-size:14px}
+.bp-akt small{display:block;color:var(--muted);margin-top:2px}
