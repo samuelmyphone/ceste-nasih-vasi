@@ -591,3 +591,10 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .sec-news .nl{margin-top:4px}
 .nl-more{margin-top:10px}.nl-more summary{cursor:pointer;font-weight:700;color:var(--brand)}
 @media (min-width:1150px){.hcta .lbl{display:inline!important}}
+.tgrid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.tcard{padding:18px 20px;min-height:96px;align-items:center;border-radius:16px;gap:16px}
+.tcard .ti{width:52px;height:52px}.tcard .ti .ic{width:26px;height:26px}
+.tcard .tt b{font-size:19px}.tcard .tt small{font-size:15px}
+#pf[data-vrsta] .tgrid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+#pf[data-vrsta] .tcard{min-height:72px;padding:14px 16px}
+@media (max-width:720px){.tgrid{grid-template-columns:1fr}#pf[data-vrsta] .tgrid{grid-template-columns:1fr 1fr}.tcard{min-height:84px}}
