@@ -556,3 +556,4 @@ html[data-dark] .t3d-teaser,html[data-dark] .t3d-teaser b{color:#fff}
 .fz .act i{position:absolute;left:9px;top:10px;width:8px;height:8px;border-radius:50%;background:var(--terra);animation:actp 1.8s ease-in-out infinite}
 @keyframes actp{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--terra) 60%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
 @media (prefers-reduced-motion:reduce){.fz .act i{animation:none}}
+.nav-step ol{margin:8px 0 0;padding-left:22px}.nav-step li{margin:6px 0;line-height:1.5}.nv-n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--terra);color:#fff;font-size:15px;margin-right:10px;vertical-align:middle}
