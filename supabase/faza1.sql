@@ -121,6 +121,7 @@ create trigger obiski_ciscenje after insert on public.obiski for each statement 
 create extension if not exists pg_net;
 
 alter table public.admini add column if not exists obvestila boolean not null default true;  -- false = niente email
+alter table public.admini add column if not exists obvestila_email text;  -- indirizzo alternativo per le email (se vuoto: email di accesso)
 
 create or replace function public.obvesti_upravitelje() returns trigger
 language plpgsql security definer set search_path = public, extensions as $$
@@ -134,10 +135,10 @@ begin
     if k is null or snd is null then return new; end if;
 
     select ime_sl || ' / ' || ime_it into svet from consigli where id = new.consiglio_id;
-    select jsonb_agg(jsonb_build_object('email', email)) into prejemniki
+    select jsonb_agg(jsonb_build_object('email', coalesce(obvestila_email, email))) into prejemniki
       from admini where consiglio_id = new.consiglio_id and obvestila;
     if prejemniki is null then
-      select jsonb_agg(jsonb_build_object('email', email)) into prejemniki
+      select jsonb_agg(jsonb_build_object('email', coalesce(obvestila_email, email))) into prejemniki
         from admini where consiglio_id is null and obvestila;
     end if;
     if prejemniki is null then return new; end if;
