@@ -77,28 +77,35 @@ create policy obiski_insert on public.obiski for insert to anon, authenticated w
 -- nessuna policy di lettura: i dati si leggono solo con la funzione qui sotto
 grant insert on public.obiski to anon, authenticated;
 
-create or replace function public.statistika(dni int default 30)
+drop function if exists public.statistika(int);
+create or replace function public.statistika(dni int default 30, svet text default null)
 returns jsonb language plpgsql stable security definer set search_path = public as $$
 declare od timestamptz := now() - make_interval(days => greatest(1, least(dni, 400)));
+        pref text := null;
 begin
   if not public.je_katerikoli_admin() then raise exception 'ni dovoljeno / non autorizzato'; end if;
+  if svet is not null then select '/sveti/' || slug || '/' into pref from consigli where id = svet; end if;
   return jsonb_build_object(
-    'skupaj',    (select count(*) from obiski where t >= od),
+    'svet', svet,
+    'skupaj',    (select count(*) from obiski where t >= od and (pref is null or pot like pref || '%')),
     'po_dnevih', (select coalesce(jsonb_agg(jsonb_build_object('d', d, 'n', n) order by d), '[]'::jsonb)
                   from (select to_char(t at time zone 'Europe/Rome', 'YYYY-MM-DD') d, count(*) n
-                        from obiski where t >= od group by 1) s),
+                        from obiski where t >= od and (pref is null or pot like pref || '%') group by 1) s),
     'strani',    (select coalesce(jsonb_agg(jsonb_build_object('p', pot, 'n', n) order by n desc), '[]'::jsonb)
-                  from (select pot, count(*) n from obiski where t >= od group by pot order by count(*) desc limit 25) s),
+                  from (select pot, count(*) n from obiski where t >= od and (pref is null or pot like pref || '%') group by pot order by count(*) desc limit 25) s),
     'viri',      (select coalesce(jsonb_agg(jsonb_build_object('v', v, 'n', n) order by n desc), '[]'::jsonb)
                   from (select coalesce(nullif(vir, ''), 'neposredno · diretto') v, count(*) n
-                        from obiski where t >= od group by 1 order by count(*) desc limit 15) s),
+                        from obiski where t >= od and (pref is null or pot like pref || '%') group by 1 order by count(*) desc limit 15) s),
     'jeziki',    (select coalesce(jsonb_object_agg(coalesce(jezik, '?'), n), '{}'::jsonb)
-                  from (select jezik, count(*) n from obiski where t >= od group by jezik) s),
+                  from (select jezik, count(*) n from obiski where t >= od and (pref is null or pot like pref || '%') group by jezik) s),
     'naprave',   (select coalesce(jsonb_object_agg(coalesce(naprava, '?'), n), '{}'::jsonb)
-                  from (select naprava, count(*) n from obiski where t >= od group by naprava) s)
+                  from (select naprava, count(*) n from obiski where t >= od and (pref is null or pot like pref || '%') group by naprava) s),
+    'po_svetih', (select coalesce(jsonb_agg(jsonb_build_object('id', id, 'ime', ime_sl, 'n', n) order by id), '[]'::jsonb)
+                  from (select c.id, c.ime_sl, (select count(*) from obiski o where o.t >= od and o.pot like '/sveti/' || c.slug || '/%') n
+                        from consigli c) s)
   );
 end $$;
-grant execute on function public.statistika(int) to authenticated;
+grant execute on function public.statistika(int, text) to authenticated;
 
 -- pulizia automatica: si conservano 13 mesi di dati
 create or replace function public.obiski_ciscenje() returns trigger language plpgsql security definer set search_path = public as $$

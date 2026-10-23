@@ -187,7 +187,8 @@ async function objAct(el,a,o){
 /* ================= STATISTIKA ================= */
 async function loadStat(){
   const L=$('#a-list'); const dni=+(L.dataset.dni||30);
-  const {data,error}=await c.rpc('statistika',{dni});
+  const svet=me.consiglio_id||($('#a-svet').value||null);
+  const {data,error}=await c.rpc('statistika',{dni,svet});
   if(error){L.innerHTML=`<p class="result err">${E(error.message)}</p><p class="hint">Če funkcija še ne obstaja, je treba v Supabase zagnati faza1.sql. / Se la funzione non esiste ancora va eseguito faza1.sql su Supabase.</p>`;return;}
   const d=data||{}, days=d.po_dnevih||[], mx=Math.max(1,...days.map(x=>x.n));
   const tbl=(rows,k,h)=>`<table class="bpt"><thead><tr><th>${h}</th><th style="text-align:right">#</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${E(r[k])}</td><td style="text-align:right">${r.n}</td></tr>`).join('')||'<tr><td colspan="2">—</td></tr>'}</tbody></table>`;
@@ -195,6 +196,7 @@ async function loadStat(){
   L.innerHTML=`<div class="row-btn">${[7,30,90,365].map(x=>`<button type="button" class="btn small${x===dni?'':' ghost'}" data-dni="${x}">${x} dni / giorni</button>`).join('')}</div>
   <div class="stats"><div><b>${d.skupaj||0}</b><span>ogledov strani / pagine viste</span></div><div><b>${j.sl||0} · ${j.it||0}</b><span>SLO · ITA</span></div><div><b>${n.m||0} · ${n.d||0}</b><span>telefon · računalnik / telefono · computer</span></div></div>
   <div class="panel"><h3 style="margin-top:0">Po dnevih / Per giorno</h3><div class="st-bars">${days.map(x=>`<div title="${x.d}: ${x.n}"><i style="height:${Math.round(x.n/mx*100)}%"></i></div>`).join('')}</div><p class="hint">${days.length?days[0].d+' → '+days[days.length-1].d:''}</p></div>
+  ${svet?`<p class="hint">Samo strani krajevne skupnosti ${E(CONS[svet]||svet)} (/sveti/…). Domača stran, koledar in obrazec so skupni vsem in so šteti samo v skupni statistiki. / <em>Solo le pagine della frazione (/sveti/…). Home, calendario e modulo sono comuni e compaiono solo nella statistica generale.</em></p>`:`<div class="panel"><h3 style="margin-top:0">Po krajevnih skupnostih / Per frazione</h3><table class="bpt"><thead><tr><th>Svet / Consiglio</th><th style="text-align:right">#</th></tr></thead><tbody>${(d.po_svetih||[]).map(r=>`<tr><td>${E(r.id)}) ${E(r.ime)}</td><td style="text-align:right">${r.n}</td></tr>`).join('')}</tbody></table><p class="hint">Ogledi strani posameznih svetov (/sveti/…). Za podrobnosti izberite svet zgoraj. / <em>Visite alle pagine dei singoli Consigli; per i dettagli scegliete il Consiglio in alto.</em></p></div>`}
   <div class="grid g2"><div class="panel"><h3 style="margin-top:0">Strani / Pagine</h3>${tbl(d.strani||[],'p','Stran / Pagina')}</div><div class="panel"><h3 style="margin-top:0">Od kod / Provenienza</h3>${tbl(d.viri||[],'v','Vir / Fonte')}</div></div>
   <p class="hint">Brez piškotkov in osebnih podatkov. / Senza cookie né dati personali.</p>`;
   $$('[data-dni]',L).forEach(b=>b.onclick=()=>{L.dataset.dni=b.dataset.dni;loadStat();});
