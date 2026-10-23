@@ -98,5 +98,31 @@ async function calendar(el){
   const h=new URLSearchParams(location.search).get('svet'); if(h&&[...sel.options].some(o=>o.value===h))sel.value=h;
   draw();
 }
-window.OBJAVE={mount,calendar,card,load,ics,VR,fileUrl};
+
+/* activity badges on council cards (home) */
+async function badges(){
+  const els=[...document.querySelectorAll('[data-act]')]; if(!els.length||!S.ready())return;
+  const c=await S.getClient(); if(!c)return;
+  const now=Date.now(), d14=new Date(now-14*864e5).toISOString(), d30=new Date(now-30*864e5).toISOString(), t0=today();
+  const [ob,pr]=await Promise.all([
+    c.from('objave').select('consiglio_id,vrsta,zacetek,konec,created_at').eq('objavljeno',true).or(`zacetek.gte."${t0}",konec.gte."${t0}",created_at.gte."${d14}"`).order('zacetek',{ascending:true,nullsFirst:false}).limit(200),
+    c.from('prijave').select('consiglio_id,created_at').eq('status','objavljeno').gte('created_at',d30).limit(500)]);
+  const A={};
+  const g=k=>A[k]=A[k]||{ev:null,nov:0,pr:0};
+  for(const o of (ob.data||[])){ const ks=o.consiglio_id?[o.consiglio_id]:els.map(e=>e.dataset.act);
+    for(const k of ks){const a=g(k);
+      if(o.zacetek&&new Date(o.konec||o.zacetek)>=new Date(t0)&&o.vrsta!=='obvestilo'){ if(!a.ev||new Date(o.zacetek)<new Date(a.ev.zacetek))a.ev=o; }
+      else if(new Date(o.created_at)>=new Date(d14))a.nov++; } }
+  for(const p of (pr.data||[])) g(p.consiglio_id).pr++;
+  const EV={sestanek:['Seja','Riunione'],skupscina:['Zbor krajanov','Assemblea'],dogodek:['Dogodek','Evento'],dela:['Dela','Lavori']};
+  const pl=(n,one,two,few,many)=>n===1?one:n===2?two:(n%100>=3&&n%100<=4)?few:many;
+  for(const e of els){const a=A[e.dataset.act]; if(!a)continue; const parts=[];
+    if(a.ev){const d=new Date(a.ev.zacetek),v=EV[a.ev.vrsta]||EV.dogodek; parts.push(T(`${v[0]} ${d.getDate()}. ${d.getMonth()+1}.`,`${v[1]} ${pr2(d.getDate())}/${pr2(d.getMonth()+1)}`));}
+    if(a.nov)parts.push(T(`${a.nov} ${pl(a.nov,'novo obvestilo','novi obvestili','nova obvestila','novih obvestil')}`,`${a.nov} ${a.nov===1?'nuovo avviso':'nuovi avvisi'}`));
+    if(a.pr)parts.push(T(`${a.pr} ${pl(a.pr,'nova prijava','novi prijavi','nove prijave','novih prijav')}`,`${a.pr} ${a.pr===1?'nuova segnalazione':'nuove segnalazioni'}`));
+    if(parts.length){e.innerHTML='<i aria-hidden="true"></i>'+parts.join('<br>');e.hidden=false;}
+  }
+}
+function pr2(n){return String(n).padStart(2,'0');}
+window.OBJAVE={mount,calendar,card,load,ics,VR,fileUrl,badges};
 })();
