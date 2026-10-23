@@ -23,7 +23,7 @@ async function init(){
   const sv=$('#a-svet');
   sv.innerHTML=(me.consiglio_id?'':'<option value="">Vsi sveti / Tutti</option>')+Object.entries(CONS).filter(([k])=>!me.consiglio_id||k===me.consiglio_id).map(([k,v])=>`<option value="${k}">${k}) ${E(v)}</option>`).join('');
   ['#a-svet','#a-tab','#a-status'].forEach(s=>$(s).addEventListener('change',()=>{if(s==='#a-tab')statusOpts();load();}));
-  $('#a-reload').onclick=load;$('#a-out').onclick=()=>c.auth.signOut();
+  $('#a-reload').onclick=()=>{load();badge();};$('#a-out').onclick=()=>c.auth.signOut();
   $$('.adm-tabs [data-t]').forEach(btn=>btn.addEventListener('click',()=>{$$('.adm-tabs [data-t]').forEach(x=>x.setAttribute('aria-selected',x===btn));const t=$('#a-tab');t.value=btn.dataset.t;t.dispatchEvent(new Event('change'));}));
   statusOpts();load();badge();
 }
@@ -91,13 +91,13 @@ async function act(el,a,bp,p){
   else{upd={opis:val('opis'),predlog:val('predlog')||null,oznaka:val('oznaka')||null,napredek:val('napredek'),odgovor:val('odgovor')||null};}
   if(a==='del'){if(!confirm('Izbrišem dokončno? / Eliminare definitivamente?'))return;
     const paths=bp?(p.priloge||[]):(p.fotografije||[]);if(paths.length)await c.storage.from('fotografije').remove(paths);
-    const {error}=await c.from(T).delete().eq('id',p.id);if(error){m.textContent=error.message;return;}el.remove();return;}
+    const {error}=await c.from(T).delete().eq('id',p.id);if(error){m.textContent=error.message;return;}el.remove();badge();return;}
   if(a==='pub')upd.status='objavljeno'; if(a==='rej')upd.status='zavrnjeno';
   if(a==='mail'){if(!S.CFG.bpEmail){m.textContent='E-naslov Občine še ni določen (config.js → bpEmail). / Indirizzo del Comune non ancora definito.';}
     location.href=bpMail(Object.assign({},p,upd));upd.status='poslano';upd.poslano_at=new Date().toISOString();}
   if(!bp&&upd.status&&upd.status!==p.status||a==='save'||a==='mail'||a==='pub'||a==='rej'){upd.pregledal=me.email;if(!bp)upd.pregledano_at=new Date().toISOString();}
   const {error}=await c.from(T).update(upd).eq('id',p.id);
-  m.textContent=error?error.message:'Shranjeno / Salvato ✓';
+  m.textContent=error?error.message:'Shranjeno / Salvato ✓';badge();
   if(!error&&(a==='pub'||a==='rej'||a==='mail'))setTimeout(load,600);
 }
 $('#a-form')?.addEventListener('submit',async e=>{e.preventDefault();const em=$('#a-email').value.trim();const r=$('#a-msg');
