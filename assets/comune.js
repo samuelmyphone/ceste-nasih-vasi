@@ -73,7 +73,7 @@ async function list(el,opt={}){
   try{const d=await load();
     const since=opt.days?new Date(Date.now()-opt.days*864e5).toISOString().slice(0,10):'';
     const L=d.items.filter(x=>(opt.cats||[]).includes(x.cat)&&(!since||x.date>=since)).slice(0,opt.limit||10);
-    el.innerHTML=(L.length?`<div class="cm-list">${L.map(x=>card(x,{})).join('')}</div>`:empty(opt.empty||T('Trenutno nič.','Nulla al momento.')))+stamp(d);
+    el.innerHTML=(L.length?`<div class="cm-list">${L.map(x=>card(x,{})).join('')}</div>`:empty(opt.empty?T(opt.empty[0],opt.empty[1]):T('Trenutno nič.','Nulla al momento.')))+stamp(d);
   }catch(e){errBox(el,()=>list(el,opt));}
 }
 /* Riquadro stagionale: vegetazione lungo le strade e pericolo incendi */

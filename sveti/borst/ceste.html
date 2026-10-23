@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ceste naših vasi · Boršt–Pesek</title>
 <meta name="description" content="Krajevne skupnosti Občine Dolina – Consigli delle frazioni del Comune di San Dorligo della Valle">
-<script src="../../assets/lang.js?v=ac89ba2e"></script>
+<script src="../../assets/lang.js?v=be819bcd"></script>
 <link rel="icon" href="../../assets/simbol.png">
 <link rel="apple-touch-icon" href="../../assets/simbol.png">
 <link rel="manifest" href="../../manifest.webmanifest">
@@ -645,10 +645,10 @@
 .dossier .lb p{ color:#eee; margin:0; text-align:center }
 .dossier .lb button{ font:600 15px var(--font); background:#fff; color:#222; border:0; border-radius:4px; padding:6px 14px; cursor:pointer }
 .dossier :focus-visible{ outline:3px solid var(--accent); outline-offset:2px }
-@media (prefers-reduced-motion: no-preference){.dossier{ scroll-behavior:smooth }}</style><link rel="stylesheet" href="../../assets/explore.css?v=ac89ba2e"><style>
+@media (prefers-reduced-motion: no-preference){.dossier{ scroll-behavior:smooth }}</style><link rel="stylesheet" href="../../assets/explore.css?v=be819bcd"><style>
 .dossier{background:transparent;padding:0 0 40px;max-width:none;margin:0}.dossier .hero h1{margin:0 0 6px}</style>
-<link rel="stylesheet" href="../../assets/site.css?v=ac89ba2e">
-<link rel="stylesheet" href="../../assets/ui.css?v=ac89ba2e">
+<link rel="stylesheet" href="../../assets/site.css?v=be819bcd">
+<link rel="stylesheet" href="../../assets/ui.css?v=be819bcd">
 <link rel="canonical" href="https://cfks-dolina.org/sveti/borst/ceste.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Krajevne skupnosti Občine Dolina · Consigli delle frazioni">
@@ -913,7 +913,7 @@
 <h2 class="sec"><span data-l="sl" lang="sl">Nove prijave krajanov</span><span data-l="it" lang="it">Nuove segnalazioni dei residenti</span> (<span data-live-count>0</span>)</h2>
 <p><span data-l="sl" lang="sl">Prijave, oddane prek spletne strani, ki jih je odobril svet krajevne skupnosti.</span><span data-l="it" lang="it">Segnalazioni inviate dal sito e approvate dal Consiglio.</span> <a href="../../prijava.html?svet=c&amp;vrsta=cesta">+ <span data-l="sl" lang="sl">Nova prijava</span><span data-l="it" lang="it">Nuova segnalazione</span></a></p>
 <div class="live-list" id="live"></div>
-<script src="../../assets/explore.js?v=ac89ba2e"></script><div class="lb" id="lb" hidden><img id="lbi" alt=""><p id="lbc"></p><button type="button" id="lbx">Zapri / Chiudi</button></div>
+<script src="../../assets/explore.js?v=be819bcd"></script><div class="lb" id="lb" hidden><img id="lbi" alt=""><p id="lbc"></p><button type="button" id="lbx">Zapri / Chiudi</button></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 (function(){
@@ -959,11 +959,11 @@
  <a href="../../proracun.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h3v10zm6.5 0V4h3v16zM17 20v-7h3v7z"/></svg><span data-l="sl" lang="sl">Proračun</span><span data-l="it" lang="it">Bilancio</span></a>
  <button type="button" class="tb-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg><span data-l="sl" lang="sl">Meni</span><span data-l="it" lang="it">Menu</span></button>
 </nav>
-<script src="../../assets/config.js?v=ac89ba2e"></script>
-<script src="../../assets/site.js?v=ac89ba2e"></script>
-<script src="../../assets/ui.js?v=ac89ba2e"></script>
-<script src="../../assets/comune.js?v=ac89ba2e"></script>
-<script src="../../assets/live.js?v=ac89ba2e"></script><script>(async()=>{const it=await SVET.mountList(document.getElementById('live'),'c',['cesta']);
+<script src="../../assets/config.js?v=be819bcd"></script>
+<script src="../../assets/site.js?v=be819bcd"></script>
+<script src="../../assets/ui.js?v=be819bcd"></script>
+<script src="../../assets/comune.js?v=be819bcd"></script>
+<script src="../../assets/live.js?v=be819bcd"></script><script>(async()=>{const it=await SVET.mountList(document.getElementById('live'),'c',['cesta']);
  const add=()=>{const m=window.draftMap;if(!m||!window.L)return;it.forEach(p=>{if(p.lat&&p.lon)L.circleMarker([p.lat,p.lon],{radius:9,color:'#fff',weight:2,fillColor:p.resnost==3?'#c0271b':p.resnost==2?'#D34817':'#7d766e',fillOpacity:1}).addTo(m).bindPopup('<b>'+SVET.E(p.oznaka||p.vas)+'</b><br>'+SVET.E((p.opis||'').slice(0,160))+'<br><a href="#l-'+p.id+'">→</a>');});};
  if(window.draftMap)add();else addEventListener('draft-map-ready',add);})();</script>
 <script>KS_COMUNE.meteo(document.getElementById("meteo-alert"));</script>
