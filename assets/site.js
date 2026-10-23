@@ -3,7 +3,7 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 // mobile menu + dropdown
 const mb=$('.menu-btn'), nav=$('.nav');
 if(mb&&nav){mb.addEventListener('click',()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});}
-const tm=$('.tb-menu');if(tm&&nav){tm.addEventListener('click',e=>{e.stopPropagation();const o=nav.classList.toggle('open');if(mb)mb.setAttribute('aria-expanded',o);if(o){scrollTo({top:0});const d=$('.dd',nav);if(d){d.classList.add('open');}}});}
+const tm=$('.tb-menu');if(tm&&nav){tm.addEventListener('click',e=>{e.stopPropagation();const o=nav.classList.toggle('open');if(mb)mb.setAttribute('aria-expanded',o);if(o){scrollTo({top:0});}});}
 // collapsible cards on phones (long lists)
 const MQ=matchMedia('(max-width:720px)');
 function collapsible(sel,headSel){$$(sel).forEach(c=>{if(c.dataset.col)return;c.dataset.col=1;c.classList.add('collapsible');const h=headSel?$(headSel,c):c.firstElementChild;if(!h)return;h.classList.add('col-head');h.setAttribute('role','button');h.tabIndex=0;h.setAttribute('aria-expanded','false');const t=()=>{const o=c.classList.toggle('open');h.setAttribute('aria-expanded',o);};h.addEventListener('click',e=>{if(e.target.closest('a,button:not(.col-head)'))return;if(!MQ.matches)return;t();});h.addEventListener('keydown',e=>{if(MQ.matches&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t();}});});}

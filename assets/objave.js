@@ -76,7 +76,8 @@ async function mount(el,{svet=null,limit=6,empty=null,showSvet=true}={}){
   if(!S.ready()){el.innerHTML='';return;}
   el.innerHTML=`<p class="empty">${T('Nalagam …','Caricamento …')}</p>`;
   const {data,error}=await load({svet,from:today(),limit});
-  el.innerHTML=(!error&&data.length)?data.map(o=>card(o,{showSvet})).join(''):(empty||`<p class="empty">${T('Trenutno ni napovedanih sej ali obvestil.','Al momento non ci sono riunioni o avvisi in programma.')}</p>`);
+  if(error){el.innerHTML=`<p class="empty">${T('Obvestil trenutno ni mogoče naložiti.','Non è stato possibile caricare gli avvisi.')} <button type="button" class="btn ghost small obj-retry">${T('Poskusi znova','Riprova')}</button></p>`;el.querySelector('.obj-retry').onclick=()=>mount(el,{svet,limit,empty,showSvet});return;}
+  el.innerHTML=data.length?data.map(o=>card(o,{showSvet})).join(''):(empty||`<p class="empty">${T('Trenutno ni napovedanih sej ali obvestil.','Al momento non ci sono riunioni o avvisi in programma.')}</p>`);
   const n=el.closest('section')?.querySelector('[data-obj-count]'); if(n)n.textContent=data.length;
 }
 /* calendar page */
@@ -88,7 +89,7 @@ async function calendar(el){
     el.innerHTML=`<p class="empty">${T('Nalagam …','Caricamento …')}</p>`;
     const svet=sel.value||null, a=arch.checked;
     const {data,error}=a?await load({svet,limit:200,asc:false}):await load({svet,from:today(),limit:200});
-    if(error){el.innerHTML=`<p class="empty">${T('Podatkov trenutno ni mogoče naložiti.','Dati non disponibili al momento.')}</p>`;return;}
+    if(error){el.innerHTML=`<p class="empty">${T('Podatkov trenutno ni mogoče naložiti.','Dati non disponibili al momento.')} <button type="button" class="btn ghost small obj-retry">${T('Poskusi znova','Riprova')}</button></p>`;el.querySelector('.obj-retry').onclick=draw;return;}
     last=data; if(!data.length){el.innerHTML=`<p class="empty">${T('Ni obvestil.','Nessun avviso.')}</p>`;return;}
     const g={};data.forEach(o=>{const d=new Date(o.zacetek||o.created_at);const k=d.getFullYear()+'-'+pr(d.getMonth()+1);(g[k]=g[k]||[]).push(o);});
     el.innerHTML=Object.keys(g).map(k=>{const [y,m]=k.split('-').map(Number);return `<h2 class="h kal-m">${T(MSL[m-1]+' '+y,MIT[m-1]+' '+y)}</h2><div class="obj-l">${g[k].map(o=>card(o)).join('')}</div>`;}).join('');
@@ -124,5 +125,24 @@ async function badges(){
   }
 }
 function pr2(n){return String(n).padStart(2,'0');}
-window.OBJAVE={mount,calendar,card,load,ics,VR,fileUrl,badges};
+
+/* "my village": remembered without registration (localStorage only) */
+async function mojaVas(el){
+  if(!el)return; let id=null; try{id=localStorage.getItem('ks-svet');}catch(e){}
+  const c=id&&CONS[id]; if(!c)return;
+  el.innerHTML=`<div><small>${T('Vaša krajevna skupnost','La vostra frazione')}</small><b>${T(E(c.ssl||c.sl),E(c.sit||c.it))}</b><span data-mv-n></span></div><a class="btn small" href="${root()}sveti/${E(c.slug)}/">${T('Novosti','Novità')} →</a><button type="button" class="mv-x" aria-label="${'Pozabi / Dimentica'}" title="Pozabi / Dimentica">×</button>`;
+  el.hidden=false;
+  el.querySelector('.mv-x').onclick=()=>{try{localStorage.removeItem('ks-svet');}catch(e){} el.hidden=true;};
+  const {data,error}=await load({svet:id,from:today(),limit:20}); const n=el.querySelector('[data-mv-n]');
+  if(!error&&n)n.innerHTML=data.length?T(` · napovedana obvestila: ${data.length}`,` · avvisi in programma: ${data.length}`):'';
+}
+
+/* resolved reports ("results") */
+async function rezultati(el){
+  if(!el||!S.ready())return; const c=await S.getClient(); if(!c)return;
+  const {data,error}=await c.from('prijave').select('id,created_at,updated_at,consiglio_id,vas,vrsta,kategorija,kje,opis,predlog,resnost,fotografije,napredek,odgovor,oznaka').eq('status','objavljeno').eq('napredek','reseno').order('updated_at',{ascending:false}).limit(6);
+  if(error){el.innerHTML=`<p class="empty">${T('Podatkov trenutno ni mogoče naložiti.','Dati non disponibili al momento.')}</p>`;return;}
+  el.innerHTML=data.length?data.map(S.card).join(''):`<p class="empty">${T('Ko bo Občina rešila prvo prijavo, jo bomo pokazali tukaj.','Quando il Comune risolverà la prima segnalazione, la mostreremo qui.')}</p>`;
+}
+window.OBJAVE={mount,calendar,card,load,ics,VR,fileUrl,badges,mojaVas,rezultati};
 })();

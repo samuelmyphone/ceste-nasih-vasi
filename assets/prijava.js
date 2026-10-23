@@ -65,11 +65,14 @@ form.addEventListener('submit',async e=>{
       resnost:(vrsta==='cesta'||vrsta==='pripomba')&&res_?+res_:null,ze_prijavljeno:['cesta','pripomba','vprasanje'].includes(vrsta)?(ze||null):null,lat:p?+p.lat.toFixed(6):null,lon:p?+p.lng.toFixed(6):null,fotografije:fotos};
     const {error}=await c.from('prijave').insert(row); if(error)throw error;
     const ime=$('#f-ime').value.trim(),email=$('#f-email').value.trim(),tel=$('#f-tel').value.trim();
-    if(ime||email||tel)await c.from('kontakti').insert({prijava_id:id,ime:ime||null,email:email||null,telefon:tel||null});
+    let kontaktOk=true;
+    if(ime||email||tel){let r=await c.from('kontakti').insert({prijava_id:id,ime:ime||null,email:email||null,telefon:tel||null});
+      if(r.error){await new Promise(z=>setTimeout(z,800));r=await c.from('kontakti').insert({prijava_id:id,ime:ime||null,email:email||null,telefon:tel||null});}
+      if(r.error){kontaktOk=false;console.error('kontakti',r.error);}}
     const skipped=files.length-fotos.length;
     form.reset();if(mk){map.removeLayer(mk);mk=null;ll.textContent='Ni izbrano / Non selezionato';}
-    msg(`<b>Hvala! Prijava je bila poslana.</b> Svet jo bo pregledal in objavil na svoji strani.<br><em>Grazie! La segnalazione è stata inviata: il Consiglio la esaminerà e la pubblicherà sulla propria pagina.</em>${skipped?`<br>${skipped} fotografij ni bilo mogoče naložiti (format). / <em>${skipped} foto non caricate (formato non supportato).</em>`:''}`,true);
-  }catch(err){console.error(err);msg('Pošiljanje ni uspelo. Poskusite znova ali pišite na cfks.borst@gmail.com. / <em>Invio non riuscito: riprovate o scrivete a cfks.borst@gmail.com.</em>');}
+    msg(`<b>Hvala! Prijava je bila poslana.</b> Svet jo bo pregledal in objavil na svoji strani; stanje lahko spremljate na strani vaše krajevne skupnosti.<br><em>Grazie! La segnalazione è stata inviata: il Consiglio la esaminerà e la pubblicherà; potrete seguirne lo stato sulla pagina della vostra frazione.</em>${kontaktOk?'':'<br>Kontaktnih podatkov ni bilo mogoče shraniti; če želite odgovor, pišite svetu po e-pošti. / <em>Non è stato possibile salvare i vostri recapiti: se desiderate una risposta, scrivete al Consiglio via email.</em>'}${skipped?`<br>${skipped} fotografij ni bilo mogoče naložiti (format). / <em>${skipped} foto non caricate (formato non supportato).</em>`:''}`,true);
+  }catch(err){console.error(err);msg('Pošiljanje ni uspelo. Poskusite znova ali pišite svetu svoje vasi (e-naslovi so na dnu strani). / <em>Invio non riuscito: riprovate o scrivete al Consiglio della vostra frazione (indirizzi in fondo alla pagina).</em>');}
   finally{btn.disabled=false;btn.innerHTML='Pošlji · <em>Invia</em>';}
 });
 })();
