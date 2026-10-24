@@ -13,18 +13,10 @@
   "meteo": {
    "ok": true,
    "aggiornato": "2026-10-24",
-   "voci": 1
+   "voci": 0
   }
  },
- "meteo": [
-  {
-   "level": "yellow",
-   "sl": "Veter",
-   "it": "Vento",
-   "onset": "2026-10-23T18:00:00+00:00",
-   "expires": "2026-10-24T17:59:00+00:00"
-  }
- ],
+ "meteo": [],
  "albo": [
   {
    "id": "albo-10057924",
