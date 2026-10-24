@@ -2,17 +2,17 @@
  "stato": {
   "albo": {
    "ok": true,
-   "aggiornato": "2026-10-23",
-   "voci": 16
+   "aggiornato": "2026-10-24",
+   "voci": 14
   },
   "rss": {
    "ok": true,
-   "aggiornato": "2026-10-23",
+   "aggiornato": "2026-10-24",
    "voci": 20
   },
   "meteo": {
    "ok": true,
-   "aggiornato": "2026-10-23",
+   "aggiornato": "2026-10-24",
    "voci": 1
   }
  },
@@ -268,39 +268,6 @@
    "svet": [],
    "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
    "fase": "progetto"
-  },
-  {
-   "id": "albo-10033771",
-   "src": "albo",
-   "cat": "lavori",
-   "tipo_sl": "Odločba",
-   "tipo_it": "Determinazione",
-   "tipologia": "Determinazioni dirigenziali",
-   "num": "815/2026",
-   "it": "Lavori di completamento e ottimizzazione funzionale del nuovo centro comunale di raccolta dei rifiuti urbani del Comune di San Dorligo della Valle – Dolina, sito in località Bagnoli della Rosandra-Boljunec 279/a. decisione a contrarre: affidamento dei lavori all’operatore cerbone giovanni & filgio s.r.l. di San Dorligo della Valle - Dolina.",
-   "sl": "",
-   "date": "2026-10-08",
-   "until": "2026-10-23",
-   "svet": [
-    "b"
-   ],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612",
-   "fase": "affidamento"
-  },
-  {
-   "id": "albo-10032781",
-   "src": "albo",
-   "cat": "lavori",
-   "tipo_sl": "Odločba",
-   "tipo_it": "Determinazione",
-   "tipologia": "Determinazioni dirigenziali",
-   "num": "807/2026",
-   "it": "Lavori di manutenzione straordinaria ed adeguamento funzionale del campo di calcio in erba sintetica presso l’impianto sportivo del centro sportivo comunale silvano klabjan. Pagamento delle spese relative alla procedura di valutazione del prgetto esecutivo e rilascio del parere preventivo a favore della lnd impianti s.r.l. di roma.",
-   "sl": "",
-   "date": "2026-10-08",
-   "until": "2026-10-23",
-   "svet": [],
-   "url": "https://www.comune.san-dorligo-della-valle.ts.it/it/albo-pretorio-3612"
   },
   {
    "id": "albo-10013642",
